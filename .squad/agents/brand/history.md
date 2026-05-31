@@ -83,3 +83,9 @@
 
 - Removed public-facing teacher/Lehrkräfte audience framing across homepage, KI, Informatik, news metadata, contribution copy, issue template, README, and site description per Holger's directive.
 - Pattern learned: when audience scope narrows, update both rendered copy and hidden front matter/workflow options so future content suggestions cannot reintroduce removed audience tags.
+
+## 2026-05-31 – Digitales-Fachressourcen wie KI-Seite aufgebaut
+
+- Die Seite `content/informatik/_index.md` nutzt nun die gleiche kartenbasierte Struktur wie `KI in der Schule`, aber für Schülerinnen und Schüler sowie Eltern statt Lehrkräfte.
+- Der unklare Block „Womit kann ich starten?“ wurde entfernt und durch fachbezogene, direkt verlinkte Lernangebote ersetzt.
+- Externe Lernressourcen werden SEB-gerahmt und mit Datenschutz-/Kontoprüfhinweisen eingeführt; bevorzugt frei zugängliche öffentliche, gemeinnützige oder etablierte Angebote.

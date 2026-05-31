@@ -10,58 +10,107 @@
   </div>
 </section>
 
-{{- /* Idea cards from front matter */}}
-{{ with .Params.ideas }}
-<div class="page-content">
-  <div class="container">
-    <header class="section-header" style="text-align:left;margin-bottom:1.5rem;">
-      <p class="section-header__eyebrow">Ideen &amp; Impulse</p>
-      <h2 style="font-size:1.5rem;color:var(--c-primary);">Womit kann ich starten?</h2>
-    </header>
-    <div class="idea-grid">
-      {{ range . }}
-      <article class="idea-card">
-        <div class="idea-card__icon" aria-hidden="true">{{ .icon }}</div>
-        <h3 class="idea-card__title">{{ .title }}</h3>
-        <p class="idea-card__audience">{{ .audience }}</p>
-        <p class="idea-card__desc">{{ .desc }}</p>
-        <div class="idea-card__badge-row">
-          {{ range .badges }}
-            {{ $label := . }}
-            {{ $classMap := dict
-              "KI"               "ki"
-              "Informatik"       "informatik"
-              "Lernen"           "lernen"
-              "Eltern"           "eltern"
-              "Datenschutz"      "datenschutz"
-              "Projektidee"      "projektidee"
-              "Coding"           "coding"
-              "Tools"            "tools"
-              "Anfänger"         "anfaenger"
-              "Datenanalyse"     "datenanalyse"
-              "Medienkompetenz"  "medienkompetenz"
-              "Denken"           "denken"
-              "DSGVO"            "dsgvo"
-              "Kreativität"      "kreativitaet"
-              "Unterstützung"    "unterstuetzung"
-              "Praktisch"        "praktisch"
-              "Grundlagen"       "grundlagen"
-              "Verantwortung"    "verantwortung"
-              "Reflexion"        "reflexion"
-            }}
-            {{ $class := index $classMap $label | default "tools" }}
-            <span class="badge badge--{{ $class }}">{{ $label }}</span>
-          {{ end }}
-          <span class="idea-card__duration">{{ .duration }}</span>
-        </div>
-      </article>
-      {{ end }}
-    </div>
-  </div>
-</div>
+{{- /* In-page anchor navigation */}}
+{{ with .Params.tool_sections }}
+<nav class="ki-subnav" aria-label="Abschnitte dieser Seite">
+  <ul class="ki-subnav__list">
+    {{ range . }}
+    <li><a href="#{{ .id }}">{{ .icon }} {{ .nav_label | default .title }}</a></li>
+    {{ end }}
+    {{ with $.Params.audience_guidance }}<li><a href="#begleiten">👥 Begleiten</a></li>{{ end }}
+    {{ with $.Params.responsible_questions }}<li><a href="#auswahl">🧭 Auswählen</a></li>{{ end }}
+  </ul>
+</nav>
 {{ end }}
 
-{{- /* Markdown body */}}
+<div class="page-content">
+  <div class="container">
+
+    {{- /* Intro / note box */}}
+    {{ with .Params.intro }}
+    <div class="ki-intro-box" role="note">
+      <span class="ki-intro-box__emoji" aria-hidden="true">💡</span>
+      <p>{{ . | markdownify }}</p>
+    </div>
+    {{ end }}
+
+    {{- /* Resource sections */}}
+    {{ with .Params.tool_sections }}
+    <div class="ki-sections">
+      {{ range . }}
+      <section id="{{ .id }}" class="ki-section" aria-labelledby="digital-h-{{ .id }}">
+        <div class="ki-section__heading">
+          <div class="ki-section__icon ki-section__icon--{{ .color | default "blue" }}" aria-hidden="true">{{ .icon }}</div>
+          <h2 class="ki-section__title" id="digital-h-{{ .id }}">{{ .title }}</h2>
+        </div>
+        {{ with .cards }}
+        <div class="ki-tool-grid">
+          {{ range . }}
+          <article class="ki-tool-card">
+            <h3 class="ki-tool-card__title">{{ .title }}</h3>
+            <p class="ki-tool-card__desc">{{ .desc | markdownify }}</p>
+            {{ with .links }}
+            <div class="ki-tool-card__links">
+              {{ range . }}
+              <a class="ki-tool-link" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .label }} ↗</a>
+              {{ end }}
+            </div>
+            {{ end }}
+          </article>
+          {{ end }}
+        </div>
+        {{ end }}
+      </section>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{- /* Audience guidance */}}
+    {{ with .Params.audience_guidance }}
+    <section id="begleiten" class="ki-section ki-section--bottom" aria-labelledby="digital-h-begleiten">
+      <div class="ki-section__heading">
+        <div class="ki-section__icon ki-section__icon--blue" aria-hidden="true">👥</div>
+        <h2 class="ki-section__title" id="digital-h-begleiten">Digitale Angebote sinnvoll nutzen</h2>
+      </div>
+      <div class="ki-guidance-grid">
+        {{ range . }}
+        <article class="ki-guidance-card">
+          <div class="ki-guidance-card__icon" aria-hidden="true">{{ .icon }}</div>
+          <div>
+            <h3 class="ki-guidance-card__title">{{ .title }}</h3>
+            <p class="ki-guidance-card__desc">{{ .desc | markdownify }}</p>
+          </div>
+        </article>
+        {{ end }}
+      </div>
+    </section>
+    {{ end }}
+
+    {{- /* Responsible selection questions */}}
+    {{ with .Params.responsible_questions }}
+    <section id="auswahl" class="ki-section ki-section--bottom" aria-labelledby="digital-h-auswahl">
+      <div class="ki-section__heading">
+        <div class="ki-section__icon ki-section__icon--green" aria-hidden="true">🧭</div>
+        <h2 class="ki-section__title" id="digital-h-auswahl">Sechs Fragen zur Auswahl guter Lernangebote</h2>
+      </div>
+      <div class="ki-question-grid">
+        {{ range $index, $question := . }}
+        <article class="ki-question-card">
+          <div class="ki-question-card__number" aria-hidden="true">{{ add $index 1 }}</div>
+          <div>
+            <h3 class="ki-question-card__title">{{ $question.title }}</h3>
+            <p class="ki-question-card__desc">{{ $question.desc | markdownify }}</p>
+          </div>
+        </article>
+        {{ end }}
+      </div>
+    </section>
+    {{ end }}
+
+  </div>{{- /* /container */}}
+</div>
+
+{{- /* Markdown body – attribution and supporting copy */}}
 {{ with .Content }}
 <div class="page-content" style="padding-top:0;">
   <div class="container">
