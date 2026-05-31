@@ -5,34 +5,44 @@
 ### Technology Platform: GAK Website (2026-05-31)
 
 **Proposers:** Data (Tech Architect), Sloth (UX), One-Eyed Willy (Security), Mikey (Product Coordinator)  
-**Status:** Proposed (awaiting team consensus)  
+**Status:** Decided (2026-05-31 team consensus: Jekyll for Phase 1)  
 **Decision Frame:** [Mikey] See decision timeline at end of this section.
 
 #### Rechecks Completed (2026-05-31)
-- **Data** (Tech Architect): Hugo remains correct choice. Jekyll's only real advantage—native GitHub Pages build—is irrelevant because issue-to-news workflow already requires GitHub Actions. Hugo wins on dependencies, build speed, Windows install, security surface, i18n, and template robustness for structured issue-parsing.
-- **Sloth** (UX/Accessibility): Hugo remains stronger choice, but not by large margin. Decision hinges on editorial workflow automation (not generator choice). Jekyll viable if team/contributors have Ruby experience. Hugo preferred for single-binary deployment, native taxonomies, and maintenance simplicity. Key trade-off: Jekyll's GitHub Web UI editing advantage requires confirming if non-technical editors will actually edit directly in Web UI.
+- **Data** (Tech Architect) **[RETRACT HUGO, RECOMMEND JEKYLL]**: GitHub Pages native defaults matter for non-specialist maintenance. Jekyll's native build advantage (avoiding custom Actions) is real. Issue-to-news still works with Jekyll + Actions for intake. Local setup (Hugo advantage) is secondary to actual contributor model (GitHub Web UI, issues, PRs). For a small school website, GitHub-managed Jekyll is simpler security/maintenance story than Hugo with custom Actions. **Threshold to switch to Hugo:** custom Actions accepted day 1, multilingual required soon, content >200 pages, i18n bundling needed, or developer-heavy maintenance becomes norm.
+- **Mikey** (Product Coordinator) **[REAFFIRM HUGO]**: Product risk analysis: Hugo wins on operational surface area (single binary vs. Ruby + 30 gems), Windows friction, failure debugging speed, bus factor. Jekyll's "GitHub-native" advantage is moot because moderation gate requires custom Actions in both cases. Editorial workflow is generator-neutral (both tie). **Issue-to-news pipeline reliability favors Hugo** (fewer MTTF points). Prototyping both = 1 week lost with no winner; validation approach = 2–3 days, ship Friday EOW.
+- **Sloth** (UX/Accessibility) **[TIE-BREAK: JEKYLL FOR PHASE 1]**: Jekyll minimizes **contributor friction** for schools. Editorial entry barrier (GitHub Web UI + direct edits), moderation gate predictability (native Pages vs. Action debugging), maintenance handoff (any GitHub-fluent teacher vs. Go expertise), "just works" in Phase 1 (30s from commit vs. Action debugging). **Concedes:** Hugo is technically superior on single-binary, taxonomies, i18n. **Reality:** school culture = GitHub fluency, not optimization. Reversible in Phase 2 (Liquid → Go templates = 4–6 hrs, no data loss). **Success metric:** contributor retention ≥2 trained editors by week 3 (Jekyll = higher likelihood).
 
 #### Competing Recommendations
 
-**Option A: Hugo** (Data's recommendation)
+**Option A: Hugo** (Mikey's recommendation)
 - Zero-runtime dependencies; single Go binary; fastest builds (~50ms)
 - Built-in i18n; issue-to-news pipeline simple
 - GitHub Actions `peaceiris/actions-hugo` deploys in seconds
 - Issue template captures: title, abstract, link, audience, category
 - GitHub Action workflow: issue labeled `news` → markdown file generated → auto-publish
 - **Risk:** Issue parsing fragile without structured YAML templates
+- **Operational advantage:** Lower MTTF, better Windows debugging, resilient bus factor
 
-**Option B: Jekyll** (Sloth's recommendation, favoring GitHub-native simplicity)
+**Option B: Jekyll** (Sloth's recommendation, chosen for Phase 1) ✓ **DECIDED**
 - GitHub Pages native support; Ruby ecosystem stable
 - Same issue-to-news workflow with bot validation
 - Accessibility baseline higher due to deterministic static HTML
 - Markdown editing native to GitHub Web UI (low barrier for non-coders)
+- **Strength:** Minimizes contributor friction for schools; GitHub-native culture alignment; safe fallback (direct file editing) when automation breaks
 - **Risk:** Ruby ecosystem maintenance burden vs. Hugo's single binary
-- **Note:** Sloth also approves Hugo as fallback ("if team prefers JavaScript" — though Hugo is Go-based)
+- **Reversible:** Phase 2 migration to Hugo if taxonomy scaling or multilingual demands justify it (Liquid → Go templates = 4–6 hours)
+- **Note:** Sloth also approves Hugo as fallback ("if team prefers" or Phase 2+ scaling demands)
 
-**Product Frame:** (Mikey) Both options meet MVP requirements; defer final choice to EOW team vote.
-- Static site generator (SSG) approach = best fit for GitHub-native + school audience + low friction
-- Alternatives rejected: Next.js (complexity overkill), Headless CMS (vendor lock-in, defer to Phase 2)
+**Decision Outcome (2026-05-31):**
+- **Recommendation:** **Jekyll for Phase 1 MVP** (Data + Sloth consensus; Mikey documents Hugo rationale for Phase 2 migration path)
+- **Rationale:** Non-specialist maintainers (teachers, staff) benefit from GitHub-native editing, visible workflows, predictable failures, and lower Phase 1 friction. Operational resilience trade-off (Ruby maintenance burden) is accepted for contributor retention and simpler Phase 1 stabilization.
+- **Architecture:**
+  - Hosting/build: GitHub Pages with native Jekyll
+  - Content: Markdown + front matter in `_posts/` or `_news` collection
+  - Editing: GitHub Web UI or PRs for content
+  - Automation: GitHub issue form → validation Action → moderation label → auto-rebuild
+  - Privacy: no PII fields, visible German privacy warning in issue template
 
 #### Privacy & Security Guardrails (Non-negotiable blockers)
 
@@ -76,11 +86,11 @@
 
 #### What Must Be Decided NOW
 
-1. **Static site generator:** Jekyll or Hugo?
-2. **Content structure:** How do issues map to markdown files?
-3. **Build trigger:** Every commit? Every labeled issue?
-4. **Baseline privacy:** No analytics/cookies in MVP?
-5. **Language:** German content-first; English deferred?
+1. **Content structure:** How do issues map to markdown files in Jekyll?
+2. **Build trigger:** Every commit? Every labeled issue? Moderation gate timing?
+3. **Baseline privacy:** No analytics/cookies in MVP?
+4. **Language:** German content-first; English deferred?
+5. **Issue template design:** Avoid PII fields; include German privacy warning
 
 #### What Gets Deferred
 
