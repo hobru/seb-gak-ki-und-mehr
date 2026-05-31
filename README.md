@@ -26,7 +26,7 @@ hugo --minify --baseURL "https://<deine-domain>/"
 
 ## Deployment via GitHub Pages
 
-Das Deployment erfolgt automatisch über GitHub Actions bei jedem Push auf `main`.
+Das Deployment erfolgt automatisch über GitHub Actions bei jedem Push auf `main` oder `master`.
 
 **Einmalige Einrichtung:**
 1. Gehe zu **Settings → Pages** im GitHub-Repository
