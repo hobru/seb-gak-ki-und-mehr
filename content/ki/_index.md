@@ -3,7 +3,7 @@ title: "KI in der Schule"
 description: "Verständliche Einstiege, Praxisideen und Leitfragen zum verantwortungsvollen Umgang mit Künstlicher Intelligenz – im Unterricht, zu Hause und im Alltag."
 lead: "Künstliche Intelligenz ist längst im Schulalltag angekommen. Hier findest du konkrete Tools, Tipps und Anleitungen für Schülerinnen und Schüler, Lehrkräfte und Eltern."
 
-intro: "**KI-Tools sind Werkzeuge, keine Ersatz-Lehrer.** Sie können beim Verstehen von Inhalten, beim Erstellen von Lernzetteln und bei der Klausurvorbereitung helfen – aber KI-Ausgaben immer kritisch prüfen, denn **KI kann sich irren**!"
+intro: "**Wichtig:** KI-Tools sind Werkzeuge, keine Ersatz-Lehrer. Sie können dir helfen, Inhalte besser zu verstehen, Lernzettel zu erstellen oder dich auf Klausuren vorzubereiten. Aber: Immer kritisch prüfen, was die KI dir liefert – sie kann sich auch irren!"
 
 tool_sections:
   - id: "notebooklm"

@@ -34,55 +34,6 @@
     </div>
     {{ end }}
 
-    {{- /* Starter idea-cards */}}
-    {{ with .Params.ideas }}
-    <header class="section-header" style="text-align:left;margin-bottom:1.5rem;">
-      <p class="section-header__eyebrow">Einstieg &amp; Überblick</p>
-      <h2 style="font-size:1.5rem;color:var(--c-primary);">Womit kann ich starten?</h2>
-    </header>
-    <div class="idea-grid" style="margin-bottom:var(--sp-xl);">
-      {{ range . }}
-      <article class="idea-card">
-        <div class="idea-card__icon" aria-hidden="true">{{ .icon }}</div>
-        <h3 class="idea-card__title">{{ .title }}</h3>
-        <p class="idea-card__audience">{{ .audience }}</p>
-        <p class="idea-card__desc">{{ .desc }}</p>
-        <div class="idea-card__badge-row">
-          {{ range .badges }}
-            {{ $label := . }}
-            {{ $classMap := dict
-              "KI"                "ki"
-              "Informatik"        "informatik"
-              "Lernen"            "lernen"
-              "Eltern"            "eltern"
-              "Datenschutz"       "datenschutz"
-              "Projektidee"       "projektidee"
-              "Coding"            "coding"
-              "Tools"             "tools"
-              "Lehrkräfte"        "lehrkraefte"
-              "Anfänger"          "anfaenger"
-              "Datenanalyse"      "datenanalyse"
-              "Medienkompetenz"   "medienkompetenz"
-              "Denken"            "denken"
-              "DSGVO"             "dsgvo"
-              "Kreativität"       "kreativitaet"
-              "Unterstützung"     "unterstuetzung"
-              "Praktisch"         "praktisch"
-              "Grundlagen"        "grundlagen"
-              "Verantwortung"     "verantwortung"
-              "Reflexion"         "reflexion"
-              "Kritisches Denken" "kritisches-denken"
-            }}
-            {{ $class := index $classMap $label | default "tools" }}
-            <span class="badge badge--{{ $class }}">{{ $label }}</span>
-          {{ end }}
-          <span class="idea-card__duration">{{ .duration }}</span>
-        </div>
-      </article>
-      {{ end }}
-    </div>
-    {{ end }}
-
     {{- /* Tool sections */}}
     {{ with .Params.tool_sections }}
     <div class="ki-sections">

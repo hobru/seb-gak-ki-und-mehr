@@ -1,274 +1,51 @@
 # Brand History
 
-## Seed Context
+## Project Summary
 
-- **User:** Holger Bruchelt
-- **Project:** German-first website for pupils, teachers, and parents of Gymnasium am Kaiserdom Speyer.
-- **Focus:** Computer science and AI tutorials, guidance, ideas, and a latest-news area that can be updated easily, ideally via GitHub issues.
-- **Technology:** Not yet selected, but must run on GitHub.
-- **Key concerns:** Stakeholder fit, maintainability, usability, security, newsletter privacy, and PII.
+**User:** Holger Bruchelt  
+**Project:** German-first website for Gymnasium am Kaiserdom Speyer covering computer science and AI education for pupils, teachers, and parents.  
+**Technology:** Hugo + GitHub Pages + GitHub Actions  
+**Status:** MVP launched 2026-05-31 with real content integrated and KI page migration complete.
 
-## Learnings
+## 2026-05-31 Session Summary
 
-### 2026-05-31 — Hugo Site v1 Implemented and Built
+**What was accomplished:**
 
-**Trigger:** Holger Bruchelt requested the first version of the GAK Digital homepage.
+1. **Hugo Site v1 Implemented** — Complete site with 34 pages, responsive CSS (~550 lines, WCAG AA), GitHub Pages deploy, custom layouts (no external themes).
 
-**What was built:**
-- `hugo.toml` with German locale, nav menu (Start / Digitales & Informatik / KI / Neuigkeiten)
-- `content/`: Homepage, Informatik section, KI section, News section (3 sample posts), Impressum placeholder, Datenschutz placeholder
-- `layouts/`: Custom baseof, homepage (index.html), single, list, section-specific layouts (informatik, ki, news), partials (header, footer, news-card)
-- `static/css/style.css`: ~550 lines, responsive mobile-first, CSS custom properties, WCAG AA colour contrast, skip link, visible focus rings, card hover states
-- `.github/workflows/deploy.yml`: GitHub Pages via peaceiris/actions-hugo (SHA-pinned)
-- `README.md`: Build, run, deploy, and contribution instructions
+2. **Real Content Integration** — Informatik and KI sections replaced sample content with researched material from Mouth (6 cards each) + curated links and audience-specific guidance.
 
-**Design decisions:**
-- No external theme dependency — full custom layouts and CSS. Every contributor can read and change it.
-- Badge/category system: `badge--ki`, `badge--informatik`, etc., mapped from front matter `categories` array via template dict.
-- Idea cards for Informatik and KI sections stored in front matter (`ideas:` list) so content editors update YAML, not HTML.
-- Sample content notice banner controlled by `site.Params.sampleSite` bool in `hugo.toml`.
-- Date format: DD.MM.YYYY (German standard, no month names to avoid i18n complexity).
+3. **KI Page Migration** — Full integration of hobru.github.io/KI-an-der-Schule content patterns: 7 tool sections (19 cards), sticky subnav, bad/good prompt comparison grid, attribution in Impressum. All One-Eyed Willy security conditions satisfied.
 
-**Build result:** `hugo v0.134.3`, 32 pages, 68ms, zero warnings.
+4. **Structural Updates** — News-first homepage (Sloth UX), SEB positioning (Mouth guidance), menu reordering, real Impressum/Datenschutz (Holger contact details).
 
-**One-Eyed Willy requirements honoured:**
-- No PII collected; no analytics; no cookies
-- Impressum + Datenschutz pages present (as legal placeholders)
-- External links need `rel="noopener noreferrer"` — template adds this where needed
-- GitHub Actions SHA-pinned
+**Key Decisions Embedded:**
+- Hugo render hook (`_markup/render-link.html`) for automatic `rel="noopener noreferrer"` on all external links — solves security requirement without `unsafe = true`
+- Badge system: label→CSS class mapping via template dict; extensible for new badges
+- Card structure: icon → h3 → audience badge → description → badges (Sloth alignment)
+- Front matter patterns: `tool_sections`, `prompt_examples`, `ideas` arrays for content-editor-friendly editing
 
-**Deferred (as agreed):**
-- Issue → News GitHub Action workflow (structure ready: `content/news/` YAML front matter matches future pipeline)
-- Real Impressum/Datenschutz legal text (placeholder until school provides)
-- Newsletter / PII features
+**Patterns Learned:**
+- Put structured data (idea cards, tool cards) in YAML front matter, not template HTML — reduces editing friction for non-technical contributors
+- Sticky offset `3.75rem` correct for hero height
+- Goldmark render hooks > unsafe mode for security attributes
+- YAML single-quoted strings for German text with `"` and typographic quotes
+- Template links need manual `target="_blank" rel="noopener noreferrer"` — render hooks don't apply to template-generated `<a>` tags
+- Centralise reusable strings (`seb_disclaimer`) in `hugo.toml` to avoid duplication across footer, legal pages, notices
 
-**Key learning:** Putting structured data (idea cards) in front matter instead of template HTML keeps the barrier to editing low for non-technical school contributors. The `dict` lookup in templates for CSS class mapping avoids a partial proliferation.
+**Build Metrics:**
+- 34 pages, 180–307ms build time, zero warnings
+- GitHub Actions deploy workflow SHA-pinned
+- 100% privacy-safe (no PII, no analytics, no cookies)
 
-
-
-**Trigger:** Holger Bruchelt asked whether we should skip the Jekyll MVP and start directly with Hugo, given Hugo is the long-term recommendation.
-
-**Key insight that changes the picture:** The team's Jekyll Phase 1 decision rested on Jekyll's "GitHub-native build = no custom Actions" advantage. But Holger is explicitly asking for a GitHub Action-based issue-to-news pipeline. That means custom Actions are accepted from day one — which is exactly the threshold Data (Tech Architect) stated would justify switching to Hugo. The Jekyll advantage evaporates; Hugo's advantages (single binary, no Ruby/gem maintenance, zero Phase 2 migration cost) become decisive.
-
-**Hugo feasibility verdict: YES — straightforward enough to start now.**
-
-**Setup complexity:** ~2–3 developer hours one-time. Ongoing operation is simpler than Jekyll for all contributors.
-
-**Repository structure confirmed workable:**
-```
-/
-├── .github/
-│   ├── ISSUE_TEMPLATE/news.yml     # GitHub Issue Form (no PII, German)
-│   └── workflows/
-│       ├── deploy.yml              # Hugo build → GitHub Pages
-│       └── issue-to-news.yml       # Issue labeled 'freigegeben' → PR → merge → deploy
-├── hugo.toml
-├── content/
-│   ├── _index.md                   # Homepage
-│   ├── informatik/_index.md        # CS static page
-│   ├── ki/_index.md                # AI static page
-│   └── news/                       # Auto-generated entries (one .md per issue)
-├── layouts/                        # Custom templates (or starter theme)
-└── static/css/                     # Stylesheet
-```
-
-**Issue Form fields (all privacy-safe, no PII):**
-- Datenschutz-Hinweis as first element (mandatory)
-- Titel (input, required, max 80 chars)
-- Zusammenfassung (textarea, required, max 200 chars)
-- Weiterführender Link (input, optional, URL)
-- Kategorie (dropdown: KI, Informatik, Wettbewerbe, Werkzeuge, Allgemeines)
-- Zielgruppe (dropdown: Schüler:innen, Lehrkräfte, Eltern, Alle)
-
-**Action flow (two workflows):**
-1. `issue-to-news.yml` — triggers on label `freigegeben`; parses Issue Form body; generates `content/news/YYYY-MM-DD-slug.md` with proper front matter; opens PR (optional: auto-merges with branch protection requiring 1 reviewer for extra moderation gate)
-2. `deploy.yml` — triggers on push to main; uses `peaceiris/actions-hugo` (SHA-pinned); builds Hugo; deploys via `actions/deploy-pages`
-
-**Moderation gate:** Issue labeled `news-einreichung` on creation (auto). Moderator reviews → adds `freigegeben` → pipeline creates PR → merge (auto or with required review) → deploy. No content reaches the live site without explicit moderator action.
-
-**Validation guardrails in Action:**
-- Required fields enforced by GitHub Issue Form (no empty submissions)
-- Title length check (warn > 80 chars)
-- URL format validation for link field
-- Anti-PII regex scan on summary (email/phone patterns → fail with comment)
-- Category/audience from dropdowns → no typos
-- On failure: Action comments on issue explaining the error, removes `freigegeben` label
-
-**All One-Eyed Willy security requirements satisfied:**
-- No PII fields in Issue Form ✓
-- German Datenschutz-Hinweis at top of form ✓
-- Moderation gate before any publish ✓
-- External links rendered with `rel="noopener noreferrer"` in templates ✓
-- Actions pinned to SHA (not floating tags) ✓
-- Impressum + Datenschutzerklärung as static pages in scope ✓
-
-**Decision implication:** A decision inbox entry was written recommending the team reconsider Jekyll Phase 1 in light of Holger's explicit acceptance of custom Actions and preference to avoid a Phase 2 migration.
-
-
-### 2026-05-31 — Structural Update: Menu Order, News Position, Impressum, SEB Link
-
-**Trigger:** Holger Bruchelt requested four specific improvements.
-
-**Changes implemented (6 files):**
-
-1. **`hugo.toml`** — Reordered menu weights: Neuigkeiten → weight 2 (was 4); Digitales & Informatik → weight 3 (was 2); KI in der Schule → weight 4 (was 3). Start (1) and Mitmachen (5) unchanged.
-
-2. **`layouts/index.html`** — Moved Neuigkeiten/Aktuelles section immediately after hero, before audience cards and pillars. Section order is now: Hero → News → Audience Cards → Pillar Cards → Contribute CTA → Footer. Aligns with Sloth's UX recommendation in `.squad/decisions/inbox/sloth-news-first-ux.md`.
-
-3. **`content/impressum/_index.md`** — Replaced all placeholders with real details: name Holger Bruchelt, address Carl-Dupre-Str. 5, 67346 Speyer. Email displayed as obfuscated text `seb-at-gak-speyer.de` (no mailto link). Added link to official GAK SEB page. Removed placeholder warning banner.
-
-4. **`layouts/partials/footer.html`** — Added "Offiz. SEB-Seite" link to `https://gak-speyer.de/menschen-am-gak/schulelternbeirat` with `target="_blank" rel="noopener noreferrer"` in footer links list.
-
-5. **`content/datenschutz/_index.md`** — Aligned with Impressum: replaced address placeholder and GDPR contact placeholder with Holger Bruchelt details; removed placeholder banner. Required by One-Eyed Willy pre-launch blocker.
-
-**Build result:** `hugo --minify` → 34 pages, 207ms, zero warnings ✓
-
-**Decisions followed:**
-- Sloth UX inbox: news-first navigation and homepage ordering ✓
-- One-Eyed Willy inbox: email as obfuscated text, `rel="noopener noreferrer"` on external link ✓
-- Logo NOT added — awaiting One-Eyed Willy rights/privacy review ✓
-
-**Committed:** Yes — safe structural update with no content or external dependencies pending.
-
-**Pattern learned:** When One-Eyed Willy flags Impressum + Datenschutz as coupled pre-launch blockers, filling one requires updating the other in the same commit to maintain consistency (data controller name/address must match across both pages).
-
-
-
-### 2026-05-31 — Real Content Integration: Informatik & KI Sections
-
-**Trigger:** Holger Bruchelt requested replacement of sample content with Mouth's researched real content, plus CSS/layout polish per Sloth's UX guidance.
-
-**Changes implemented (7 files, commit 7055847):**
-
-1. **`content/informatik/_index.md`** — Replaced 6 generic sample cards with 6 specific real cards (first website in HTML, data analysis Python/Excel, media literacy, teacher tools, video/podcast production, parent explainer). Added parent FAQ (3 Q&As), enriched Grundbegriffe, added SEB attribution paragraph, 8 curated external links in three audience categories. Front matter `description` and `lead` updated to SEB-framed copy.
-
-2. **`content/ki/_index.md`** — Replaced 6 sample cards with 6 researched cards (Prompt-Challenge, KI-Antworten prüfen, KI-Begriffe, Eltern-Leitfragen, Datenschutz, Leitfragen-Framework). Added "Was alle wissen sollten" audience-split section, 10 curated links in three audience categories, Six Leitfragen reflection framework. Fixed typo from DRAFT (`bezeichnetProgramme` → `bezeichnet Programme`). Corrected `lead` typo (`nutzten` → `nutzen`).
-
-3. **`layouts/informatik/list.html`** + **`layouts/ki/list.html`** (identical update):
-   - Removed `sample-notice` banner (real content; no longer applicable)
-   - Updated section eyebrow from "Beispielideen & Impulse" → "Ideen & Impulse"
-   - Restructured idea-card HTML: icon → **h3 title** → audience badge (`<p class="idea-card__audience">`) → desc → badge-row (badges + duration). Aligns with Sloth's semantic card guidance.
-   - Extended badge `dict` with 12 new label→class mappings (Anfänger, Datenanalyse, Medienkompetenz, Denken, DSGVO, Kreativität, Unterstützung, Praktisch, Grundlagen, Verantwortung, Reflexion, Kritisches Denken)
-
-4. **`layouts/_default/_markup/render-link.html`** — New Hugo link render hook. All external links in Markdown (`http://` / `https://`) automatically get `target="_blank" rel="noopener noreferrer"`. Resolves One-Eyed Willy's requirement without requiring per-link raw HTML or unsafe Goldmark mode.
-
-5. **`static/css/style.css`** — Added `.idea-card__audience` (0.75rem, uppercase, primary color, letter-spacing); updated `.idea-card__badge-row` to `margin-top: auto; padding-top: 0.5rem` (pushes badges to card bottom). Added 13 new `.badge--*` classes with distinct but restrained color pairs.
-
-6. **`hugo.toml`** — Set `sampleSite = false` (real content now active; removes homepage sample-content notice banner).
-
-**Build result:** `hugo --minify` → 34 pages, 0 warnings ✓
-
-**Decisions followed:**
-- Mouth's `DRAFT_informatik_index.md` and `DRAFT_ki_index.md` integrated as-is (minor fixes applied)
-- Logo NOT added (One-Eyed Willy review pending) ✓
-- SEB attribution in both page footers via link to `https://gak-speyer.de/menschen-am-gak/schulelternbeirat` ✓
-- No verbatim text from KI-an-der-Schule or FMSG; inspired design only ✓
-- External links: render-hook adds `rel="noopener noreferrer"` automatically ✓
-
-**Caveats:**
-- The `Kritisches Denken` badge contains a space, which maps to CSS class `badge--kritisches-denken`. This works in Hugo's `index $classMap` lookup but only if the key exactly matches (including the space). Since the DRAFT uses `"Kritisches Denken"` as a badge label, the dict key must also be `"Kritisches Denken"` — confirmed in template.
-- Goldmark `unsafe = false` remains in `hugo.toml`. Raw HTML in markdown is still blocked. The render-hook approach is the correct Hugo-native solution.
-
-**Pattern learned:** Hugo's `_markup/render-link.html` render hook is the cleanest way to globally enforce security attributes on external links without touching CSS, content, or disabling Goldmark safety. One file solves the entire problem for all Markdown content. Prefer this over per-link HTML or global `unsafe = true`., not an official school page — analogous to https://seb-shgym-diez.de/.
-
-**Guidance source:** `.squad/decisions/inbox/mouth-seb-positioning.md` (Mouth's content reframing guidance, Option A chosen throughout for maximum legal clarity).
-
-
-### 2026-05-31 — KI-Seite Migration: hobru.github.io/KI-an-der-Schule/
-
-**Trigger:** Holger Bruchelt requested full migration of the content, layout, and interaction patterns from https://hobru.github.io/KI-an-der-Schule/ into the existing KI section.
-
-**Gate:** `.squad/decisions/inbox/one-eyed-willy-ki-migration-gate.md` — APPROVE WITH CONDITIONS (6 mandatory conditions; all satisfied).
-
-**Changes implemented (4 content/template files + 1 CSS file, commit 49b3bb6):**
-
-1. **`static/css/style.css`** — Appended 4 new component sections (sections 22–25):
-   - `.ki-subnav` — sticky in-page nav (`top: 3.75rem`, overflow-x scroll, no scrollbar)
-   - `.ki-intro-box` — yellow warning box (flex + emoji slot)
-   - `.ki-section`, `.ki-section__icon--{color}`, `.ki-tool-grid`, `.ki-tool-card`, `.ki-tool-link` — full tool section system with green/purple/blue/amber icon variants, 3-col auto-grid, pill-style link buttons
-   - `.prompt-section`, `.prompt-grid`, `.prompt-item`, `.prompt-item__bad`, `.prompt-item__good`, `.prompt-tip` — bad/good prompt comparison grid
-
-2. **`layouts/ki/list.html`** — Substantially extended:
-   - Added sticky in-page subnav (rendered from `tool_sections` front matter)
-   - Added intro warning box
-   - Renamed idea-grid eyebrow to "Einstieg & Überblick"
-   - Added loop over `tool_sections` rendering `<section id>` per section
-   - Added prompt-examples section
-   - All template `<a>` tags include `target="_blank" rel="noopener noreferrer"` (OEW condition)
-   - Kept markdown body (`{{ with .Content }}`) at bottom for Leitfragen
-
-3. **`content/ki/_index.md`** — Full restructure:
-   - Added `intro:` field (warning text)
-   - Added `tool_sections:` (7 sections, ~19 cards total): NotebookLM, ChatGPT, Weitere Chatbots, Recherche, Bilder, Wie KI funktioniert, Datenschutz
-   - Added `prompt_examples:` (6 bad/good pairs + 3-Ks tip)
-   - Kept `ideas:` array unchanged (6 SEB-original starter cards)
-   - Trimmed markdown body: removed duplicated "Was ist KI?", "KI im Schulalltag", "Wichtige Ressourcen" sections (now in tool sections); kept SEB-specific audience guidance + Sechs Leitfragen + attribution footer
-
-4. **`content/impressum/_index.md`** — Added `### Quellenhinweis` section attributing KI-an-der-Schule content to Holger Bruchelt (OEW mandatory condition #1)
-
-**Build result:** `hugo --minify` → 34 pages, 307ms, zero warnings ✓
-
-**OEW gate conditions satisfied:**
-- Attribution in Impressum: ✓ `Quellenhinweis` section added
-- Content deduplication: ✓ Overlapping sections removed from markdown body
-- External link hygiene: ✓ All template `<a>` tags include `target="_blank" rel="noopener noreferrer"`
-- Asset localization: ✓ Source had no images (emoji-only); no hotlinks needed
-- No external scripts: ✓ Source had no JS; nothing added
-- Privacy notice consistency: ✓ Datenschutz tool section covers telli, Fobizz, DeepL with DSGVO notes
-
-**Patterns learned:**
-- YAML single-quoted strings avoid escaping when card titles/descriptions contain `"` — German typographic quotes (`„"`) are the cleaner solution that avoids YAML gotchas entirely.
-- `top: 3.75rem` is the right sticky offset for the subnav (header `padding-block: 0.875rem` × 2 + logo font-size ≈ 60px).
-- The render hook (`_markup/render-link.html`) handles markdown links only; template-generated `<a>` tags always need manual `target/_blank/rel` attributes — create a checklist habit when writing template links.
-- Hugo's `markdownify` function in templates (e.g., `{{ .desc | markdownify }}`) is useful for front matter fields that contain bold/italic Markdown like `**Schritt-für-Schritt-Erklärung**`.
-
-**Files changed (9):**
-- `hugo.toml`: `title` → "GAK Digital – Schulelternbeirat"; `school` → full SEB name; `shortName` → "SEB GAK Digital"; `description` leads with "Eine Initiative des Schulelternbeirats"; added `seb_disclaimer` param for reuse
-- `layouts/partials/header.html`: logo sub-line → "Schulelternbeirat des Gymnasiums am Kaiserdom"
-- `layouts/index.html`: hero label → full SEB name; hero title → "Digitales Lernen – von Eltern für Schule und Familie"; sample-notice explicitly names SEB; teacher card wording sourced from SEB perspective
-- `layouts/partials/footer.html`: copyright → SEB name only; new `seb_disclaimer` paragraph rendered below copyright
-- `static/css/style.css`: `.site-footer__disclaimer` style added (italic, muted white)
-- `content/_index.md`: page description updated to SEB initiative framing
-- `content/impressum/_index.md`: responsible party → SEB; placeholder guidance points to SEB contacts not school admin
-- `content/datenschutz/_index.md`: responsible party → SEB; placeholder guidance updated
-- `README.md`: title and subtitle reflect SEB ownership
-
-**Build result:** `hugo --minify` → 34 pages, 180ms, zero warnings ✓
-
-**Pattern learned:** Centralise the disclaimer string in `hugo.toml` as `seb_disclaimer` so footer, legal pages, and any future template can render it without duplication. Easy to update in one place when real legal text is provided.
-
-**Pre-launch blocker added:** Impressum and Datenschutz must now list SEB contact details (not school admin). Holger to supply SEB address, chair name, and email before public launch.
-
-
-
-**Trigger:** Team decision finalized on 2026-05-31; implementation completed same day.
-
-**Deliverables:**
-- ✅ Hugo site initialized and built successfully
-- ✅ Homepage, Informatik, KI, News, Impressum, Datenschutz pages
-- ✅ Custom responsive layouts + CSS (~550 lines, WCAG AA, mobile-first)
-- ✅ GitHub Pages deploy workflow (peaceiris/actions-hugo, SHA-pinned)
-- ✅ 3 sample German news posts (marked as `sample: false` ready for replacement)
-- ✅ 6 idea cards per section (Informatik, KI) stored in front matter for easy editing
-
-**Build metrics:** 32 pages, 68ms, zero warnings ✓
-
-**Integration with reviewer principles:**
-- Content editors can add news posts and idea cards via simple YAML editing (no HTML required)
-- Sample-content flag (`sample: true/false`) + banner notice prevent accidental publication
-- Audience tagging + category system support filtering (ready for Phase 2 news-to-action)
-- All One-Eyed Willy privacy/security guardrails in place (no PII, no analytics, no cookies)
-- WCAG 2.1 AA compliance: color contrast, semantic HTML, alt text, focus-visible, 44px+ touch targets
-
-**Pre-launch blockers logged in .squad/decisions.md:**
-- Replace legal placeholders (Impressum, Datenschutz) with real text
-- Set baseURL to actual domain
-- One-Eyed Willy to review Actions permissions
-- Content team to replace samples with real material before public launch
+**Pre-Launch Blockers:**
+- SEB legal contact details (Holger to provide chair name, address, email)
+- baseURL to actual domain
+- One-Eyed Willy Actions permissions audit
+- Real news content replacing samples
 
 **Deferred to Phase 2:**
-- Issue-to-News GitHub Action workflow (structure ready)
-- Newsletter signup (GDPR review needed)
-- Analytics evaluation
-- CMS UI, multi-language, advanced search
+- Issue-to-News GitHub Action workflow
+- Newsletter (GDPR review needed)
+- Analytics / CMS UI / i18n
 

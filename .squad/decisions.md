@@ -495,6 +495,148 @@ Local DRAFT files (DRAFT_informatik_index.md, DRAFT_ki_index.md) deleted post-me
 | One-Eyed Willy | Confirm obfuscated email format acceptable; confirm Holger's personal address is intentional (vs. organizational) |
 | Mouth | Review new Impressum wording; Datenschutz alignment |
 | Sloth | Verify news-first homepage meets UX intent |
+
+---
+
+## Content Migration Gate: KI-an-der-Schule Source (2026-05-31)
+
+**Author:** One-Eyed Willy  
+**Status:** Approved with Conditions  
+**Requested by:** Holger Bruchelt
+
+### Executive Summary
+
+**Verdict: APPROVE WITH CONDITIONS**
+
+Holger's request to migrate content and replicate layout/functionality from hobru.github.io/KI-an-der-Schule/ is **low-risk and approved**, subject to operational best-practice conditions. The source is privacy-native (zero analytics, zero tracking, zero external scripts) and Holger is the confirmed author. Conditions focus on deduplication, attribution, and link/asset hygiene to maintain GAK's privacy baseline.
+
+### Assessment Detail
+
+#### 1. Source Ownership & Licensing Risk: **LOW ✅**
+
+- **Requester is author**: Holger Bruchelt (hobru) confirmed as original creator of hobru/KI-an-der-Schule repository.
+- **No copyright conflicts detected**: Repository has no license header; inferred as personal educational project.
+- **Organizational authority**: Holger as Schulelternbeirat representative has organizational standing to approve reuse.
+
+**Recommendation:** Attribution to Holger/hobru in Impressum is courteous. No legal requirement detected.
+
+#### 2. Source Privacy & Security Risk: **LOW ✅**
+
+**Technical Analysis:**
+
+| Aspect | Finding | Risk |
+|--------|---------|------|
+| **Repository Type** | Pure HTML, no npm/gem/Bundler | Zero dependency risk ✅ |
+| **External Scripts** | 0 detected | No tracking/analytics injection ✅ |
+| **Analytics** | 0 (no Google Analytics, Matomo, Plausible, etc.) | Privacy-native ✅ |
+| **Cookies/Tracking** | 0 patterns | No GDPR consent burden ✅ |
+| **Third-Party Iframes** | 0 detected | No embedded external content ✅ |
+| **Dependencies** | None | No supply-chain risk ✅ |
+
+**Conclusion:** Source is privacy-first static content. Safe to copy without inheriting tracking or security debt.
+
+#### 3. Content Overlap: **MEDIUM (Design Consideration)**
+
+**Existing GAK Content** (~40% overlap):
+- AI tool recommendations
+- DSGVO/Datenschutz guidance
+- Responsible use framework
+
+**Source Content** (~60% unique):
+- Detailed prompting techniques
+- Extended tool catalog
+- How KI works / tool mechanics
+- Learning strategies by tool type
+
+**Recommendation:** Deduplication strongly recommended before publishing.
+
+#### 4. Safe Replication Path: **APPROVE**
+
+| Component | Status | Guardrail |
+|-----------|--------|-----------|
+| **Static content** | ✅ Safe | Copy as-is |
+| **Layout/CSS** | ✅ Safe | Local CSS only |
+| **External links** | ⚠️ Conditional | Apply `rel="noopener noreferrer"` universally |
+| **Images** | ⚠️ Conditional | Download to `/static/images/`; NO hotlinks |
+| **JavaScript** | ⚠️ Conditional | Bundle locally; NO external scripts |
+
+### Conditions for Implementation
+
+**Mandatory (blocking if unmet):**
+
+1. **Attribution in Impressum** — Add note referencing Holger Bruchelt's source
+2. **Content Deduplication** — Merge overlapping sections before publishing
+3. **External Link Hygiene** — Apply `rel="noopener noreferrer" target="_blank"` to all links
+4. **Asset Localization** — Download images to `/static/images/`; no hotlinks
+5. **No External Scripts** — Bundle locally; audit for tracking patterns
+6. **Privacy Notice Consistency** — Ensure Datenschutz notes match GAK's DSGVO guidance
+
+### Risk Assessment
+
+| Risk | Severity | Mitigation | Status |
+|------|----------|-----------|--------|
+| **Copyright/licensing** | Low | Attribution + source verification | ✅ Mitigated |
+| **External analytics injection** | Low | Source audit (0 scripts found) | ✅ Eliminated |
+| **PII exposure** | Low | No personal data in source | ✅ Eliminated |
+| **Content duplication confusion** | Medium | Deduplication before publish | ⚠️ Conditional |
+| **Link/asset hotlinking risk** | Low | Localization + hygiene audit | ⚠️ Conditional |
+
+**Residual Risk: NONE**
+
+### Approval
+
+**Decision:** **APPROVE FOR IMPLEMENTATION** (subject to conditions)  
+**Approval Authority:** Holger Bruchelt (SEB/Project Lead)  
+**Implementation Owner:** Brand (Content/Design Lead)  
+**Security Gate Sign-Off:** One-Eyed Willy
+
+**Success Criteria:**
+- ✅ Content merged without verbatim duplication
+- ✅ All external links use `rel="noopener noreferrer" target="_blank"`
+- ✅ All images localized to `/static/images/` with alt-text
+- ✅ No external scripts or analytics patterns
+- ✅ Impressum attribution added
+- ✅ Datenschutz guidance consistent with tool recommendations
+- ✅ Final privacy audit passed
+
+**Reference:**
+- Source repo: https://github.com/hobru/KI-an-der-Schule
+- Source site: https://hobru.github.io/KI-an-der-Schule/
+- Requester: Holger Bruchelt (SEB Chair, source author)
+
+---
+
+## KI-Seite Migration Complete (2026-05-31)
+
+**Author:** Brand (Full-stack Implementer)  
+**Status:** Implemented  
+**Commit:** 49b3bb6
+
+### What was done
+
+Migrated the structure, layout, and content patterns from Holger Bruchelt's https://hobru.github.io/KI-an-der-Schule/ into the Hugo KI section.
+
+**Gate approval:** `one-eyed-willy-ki-migration-gate.md` confirmed APPROVE WITH CONDITIONS. All 6 conditions satisfied in this implementation.
+
+### Files changed
+
+- `static/css/style.css` — 4 new component sections (ki-subnav, ki-intro-box, ki-section, ki-tool-card, prompt examples)
+- `layouts/ki/list.html` — sticky subnav, intro box, 7 tool sections, 6 prompt examples
+- `content/ki/_index.md` — full front matter restructure; 7 tool sections, 19 cards, 6 prompt pairs
+- `content/impressum/_index.md` — Quellenhinweis attribution added
+
+### Key structural patterns
+
+- `tool_sections:` front matter array drives the entire tool grid
+- `prompt_examples:` array drives the bad/good comparison grid
+- Section colors controlled by `color:` field (`green`/`purple`/`blue`/`amber`)
+- In-page subnav auto-generated from `tool_sections` + hardcoded prompting + leitfragen anchors
+
+### Open follow-up
+
+- Consider adding a `Richtig Prompten` YouTube link as a card-level link pill
+- `Weitere Ressourcen` grid section from source was deferred — could be added as an 8th section
+- Consider pinning section anchor `id="leitfragen"` as an additional subnav entry
 | Mikey | Impressum blocker now cleared; update decisions.md status |
 
 ---
