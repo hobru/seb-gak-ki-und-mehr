@@ -184,7 +184,19 @@ ul, ol { padding-left: 1.5rem; }
 .badge--projektidee { background: #ffedd5; color: #7c2d12; }
 .badge--coding      { background: #e0f2fe; color: #0c4a6e; }
 .badge--tools       { background: #f1f5f9; color: #1e293b; }
-.badge--lehrkraefte { background: #ecfdf5; color: #064e3b; }
+.badge--lehrkraefte    { background: #ecfdf5; color: #064e3b; }
+.badge--anfaenger      { background: #e0f2fe; color: #075985; }
+.badge--datenanalyse   { background: #f0fdf4; color: #166534; }
+.badge--medienkompetenz{ background: #fef9c3; color: #854d0e; }
+.badge--denken         { background: #fef3c7; color: #78350f; }
+.badge--dsgvo          { background: #f3e8ff; color: #581c87; }
+.badge--kreativitaet   { background: #fdf4ff; color: #701a75; }
+.badge--unterstuetzung { background: #fce7f3; color: #831843; }
+.badge--praktisch      { background: #dcfce7; color: #14532d; }
+.badge--grundlagen     { background: #f1f5f9; color: #1e293b; }
+.badge--verantwortung  { background: #fff7ed; color: #7c2d12; }
+.badge--reflexion      { background: #f5f3ff; color: #3b0764; }
+.badge--kritisches-denken { background: #fee2e2; color: #7f1d1d; }
 .badge--sample {
   background: #fef3c7;
   color: #92400e;
@@ -506,7 +518,15 @@ ul, ol { padding-left: 1.5rem; }
 }
 .idea-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-2px); }
 .idea-card__icon { font-size: 1.75rem; line-height: 1; }
-.idea-card__badge-row { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; }
+.idea-card__audience {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--c-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+.idea-card__badge-row { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; margin-top: auto; padding-top: 0.5rem; }
 .idea-card__duration { font-size: var(--text-sm); color: var(--c-text-muted); }
 .idea-card__title { font-size: var(--text-base); font-weight: 700; color: var(--c-text); line-height: 1.3; }
 .idea-card__desc { font-size: var(--text-sm); color: var(--c-text-muted); line-height: 1.55; flex: 1; }

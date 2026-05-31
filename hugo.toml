@@ -7,7 +7,7 @@ title = "GAK Digital – Schulelternbeirat"
   description   = "Eine Initiative des Schulelternbeirats: Informatik, KI und digitale Bildung für Schülerinnen und Schüler, Lehrkräfte und Eltern am Gymnasium am Kaiserdom Speyer."
   school        = "Schulelternbeirat des Gymnasiums am Kaiserdom Speyer"
   shortName     = "SEB GAK Digital"
-  sampleSite    = true   # Set to false when site has real content
+  sampleSite    = false  # Real content active
   seb_disclaimer = "Diese Website ist ein Projekt des Schulelternbeirats und stellt keine offizielle Schulkommunikation dar."
 
 [markup]
