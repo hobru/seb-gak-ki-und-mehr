@@ -18,7 +18,8 @@
     <li><a href="#{{ .id }}">{{ .icon }} {{ .nav_label | default .title }}</a></li>
     {{ end }}
     <li><a href="#prompting">✏️ Richtig Prompten</a></li>
-    <li><a href="#leitfragen">🧭 Leitfragen</a></li>
+    {{ with $.Params.audience_guidance }}<li><a href="#wissen">👥 Alle wissen</a></li>{{ end }}
+    {{ with $.Params.responsible_questions }}<li><a href="#leitfragen">🧭 Leitfragen</a></li>{{ end }}
   </ul>
 </nav>
 {{ end }}
@@ -88,12 +89,54 @@
     </section>
     {{ end }}
 
+    {{- /* Audience guidance */}}
+    {{ with .Params.audience_guidance }}
+    <section id="wissen" class="ki-section ki-section--bottom" aria-labelledby="ki-h-wissen">
+      <div class="ki-section__heading">
+        <div class="ki-section__icon ki-section__icon--blue" aria-hidden="true">👥</div>
+        <h2 class="ki-section__title" id="ki-h-wissen">Was alle wissen sollten</h2>
+      </div>
+      <div class="ki-guidance-grid">
+        {{ range . }}
+        <article class="ki-guidance-card">
+          <div class="ki-guidance-card__icon" aria-hidden="true">{{ .icon }}</div>
+          <div>
+            <h3 class="ki-guidance-card__title">{{ .title }}</h3>
+            <p class="ki-guidance-card__desc">{{ .desc | markdownify }}</p>
+          </div>
+        </article>
+        {{ end }}
+      </div>
+    </section>
+    {{ end }}
+
+    {{- /* Responsible use questions */}}
+    {{ with .Params.responsible_questions }}
+    <section id="leitfragen" class="ki-section ki-section--bottom" aria-labelledby="ki-h-leitfragen">
+      <div class="ki-section__heading">
+        <div class="ki-section__icon ki-section__icon--green" aria-hidden="true">🧭</div>
+        <h2 class="ki-section__title" id="ki-h-leitfragen">Sechs Leitfragen für verantwortungsvolle KI-Nutzung</h2>
+      </div>
+      <div class="ki-question-grid">
+        {{ range $index, $question := . }}
+        <article class="ki-question-card">
+          <div class="ki-question-card__number" aria-hidden="true">{{ add $index 1 }}</div>
+          <div>
+            <h3 class="ki-question-card__title">{{ $question.title }}</h3>
+            <p class="ki-question-card__desc">{{ $question.desc | markdownify }}</p>
+          </div>
+        </article>
+        {{ end }}
+      </div>
+    </section>
+    {{ end }}
+
   </div>{{- /* /container */}}
 </div>
 
-{{- /* Markdown body – Leitfragen, audience guidance, attribution */}}
+{{- /* Markdown body – attribution and supporting copy */}}
 {{ with .Content }}
-<div class="page-content" style="padding-top:0;" id="leitfragen">
+<div class="page-content" style="padding-top:0;">
   <div class="container">
     <div class="page-content__body">
       {{ . }}

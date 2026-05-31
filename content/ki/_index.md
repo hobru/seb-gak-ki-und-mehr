@@ -205,6 +205,31 @@ prompt_examples:
     bad: "Korrigier meinen Text"
     good: "Überprüfe meinen deutschen Aufsatz auf Rechtschreibung, Grammatik und Stil. Erkläre jeden gefundenen Fehler, damit ich daraus lerne."
 
+audience_guidance:
+  - icon: "🎒"
+    title: "Für Schülerinnen und Schüler"
+    desc: "Nutze KI, um zu **verstehen**, nicht um zu schummeln. Gute Prompts bringen gute Antworten – übe das Fragenstellen. Prüfe Antworten kritisch. Nenne deine Quellen – auch KI-Quellen."
+  - icon: "🧑‍🏫"
+    title: "Für Lehrkräfte"
+    desc: "KI verändert, was und wie wir unterrichten. Nicht alle Hausaufgabenformate bleiben sinnvoll; Referate können anders bewertet werden. KI eröffnet aber auch Chancen für individualisiertes Lernen und das Entwickeln kritischer Medienkompetenz."
+  - icon: "🏠"
+    title: "Für Eltern"
+    desc: 'Euer Kind nutzt KI – wahrscheinlich schon. Statt zu verbieten: mitdiskutieren. „Wie nutzt du das Tool? Was hat es richtig gemacht, was falsch?" Kritisches Denken über KI ist eine Schlüsselkompetenz.'
+
+responsible_questions:
+  - title: "Passt das Werkzeug zur Aufgabe?"
+    desc: "Nicht jede Frage braucht KI. Manchmal ist ein Buch, eine Suchmaschine, ein Gespräch oder eigenes Nachdenken der bessere Weg."
+  - title: "Sind die Quellen überprüfbar?"
+    desc: "Kann ich die Antwort nachvollziehen? Sind Links zu echten Quellen vorhanden – und stimmen diese Quellen wirklich?"
+  - title: "Wessen Daten nutze ich, und wie werden sie geschützt?"
+    desc: "Keine persönlichen Daten, Klassenlisten oder fremde Arbeiten hochladen. Im Schulkontext immer Datenschutz und DSGVO mitdenken."
+  - title: "Wie transparent muss ich sein?"
+    desc: "Wenn KI beteiligt war, sollte das je nach Aufgabe und Absprache mit der Lehrkraft offen genannt werden."
+  - title: "Was kann KI nicht leisten?"
+    desc: "KI ersetzt keine Verantwortung, Empathie, Kreativität oder eigene Werturteile – und sie kann überzeugend falsch liegen."
+  - title: "Wie lerne ich selbst?"
+    desc: "Nutze KI zum Verstehen, Üben und Reflektieren – nicht, um Anstrengung oder eigenes Denken zu vermeiden."
+
 ideas:
   - icon: "🤖"
     title: "Prompt-Challenge: Bessere Fragen an KI stellen"
@@ -242,30 +267,6 @@ ideas:
     audience: "Lehrkräfte, Schülerinnen und Schüler, Eltern"
     duration: "flexibel (Diskussionsmaterial)"
     badges: ["KI", "Verantwortung", "Reflexion"]
----
-
-## Was alle wissen sollten
-
-**Für Schülerinnen und Schüler:**
-Nutze KI, um zu *verstehen*, nicht um zu schummeln. Gute Prompts bringen gute Antworten – übe das Fragen stellen. Prüfe Antworten kritisch. Nenne deine Quellen – auch KI-Quellen.
-
-**Für Lehrkräfte:**
-KI verändert, was und wie wir unterrichten. Nicht alle Hausaufgabenformate bleiben sinnvoll; Referate können anders bewertet werden. KI eröffnet aber auch Chancen für individualisiertes Lernen und das Entwickeln kritischer Medienkompetenz.
-
-**Für Eltern:**
-Euer Kind nutzt KI – wahrscheinlich schon. Statt zu verbieten: mitdiskutieren. „Wie nutzt du das Tool? Was hat es richtig gemacht, was falsch?" Kritisches Denken über KI ist eine Schlüsselkompetenz.
-
----
-
-## Sechs Leitfragen für verantwortungsvolle KI-Nutzung
-
-1. **Passt das Werkzeug zur Aufgabe?** (Nicht jede Frage braucht KI.)
-2. **Sind die Quellen überprüfbar?** (Kann ich die Antwort nachvollziehen? Sind Links zu echten Quellen vorhanden?)
-3. **Wessen Daten nutze ich, und wie werden sie geschützt?** (DSGVO-konform? Schulserver oder Cloud?)
-4. **Wie transparent muss ich sein?** (Nennen, wenn KI beteiligt war?)
-5. **Was kann KI *nicht* leisten?** (Kreativität, Empathie, Werturteile.)
-6. **Wie lerne ich selbst?** (Nutze KI zum Verstehen, nicht zum Vermeiden von Anstrengung.)
-
 ---
 
 **Diese Seite wird regelmäßig aktualisiert.** Ein Projekt des **Schulelternbeirats des Gymnasiums am Kaiserdom Speyer**. Inhalte dieser Seite sind inspiriert von [KI an der Schule](https://hobru.github.io/KI-an-der-Schule/) (Holger Bruchelt). Fragen oder Rückmeldungen? Schreib an den [Schulelternbeirat](https://gak-speyer.de/menschen-am-gak/schulelternbeirat) oder öffne ein GitHub Issue.

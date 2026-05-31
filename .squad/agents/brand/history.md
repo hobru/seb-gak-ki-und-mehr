@@ -71,3 +71,9 @@
 
 **Caveat:** The scribe agent swept my staged file changes into its own session-summary commit (`43774dd`). Content is correct and in HEAD; future Brand commits should be atomic and committed before the scribe runs to avoid message mismatch.
 
+
+## 2026-05-31 — KI Bottom UX Consistency
+
+- Converted the KI page bottom guidance from freeform Markdown into structured front matter (`audience_guidance`, `responsible_questions`) rendered by the KI list template.
+- Reused the existing KI section heading/card language so “Was alle wissen sollten” and “Sechs Leitfragen” visually align with the stronger tool/prompt UX above while preserving the SEB framing.
+- Pattern learned: keep repeatable KI page blocks in front matter and render them as cards; avoid ending a highly structured page with unstyled Markdown lists.
