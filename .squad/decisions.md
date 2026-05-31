@@ -874,3 +874,9 @@ Applies to `content/ki/_index.md`, `layouts/ki/list.html`, and KI-specific CSS o
 ### Build
 
 Hugo build successful; changes staged and committed.
+
+
+### 2026-05-31T21:50:18.310+02:00: User directive
+**By:** Holger Bruchelt (via Copilot)
+**What:** Remove references to teachers/Lehrkräfte from site copy. Use framing like "für Schülerinnen und Schüler und Eltern" instead of "für Schülerinnen und Schüler, Lehrkräfte und Eltern."
+**Why:** User request — captured for team memory
