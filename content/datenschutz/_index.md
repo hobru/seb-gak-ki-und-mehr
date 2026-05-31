@@ -1,16 +1,18 @@
 ---
 title: "Datenschutzerklärung"
-description: "Datenschutzerklärung des GAK-Digital-Projekts am Gymnasium am Kaiserdom Speyer."
+description: "Datenschutzerklärung des GAK-Digital-Projekts – eine Initiative des Schulelternbeirats des Gymnasiums am Kaiserdom Speyer."
 layout: "single"
 ---
 
 ## Datenschutzerklärung
 
-**Hinweis:** Diese Datenschutzerklärung ist ein Platzhalter und muss vor der Veröffentlichung durch die rechtlich geprüfte Version der Schule ersetzt werden (DSGVO / BDSG).
+**Hinweis:** Diese Datenschutzerklärung ist ein Platzhalter und muss vor der Veröffentlichung durch eine rechtlich geprüfte Version ersetzt werden (DSGVO / BDSG).
+
+Diese Website ist ein Projekt des **Schulelternbeirats des Gymnasiums am Kaiserdom Speyer** und stellt keine offizielle Schulkommunikation dar.
 
 ### Verantwortliche Stelle
 
-Gymnasium am Kaiserdom Speyer  
+Schulelternbeirat des Gymnasiums am Kaiserdom Speyer  
 [Anschrift eintragen]  
 67346 Speyer
 

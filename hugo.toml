@@ -1,13 +1,14 @@
 baseURL = "/"
 languageCode = "de-DE"
 defaultContentLanguage = "de"
-title = "GAK Digital – Informatik & KI"
+title = "GAK Digital – Schulelternbeirat"
 
 [params]
-  description = "Informatik, KI und digitale Bildung am Gymnasium am Kaiserdom Speyer – für Schülerinnen und Schüler, Lehrkräfte und Eltern."
-  school      = "Gymnasium am Kaiserdom Speyer"
-  shortName   = "GAK Digital"
-  sampleSite  = true   # Set to false when site has real content
+  description   = "Eine Initiative des Schulelternbeirats: Informatik, KI und digitale Bildung für Schülerinnen und Schüler, Lehrkräfte und Eltern am Gymnasium am Kaiserdom Speyer."
+  school        = "Schulelternbeirat des Gymnasiums am Kaiserdom Speyer"
+  shortName     = "SEB GAK Digital"
+  sampleSite    = true   # Set to false when site has real content
+  seb_disclaimer = "Diese Website ist ein Projekt des Schulelternbeirats und stellt keine offizielle Schulkommunikation dar."
 
 [markup]
   [markup.goldmark]

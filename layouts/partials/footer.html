@@ -2,8 +2,11 @@
   <div class="container">
     <div class="site-footer__inner">
       <p class="site-footer__copy">
-        &copy; {{ now.Year }} {{ site.Params.school }} &ndash; GAK Digital
+        &copy; {{ now.Year }} {{ site.Params.school }}
       </p>
+      {{ with site.Params.seb_disclaimer }}
+      <p class="site-footer__disclaimer">{{ . }}</p>
+      {{ end }}
       <ul class="site-footer__links">
         <li><a href="{{ "/impressum/" | relURL }}">Impressum</a></li>
         <li><a href="{{ "/datenschutz/" | relURL }}">Datenschutz</a></li>

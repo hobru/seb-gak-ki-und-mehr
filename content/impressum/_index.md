@@ -1,33 +1,34 @@
 ---
 title: "Impressum"
-description: "Impressum des GAK-Digital-Projekts am Gymnasium am Kaiserdom Speyer."
+description: "Impressum des GAK-Digital-Projekts – eine Initiative des Schulelternbeirats des Gymnasiums am Kaiserdom Speyer."
 layout: "single"
 ---
 
 ## Impressum
 
-**Hinweis:** Dieses Impressum ist ein Platzhalter und muss vor der Veröffentlichung durch die offiziellen Angaben der Schule ersetzt werden (§ 5 TMG).
+**Hinweis:** Dieses Impressum ist ein Platzhalter und muss vor der Veröffentlichung durch die offiziellen Angaben des Schulelternbeirats ersetzt werden (§ 5 TMG).
+
+Diese Website ist ein Projekt des **Schulelternbeirats des Gymnasiums am Kaiserdom Speyer** und stellt keine offizielle Schulkommunikation dar.
 
 ### Angaben gemäß § 5 TMG
 
-Gymnasium am Kaiserdom Speyer  
+Schulelternbeirat des Gymnasiums am Kaiserdom Speyer  
 [Straße und Hausnummer eintragen]  
 67346 Speyer
 
 **Vertreten durch:**  
-[Name der Schulleitung eintragen]
+[Name der/des SEB-Vorsitzenden eintragen]
 
 **Kontakt:**  
-Telefon: [Telefonnummer eintragen]  
-E-Mail: [E-Mail-Adresse eintragen]
+E-Mail: [E-Mail-Adresse des SEB eintragen]
 
 ### Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
 
-[Name und Anschrift der verantwortlichen Person eintragen]
+[Name und Anschrift der verantwortlichen Person im SEB eintragen]
 
 ### Haftungsausschluss
 
-Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehmen wir keine Gewähr. Alle Beispielbeiträge sind als Demonstration gekennzeichnet und stellen keine offizielle Schulkommunikation dar.
+Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt vom Schulelternbeirat zusammengestellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte übernehmen wir keine Gewähr. Die Inhalte stellen keine offizielle Schulposition dar. Alle Beispielbeiträge sind als Demonstration gekennzeichnet.
 
 ### Externe Links
 
