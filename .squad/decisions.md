@@ -113,6 +113,141 @@
 
 ---
 
+---
+
+## Implemented: Hugo Homepage v1 (2026-05-31)
+
+**Status:** ✅ Completed & deployed | **Commit:** 85c0032  
+**Responsible:** Brand (implementer); Mouth (content), Sloth (UX), Chunk/Andy/Stef (reviews)
+
+### What Exists
+
+**Core Pages:**
+- Homepage (hero + value props + news spotlight + CTA + footer)
+- Digitales & Informatik (with 6 idea cards, sample content marked)
+- KI in der Schule (with 6 idea cards, sample content marked)
+- Neuigkeiten / News archive (with 3 sample posts: KI-Begriffe, Wetterdaten, Elternabend)
+- Impressum & Datenschutzerklärung (legal placeholders)
+- Navigation: Informatik, KI, Aktuelles, Kontakt
+
+**Technical Stack:**
+- Hugo v0.134.3 (static generator)
+- GitHub Pages deployment via GitHub Actions (peaceiris/actions-hugo, SHA-pinned)
+- Custom responsive CSS (~550 lines; mobile-first, 8px grid, semantic HTML)
+- No runtime dependencies; vanilla JS minimal
+- German-first content; German locale in `hugo.toml`
+
+**GitHub Workflow:**
+- `.github/workflows/deploy.yml`: Automated build + deploy on push to `main`
+- Build time: ~68ms, zero warnings
+
+### Reviewer Principles (Consensus)
+
+#### Content (Mouth)
+- **Sample content explicitly marked** `[SAMPLE]` to prevent accidental publication
+- **No PII in proposals** — form template prevents phone/email fields
+- **Persona-driven structure:** Separate entry points for pupils (Schüler·innen), teachers (Lehrkräfte), parents (Eltern)
+- **Format-standardized** news items (title ≤80 chars, abstract ≤200 chars, categories, audience tags)
+
+#### Pupils/UX (Chunk)
+- **Three clear pathways:** Aktuell erfahren | Selbst ausprobieren | Verstehen & Hinterfragen
+- **Official status visible** (school badge + age guidance near top)
+- **News highlights on homepage** always visible; movement signals liveness
+- **Concrete hooks over jargon** (e.g., "Dein erstes Spiel programmieren mit Python" not "Introduction to Python")
+- **Guidance on first visit** (collapsible "Neue hier?" section explaining tutorial duration/difficulty)
+
+#### Teachers (Andy)
+- **Actionable specificity:** Learning pathways show grade levels (Jahrgangsstufe 9–13) + time commitment
+- **Teacher Quick-Start card** on homepage (grade filter → curated bundles)
+- **Audience tagging in news** (`[Lehrkraft]`, `[Schüler·innen]`, `[Beide]`) with optional filter
+- **Sample lessons visible:** Homepage teaser shows one real complete lesson example
+- **Maintenance clarity:** Mention content authors + feedback pathway (GitHub issues)
+
+#### Parents (Stef)
+- **"Why" in plain German:** Lead with values, not jargon; use "wir bereiten Ihre Kinder vor"
+- **Trust signals on fold:** School logo/name + teacher attribution + legal links (Impressum, Datenschutz)
+- **"What's new" frequency clear:** State update cadence (e.g., "wir aktualisieren diese Seite jede Woche")
+- **Parent FAQ (5–7 Q&As):** Address unstated concerns (Do they need a home computer? Is it safe? How can I support?)
+- **Stay-informed pathway:** Non-mandatory email/update options (checkbox-based, GDPR-compliant; deferred to Phase 2)
+
+#### UX/Accessibility (Sloth)
+- **Semantic, accessible card layout** (not stock photos; subtle color/pattern for hero)
+- **WCAG 2.1 AA targets:** Color contrast ≥4.5:1, proper heading hierarchy (H1–H3), alt text, focus-visible, ≥44px touch targets
+- **Mobile-first CSS:** Base styles for 320px; scale up with @media (600px tablet, 1024px desktop)
+- **Lighthouse targets:** Accessibility ≥95, Performance ≥85, Best Practices ≥90, SEO ≥90
+- **No web fonts on first load** (system stack); lazy-load images below fold
+
+### Pre-Launch Requirements (Blockers)
+
+| Item | Owner | Status |
+|------|-------|--------|
+| Replace `content/impressum/_index.md` with real §5 TMG text | School / Legal | ⏳ Pending |
+| Replace `content/datenschutz/_index.md` with DSGVO-compliant text | School / Legal | ⏳ Pending |
+| Set `baseURL` in `hugo.toml` to actual domain | Holger / Brand | ⏳ Pending |
+| Review GitHub Actions permissions & security guardrails | One-Eyed Willy | ⏳ Pending |
+| Confirm sample content will be replaced before public launch | Content team | ⏳ Pending |
+
+### Deferred to Phase 2
+
+- **Issue-to-News GitHub Action** (moderation pipeline): Structure ready in front matter; workflow to be added
+- **Newsletter / email signup:** Requires GDPR compliance review by One-Eyed Willy
+- **Analytics:** No tracking in v1; evaluate Plausible/Goatcounter if school approves
+- **CMS UI for non-technical editors:** Decap CMS optional in Phase 2
+- **Multi-language support:** German-first in v1; English Phase 2+
+
+### How Content Editors Contribute
+
+**Adding a News Post:**
+```yaml
+# Create: content/news/YYYY-MM-DD-titel.md
+---
+title: "Titel"
+date: 2026-06-01
+draft: false
+categories: ["KI"]  # or "Informatik", "MINT", etc.
+audiences: ["Schülerinnen und Schüler"]  # multi-select
+abstract: "Kurze Zusammenfassung (≤200 Zeichen, no PII)"
+sample: false  # set to true during testing; false for real content
+---
+Inhalt hier...
+```
+
+**Adding an Idea Card:**
+Edit front matter in `content/informatik/_index.md` or `content/ki/_index.md`:
+```yaml
+ideas:
+  - icon: "💡"
+    title: "Titel"
+    desc: "Kurze Beschreibung"
+    audience: "Schülerinnen und Schüler"  # or "Lehrkräfte", "Eltern"
+    duration: "ca. 30 Min."
+    badges: ["Coding", "Anfänger"]
+```
+
+### Success Criteria (Agreed)
+
+| Goal | Metric | Target |
+|------|--------|--------|
+| **Fast to load** | Lighthouse Performance (mobile 4G) | ≥85 |
+| **Accessible** | Lighthouse Accessibility + WCAG 2.1 AA | ≥95 |
+| **Clear IA** | Pupils find "What can I learn?" | < 5 seconds |
+| **Mobile-friendly** | Responsive 320px–1920px, no horiz. scroll | All text readable |
+| **Editor-friendly** | Publish news cycle (edit → live) | < 5 minutes |
+| **Zero security incidents** | Audited by One-Eyed Willy | Baseline compliance |
+
+### Local Development
+
+```bash
+hugo server
+# → http://localhost:1313/
+```
+
+Deploy to GitHub Pages:
+1. Settings → Pages → Source: **GitHub Actions**
+2. Push to `main` → auto-builds and deploys
+
+---
+
 ## Governance
 
 - All meaningful changes require team consensus

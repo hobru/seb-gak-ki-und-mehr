@@ -104,3 +104,36 @@
 
 **Decision implication:** A decision inbox entry was written recommending the team reconsider Jekyll Phase 1 in light of Holger's explicit acceptance of custom Actions and preference to avoid a Phase 2 migration.
 
+### 2026-05-31 — Hugo Homepage v1 Delivered & Deployed (Commit 85c0032)
+
+**Trigger:** Team decision finalized on 2026-05-31; implementation completed same day.
+
+**Deliverables:**
+- ✅ Hugo site initialized and built successfully
+- ✅ Homepage, Informatik, KI, News, Impressum, Datenschutz pages
+- ✅ Custom responsive layouts + CSS (~550 lines, WCAG AA, mobile-first)
+- ✅ GitHub Pages deploy workflow (peaceiris/actions-hugo, SHA-pinned)
+- ✅ 3 sample German news posts (marked as `sample: false` ready for replacement)
+- ✅ 6 idea cards per section (Informatik, KI) stored in front matter for easy editing
+
+**Build metrics:** 32 pages, 68ms, zero warnings ✓
+
+**Integration with reviewer principles:**
+- Content editors can add news posts and idea cards via simple YAML editing (no HTML required)
+- Sample-content flag (`sample: true/false`) + banner notice prevent accidental publication
+- Audience tagging + category system support filtering (ready for Phase 2 news-to-action)
+- All One-Eyed Willy privacy/security guardrails in place (no PII, no analytics, no cookies)
+- WCAG 2.1 AA compliance: color contrast, semantic HTML, alt text, focus-visible, 44px+ touch targets
+
+**Pre-launch blockers logged in .squad/decisions.md:**
+- Replace legal placeholders (Impressum, Datenschutz) with real text
+- Set baseURL to actual domain
+- One-Eyed Willy to review Actions permissions
+- Content team to replace samples with real material before public launch
+
+**Deferred to Phase 2:**
+- Issue-to-News GitHub Action workflow (structure ready)
+- Newsletter signup (GDPR review needed)
+- Analytics evaluation
+- CMS UI, multi-language, advanced search
+

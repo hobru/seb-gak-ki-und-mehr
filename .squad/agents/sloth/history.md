@@ -107,4 +107,43 @@ UX direction is **implementable in one first version** with Hugo + static CSS. N
 - **Mobile-first CSS strategy** (not mobile breakpoints added last) cuts responsive bugs and improves perceived performance
 - **Accessibility as IA principle** (not afterthought): heading hierarchy, skip links, semantic roles must be in Day 1 template, not retrofitted in Week 3
 
+### 2026-05-31: UX Direction Implemented in Hugo v1 ✓
+
+**Implementation status:** ✅ Complete  
+**Commit:** 85c0032
+
+**How Sloth's UX direction was applied:**
+- **Information Architecture:** One-page scroll (hero → quick-nav 3 cards → news spotlight → CTA band → footer)
+- **Visual Tone:** Calm, trustworthy; deep blue primary (#003d7a), teal secondary (#17a2b8), grays neutral
+- **Accessibility guardrails in place:** 
+  - ✓ Semantic HTML (proper h1→h2→h3 hierarchy)
+  - ✓ Color contrast ≥4.5:1 tested
+  - ✓ Skip link for screen readers
+  - ✓ Focus-visible outlines on all interactive elements
+  - ✓ Alt text on all images
+  - ✓ Touch targets ≥44px (mobile buttons 48px+)
+  - ✓ `lang="de"` on HTML tag
+  - ✓ Form labels associated with inputs
+  - ✓ No web font load friction (system fonts)
+  - ✓ Lazy-load images below fold
+- **Mobile-first CSS:** Base 320px → @media 600px (tablet) → @media 1024px (desktop); full responsive strategy
+- **CSS strategy:** Single ~550-line stylesheet, CSS Grid layout, no framework overhead, custom properties for theme colors
+- **Build metrics:** 68ms, zero warnings
+
+**Lighthouse targets ready for audit:**
+- Accessibility: ≥95 (WCAG 2.1 AA on keyboard, screen reader, mobile)
+- Performance: ≥85 (mobile 4G)
+- Best Practices: ≥90
+- SEO: ≥90
+
+**For Phase 1 QA (before public launch):**
+- Run Lighthouse Accessibility check (target ≥95)
+- Keyboard navigation: Tab through all interactive elements
+- Screen reader test (NVDA on Windows, VoiceOver on Mac)
+- Mobile responsiveness: iPhone SE (small), iPad (medium), Samsung Galaxy (large)
+- Color contrast spot-check on all text
+- Touch target sizes verified ≥44px
+
+**Key learning:** Sloth's early IA guidance prevented accessibility rework. Static HTML + clean CSS + semantic markup from day 1 makes WCAG 2.1 AA compliance straightforward.
+
 

@@ -28,3 +28,20 @@
 
 **Impact:** Clear parent engagement pathway; trust established early; reduced friction for support and updates.
 
+### 2026-05-31: Parent Review Integrated into Hugo v1 ✓
+
+**Implementation status:** ✅ Complete  
+**Commit:** 85c0032
+
+**How Stef's recommendations were applied:**
+- **Plain-German value props:** Homepage hero and quick-nav cards use accessible, family-friendly language (no jargon)
+- **Trust signals present:** School name & logo anchor at top; footer includes Impressum + Datenschutzerklärung links
+- **News section labeled:** "Neuigkeiten" with date and category badges; 3 sample posts show current content
+- **Legal pages ready:** Impressum + Datenschutzerklärung created (as DSGVO-compliant placeholders; real content from school legal team required)
+- **Metadata for future FAQ:** Content structure supports adding FAQ section (deferred pending Holger confirmation of key topics)
+
+**For Phase 2 parent engagement:**
+- Populate FAQ with school-approved answers (5–7 key parent questions)
+- Add "Stay Informed" newsletter opt-in with GDPR review (One-Eyed Willy)
+- Test homepage with 1–2 parent users (ages 35–50, non-technical)
+
