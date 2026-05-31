@@ -1,9 +1,9 @@
 ---
 title: "KI in der Schule"
 description: "Verständliche Einstiege, Praxisideen und Leitfragen zum verantwortungsvollen Umgang mit Künstlicher Intelligenz – im Unterricht, zu Hause und im Alltag."
-lead: "Künstliche Intelligenz ist längst im Schulalltag angekommen. Hier findest du konkrete Tools, Tipps und Anleitungen für Schülerinnen und Schüler, Lehrkräfte und Eltern."
+lead: "Künstliche Intelligenz ist längst im Schulalltag angekommen. Hier findest du konkrete Tools, Tipps und Anleitungen für Schülerinnen und Schüler und Eltern."
 
-intro: "**Wichtig:** KI-Tools sind Werkzeuge, keine Ersatz-Lehrer. Sie können dir helfen, Inhalte besser zu verstehen, Lernzettel zu erstellen oder dich auf Klausuren vorzubereiten. Aber: Immer kritisch prüfen, was die KI dir liefert – sie kann sich auch irren!"
+intro: "**Wichtig:** KI-Tools sind Werkzeuge, kein Ersatz für eigenes Lernen. Sie können dir helfen, Inhalte besser zu verstehen, Lernzettel zu erstellen oder dich auf Klausuren vorzubereiten. Aber: Immer kritisch prüfen, was die KI dir liefert – sie kann sich auch irren!"
 
 tool_sections:
   - id: "notebooklm"
@@ -68,7 +68,7 @@ tool_sections:
     title: "Weitere KI-Chatbots im Überblick"
     cards:
       - title: "Claude – Der Lernbegleiter"
-        desc: "Claude bietet einen **Learning Mode**: Anstatt die Antwort direkt zu liefern, stellt Claude Rückfragen und führt zur Lösung – wie ein guter Nachhilfelehrer. Mit Artifacts lassen sich interaktive Lernspiele erstellen."
+        desc: "Claude bietet einen **Learning Mode**: Anstatt die Antwort direkt zu liefern, stellt Claude Rückfragen und führt zur Lösung – wie ein guter Lerncoach. Mit Artifacts lassen sich interaktive Lernspiele erstellen."
         links:
           - label: "Claude öffnen"
             url: "https://claude.ai/"
@@ -89,7 +89,7 @@ tool_sections:
           - label: "📖 Copilot für Schüler"
             url: "https://www.malter365.de/copilot/copilot-schueler/"
       - title: "telli – DSGVO-konformer Schul-KI-Chatbot"
-        desc: "Von allen Bundesländern gemeinsam entwickelt: **kostenlos, DSGVO-konform, in der EU gehostet**. Schüler brauchen keinen eigenen Account – der Zugang erfolgt über QR-Codes der Lehrkraft."
+        desc: "Von allen Bundesländern gemeinsam entwickelt: **kostenlos, DSGVO-konform, in der EU gehostet**. Schüler brauchen keinen eigenen Account – der Zugang erfolgt über QR-Codes der Schule."
         links:
           - label: "telli.schule"
             url: "https://telli.schule"
@@ -178,7 +178,7 @@ tool_sections:
           - label: "📖 Prompt-Engineering Fortbildung"
             url: "https://www.fobizz.com/de/fortbildungen/prompt-engineering-in-der-schule/"
       - title: "Was darf ich? Was darf ich nicht?"
-        desc: "Die direkte Schülernutzung von ChatGPT ist an vielen Schulen **nicht offiziell erlaubt**. Datenschutzkonforme Alternativen wie **telli**, **Fobizz** oder **SchulKI** werden von Bundesländern empfohlen. Im Zweifel Lehrkraft fragen."
+        desc: "Die direkte Schülernutzung von ChatGPT ist an vielen Schulen **nicht offiziell erlaubt**. Datenschutzkonforme Alternativen wie **telli**, **Fobizz** oder **SchulKI** werden von Bundesländern empfohlen. Im Zweifel vor der Nutzung in der Schule nachfragen."
         links:
           - label: "📖 KI-Tools im Vergleich"
             url: "https://deutsches-schulportal.de/unterricht/fobizz-schulki-und-co-welche-ki-tools-koennen-schulen-nutzen/"
@@ -200,7 +200,7 @@ prompt_examples:
     good: "Stelle mir 5 Prüfungsfragen zur Französischen Revolution, Niveau 10. Klasse. Gib die Antwort erst, wenn ich es versucht habe."
   - label: "Rollen-Prompt"
     bad: "Erkläre mir Bruchrechnung"
-    good: "Du bist mein Mathe-Nachhilfelehrer. Erkläre mir Bruchrechnung geduldig und mit einfachen Beispielen. Frage nach jedem Schritt, ob ich es verstanden habe."
+    good: "Du bist mein Mathe-Lerncoach. Erkläre mir Bruchrechnung geduldig und mit einfachen Beispielen. Frage nach jedem Schritt, ob ich es verstanden habe."
   - label: "Fehler finden"
     bad: "Korrigier meinen Text"
     good: "Überprüfe meinen deutschen Aufsatz auf Rechtschreibung, Grammatik und Stil. Erkläre jeden gefundenen Fehler, damit ich daraus lerne."
@@ -209,9 +209,6 @@ audience_guidance:
   - icon: "🎒"
     title: "Für Schülerinnen und Schüler"
     desc: "Nutze KI, um zu **verstehen**, nicht um zu schummeln. Gute Prompts bringen gute Antworten – übe das Fragenstellen. Prüfe Antworten kritisch. Nenne deine Quellen – auch KI-Quellen."
-  - icon: "🧑‍🏫"
-    title: "Für Lehrkräfte"
-    desc: "KI verändert, was und wie wir unterrichten. Nicht alle Hausaufgabenformate bleiben sinnvoll; Referate können anders bewertet werden. KI eröffnet aber auch Chancen für individualisiertes Lernen und das Entwickeln kritischer Medienkompetenz."
   - icon: "🏠"
     title: "Für Eltern"
     desc: 'Euer Kind nutzt KI – wahrscheinlich schon. Statt zu verbieten: mitdiskutieren. „Wie nutzt du das Tool? Was hat es richtig gemacht, was falsch?" Kritisches Denken über KI ist eine Schlüsselkompetenz.'
@@ -224,7 +221,7 @@ responsible_questions:
   - title: "Wessen Daten nutze ich, und wie werden sie geschützt?"
     desc: "Keine persönlichen Daten, Klassenlisten oder fremde Arbeiten hochladen. Im Schulkontext immer Datenschutz und DSGVO mitdenken."
   - title: "Wie transparent muss ich sein?"
-    desc: "Wenn KI beteiligt war, sollte das je nach Aufgabe und Absprache mit der Lehrkraft offen genannt werden."
+    desc: "Wenn KI beteiligt war, sollte das je nach Aufgabe und geltenden Vorgaben offen genannt werden."
   - title: "Was kann KI nicht leisten?"
     desc: "KI ersetzt keine Verantwortung, Empathie, Kreativität oder eigene Werturteile – und sie kann überzeugend falsch liegen."
   - title: "Wie lerne ich selbst?"
@@ -240,13 +237,13 @@ ideas:
   - icon: "🔍"
     title: "KI-Antworten kritisch überprüfen"
     desc: "KI-Systeme können Fehler machen oder überzeugend klingende, aber falsche Aussagen erfinden (Halluzination). Diese Unterrichtsidee zeigt, wie man KI-Texte überprüft."
-    audience: "Lehrkräfte, Schülerinnen und Schüler"
+    audience: "Schülerinnen und Schüler"
     duration: "ca. 45 Min."
     badges: ["KI", "Kritisches Denken"]
   - icon: "💬"
     title: "KI-Begriffe einfach erklärt"
     desc: "Prompt, Modell, Halluzination, LLM, Bias – ein verständlicher Einstieg in die KI-Grundlagen ohne technische Vorkenntnisse."
-    audience: "Schülerinnen und Schüler, Lehrkräfte, Eltern"
+    audience: "Schülerinnen und Schüler und Eltern"
     duration: "Lesetipp (ca. 10 Min.)"
     badges: ["KI", "Grundlagen"]
   - icon: "🏠"
@@ -258,13 +255,13 @@ ideas:
   - icon: "🔒"
     title: "Datenschutz bei KI-Tools"
     desc: "Welche Daten geben wir preis, wenn wir ChatGPT oder andere KI-Dienste nutzen? Überblick über Datenschutz, DSGVO und Alternativen."
-    audience: "Eltern, Lehrkräfte"
+    audience: "Eltern"
     duration: "ca. 20 Min."
     badges: ["KI", "Datenschutz", "DSGVO"]
   - icon: "🧭"
     title: "Leitfragen: KI verantwortungsvoll nutzen"
-    desc: "Sechs Fragen, die helfen, KI-Tools bewusst und kritisch einzusetzen – im Unterricht, im Referat und im Alltag."
-    audience: "Lehrkräfte, Schülerinnen und Schüler, Eltern"
+    desc: "Sechs Fragen, die helfen, KI-Tools bewusst und kritisch einzusetzen – beim Lernen, im Referat und im Alltag."
+    audience: "Schülerinnen und Schüler und Eltern"
     duration: "flexibel (Diskussionsmaterial)"
     badges: ["KI", "Verantwortung", "Reflexion"]
 ---

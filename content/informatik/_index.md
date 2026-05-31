@@ -1,7 +1,7 @@
 ---
 title: "Digitales & Informatik"
 description: "Grundlagen, Tutorials und Projektideen rund um Coding, Daten, Algorithmen, Medienkompetenz und digitale Werkzeuge – vom Schulelternbeirat."
-lead: "Entdecke Grundlagen, Tutorials und Projektideen rund um Coding, Daten, Algorithmen, Medienkompetenz und digitale Werkzeuge. Hier sammelt der Schulelternbeirat Anregungen für Schülerinnen und Schüler, Lehrkräfte und Eltern."
+lead: "Entdecke Grundlagen, Tutorials und Projektideen rund um Coding, Daten, Algorithmen, Medienkompetenz und digitale Werkzeuge. Hier sammelt der Schulelternbeirat Anregungen für Schülerinnen und Schüler und Eltern."
 
 ideas:
   - icon: "💻"
@@ -22,16 +22,10 @@ ideas:
     audience: "Schülerinnen und Schüler"
     duration: "ca. 45 Min."
     badges: ["Medienkompetenz", "Denken"]
-  - icon: "✅"
-    title: "Orientierung für Lehrkräfte: Digitale Werkzeuge im Unterricht"
-    desc: "Ein Überblick über bewährte, datenschutzkonforme Tools für Unterricht, Zusammenarbeit und Rückmeldung – mit praktischen Links und Einsatzideen statt Prescriptions."
-    audience: "Lehrkräfte"
-    duration: "flexibel"
-    badges: ["Lehrkräfte", "Tools", "DSGVO"]
   - icon: "🎬"
     title: "Video- & Podcast-Produktion mit Schülerinnen und Schülern"
-    desc: "Von der Idee bis zum Upload: Wie Schülerinnen und Schüler mit kostenlosen Tools eigene Videos oder Podcasts erstellen und dabei journalistische Grundlagen lernen – fächerübergreifend möglich."
-    audience: "Lehrkräfte, Schülerinnen und Schüler"
+    desc: "Von der Idee bis zum Upload: Mit kostenlosen Tools eigene Videos oder Podcasts erstellen und dabei journalistische Grundlagen lernen – auch als AG- oder Freizeitprojekt möglich."
+    audience: "Schülerinnen und Schüler"
     duration: "3–5 Stunden"
     badges: ["Kreativität", "Medienkompetenz"]
   - icon: "👨‍👩‍👧"
@@ -47,7 +41,7 @@ ideas:
 Dieser Bereich sammelt Impulse, Projektideen und praktische Einstiege rund um digitale Themen und Informatik.
 Das ist ein Projekt des **Schulelternbeirats des Gymnasiums am Kaiserdom Speyer** – Eltern für Schule und Familie.
 
-Ob Schülerin oder Schüler, Lehrkraft oder Elternteil: Hier findest du Inspiration und konkrete Links zum Selbermachen, Ausprobieren und Verstehen.
+Ob Schülerin, Schüler oder Elternteil: Hier findest du Inspiration und konkrete Links zum Selbermachen, Ausprobieren und Verstehen.
 Alle Inhalte sind Anregungen, keine Vorgaben. Wir ergänzen diese Sammlung regelmäßig.
 
 ## Grundbegriffe kurz erklärt
@@ -80,11 +74,6 @@ Gute Frage. Wir verlinken nur auf Plattformen mit hohen Datenschutzstandards (DS
 - **[Serlo Informatik](https://de.serlo.org/informatik)** — Kostenlose Lernplattform mit Erklärvideos, interaktiven Aufgaben und Schritt-für-Schritt-Erklärungen. Von Anfänger bis Fortgeschrittene.
 - **[openHPI Kurse](https://open.hpi.de)** — Gratis Online-Kurse vom Hasso-Plattner-Institut: Programmierung, Datenbanken, IT-Sicherheit — vom Einstieg bis Fortgeschrittene.
 - **[Bundeswettbewerb Informatik (BWINF)](https://www.bwinf.de)** — Aufgaben und Lösungsstrategien für Klassenstufen 7–13. Inklusive Tipps und Community.
-
-### Für Lehrkräfte
-
-- **[Medienkompetenzblog](https://www.medienkompetenzblog.de)** — Fachdiskurs, Unterrichtsmaterialien und aktuelle Ressourcen zu Informatik, Medienkompetenz und digitalen Themen in der Schule.
-- **[KMK Leitlinien](https://www.kmk.org)** — Offizielle Rahmenbedingungen und Empfehlungen zu Digitalisierung in Schulen.
 
 ### Für Eltern
 

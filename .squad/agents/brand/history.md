@@ -77,3 +77,9 @@
 - Converted the KI page bottom guidance from freeform Markdown into structured front matter (`audience_guidance`, `responsible_questions`) rendered by the KI list template.
 - Reused the existing KI section heading/card language so “Was alle wissen sollten” and “Sechs Leitfragen” visually align with the stronger tool/prompt UX above while preserving the SEB framing.
 - Pattern learned: keep repeatable KI page blocks in front matter and render them as cards; avoid ending a highly structured page with unstyled Markdown lists.
+
+
+## 2026-05-31 — Removed Teacher Audience Framing
+
+- Removed public-facing teacher/Lehrkräfte audience framing across homepage, KI, Informatik, news metadata, contribution copy, issue template, README, and site description per Holger's directive.
+- Pattern learned: when audience scope narrows, update both rendered copy and hidden front matter/workflow options so future content suggestions cannot reintroduce removed audience tags.

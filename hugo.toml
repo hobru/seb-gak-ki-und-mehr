@@ -4,7 +4,7 @@ defaultContentLanguage = "de"
 title = "GAK Digital – Schulelternbeirat"
 
 [params]
-  description   = "Eine Initiative des Schulelternbeirats: Informatik, KI und digitale Bildung für Schülerinnen und Schüler, Lehrkräfte und Eltern am Gymnasium am Kaiserdom Speyer."
+  description   = "Eine Initiative des Schulelternbeirats: Informatik, KI und digitale Bildung für Schülerinnen und Schüler und Eltern am Gymnasium am Kaiserdom Speyer."
   school        = "Schulelternbeirat des Gymnasiums am Kaiserdom Speyer"
   shortName     = "SEB GAK Digital"
   sampleSite    = false  # Real content active

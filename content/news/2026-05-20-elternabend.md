@@ -24,8 +24,8 @@ Dabei lernen Kinder nicht nur Syntax, sondern vor allem logisches Denken, Proble
 
 ### „Darf mein Kind KI im Unterricht verwenden?"
 
-Das hängt vom Fach, der Aufgabe und der Lehrkraft ab. Grundsätzlich gilt: KI-Unterstützung muss transparent gemacht werden,
-und eigenes Denken bleibt das Ziel. Konkrete Regelungen legen die Lehrkräfte je nach Aufgabe fest.
+Das hängt vom Fach und von der Aufgabe ab. Grundsätzlich gilt: KI-Unterstützung muss transparent gemacht werden,
+und eigenes Denken bleibt das Ziel. Konkrete Regelungen können je nach Aufgabe unterschiedlich sein.
 
 ### „Welche Daten werden bei digitalen Tools gespeichert?"
 

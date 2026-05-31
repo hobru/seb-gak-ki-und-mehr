@@ -1,6 +1,6 @@
 # GAK Digital – Schulelternbeirat des Gymnasiums am Kaiserdom Speyer
 
-Eine Initiative des SEB: Informatik, KI und digitale Bildung für Schülerinnen und Schüler, Lehrkräfte und Eltern.
+Eine Initiative des SEB: Informatik, KI und digitale Bildung für Schülerinnen und Schüler und Eltern.
 
 ---
 

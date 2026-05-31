@@ -3,7 +3,7 @@ title: "Beispiel: Projektidee – Wetterdaten auswerten"
 date: 2026-05-10
 draft: false
 categories: ["Informatik", "Projektidee"]
-audiences: ["Lehrkräfte", "Schülerinnen und Schüler"]
+audiences: ["Schülerinnen und Schüler"]
 abstract: "Wie lassen sich offene Daten mit einfachen Werkzeugen analysieren? Eine Idee für Informatik, Geografie oder eine AG."
 sample: true
 ---

@@ -31,7 +31,6 @@ body:
       multiple: true
       options:
         - "Schülerinnen und Schüler"
-        - "Lehrkräfte"
         - "Eltern"
     validations:
       required: true

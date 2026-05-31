@@ -3,8 +3,8 @@ title: "Beispiel: KI-Begriffe einfach erklärt"
 date: 2026-05-01
 draft: false
 categories: ["KI", "Lernen"]
-audiences: ["Schülerinnen und Schüler", "Lehrkräfte"]
-abstract: "Ein kurzer Einstieg in Begriffe wie Prompt, Modell und Halluzination – als Startpunkt für Unterricht oder Selbstlernen."
+audiences: ["Schülerinnen und Schüler"]
+abstract: "Ein kurzer Einstieg in Begriffe wie Prompt, Modell und Halluzination – als Startpunkt fürs Selbstlernen."
 sample: true
 ---
 
