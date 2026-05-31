@@ -49,3 +49,25 @@
 - Newsletter (GDPR review needed)
 - Analytics / CMS UI / i18n
 
+---
+
+## 2026-05-31 — KI Page: Disclaimer First, NotebookLM First
+
+**Trigger:** Holger Bruchelt reviewed the migrated KI page and found the "Einstieg & Überblick / Womit kann ich starten?" idea-card grid non-actionable — no links, no further documentation, and it blocked NotebookLM (the first useful tool) behind a wall of unclickable cards.
+
+**Changes (2 files, bundled into commit 43774dd):**
+
+1. **`content/ki/_index.md`** — Updated `intro:` text to user's exact wording:
+   "**Wichtig:** KI-Tools sind Werkzeuge, keine Ersatz-Lehrer. Sie können dir helfen, Inhalte besser zu verstehen, Lernzettel zu erstellen oder dich auf Klausuren vorzubereiten. Aber: Immer kritisch prüfen, was die KI dir liefert – sie kann sich auch irren!"
+   The "du" address (vs. the previous impersonal "man") better fits the target student audience. The `ideas:` YAML data was retained for potential future use.
+
+2. **`layouts/ki/list.html`** — Removed the entire idea-cards rendering block (49 lines). The `{{ with .Params.ideas }}` section including the "Einstieg & Überblick / Womit kann ich starten?" header, idea-card loop, and badge dict was deleted. The intro warning box now flows directly into the NotebookLM tool section.
+
+**Result:** Page flow is now: Hero → Subnav (starting with NotebookLM) → Disclaimer → NotebookLM → remaining tool sections → Prompting → Leitfragen.
+
+**Build result:** `hugo --minify` → 34 pages, 116ms, zero warnings ✓
+
+**Pattern learned:** Non-actionable overview cards (no links, no CTAs) placed before actionable tools are a UX anti-pattern — they add friction without value. When all ideas are covered by downstream tool sections, remove the cards rather than duplicating. Front matter data can stay for future reuse without harming the rendered output.
+
+**Caveat:** The scribe agent swept my staged file changes into its own session-summary commit (`43774dd`). Content is correct and in HEAD; future Brand commits should be atomic and committed before the scribe runs to avoid message mismatch.
+
