@@ -104,7 +104,30 @@
 
 **Decision implication:** A decision inbox entry was written recommending the team reconsider Jekyll Phase 1 in light of Holger's explicit acceptance of custom Actions and preference to avoid a Phase 2 migration.
 
-### 2026-05-31 — Hugo Homepage v1 Delivered & Deployed (Commit 85c0032)
+### 2026-05-31 — SEB Ownership Rebranding (Commit fa67966)
+
+**Trigger:** Holger Bruchelt clarified that the site is created by the **Schulelternbeirat (SEB) des Gymnasiums am Kaiserdom Speyer**, not an official school page — analogous to https://seb-shgym-diez.de/.
+
+**Guidance source:** `.squad/decisions/inbox/mouth-seb-positioning.md` (Mouth's content reframing guidance, Option A chosen throughout for maximum legal clarity).
+
+**Files changed (9):**
+- `hugo.toml`: `title` → "GAK Digital – Schulelternbeirat"; `school` → full SEB name; `shortName` → "SEB GAK Digital"; `description` leads with "Eine Initiative des Schulelternbeirats"; added `seb_disclaimer` param for reuse
+- `layouts/partials/header.html`: logo sub-line → "Schulelternbeirat des Gymnasiums am Kaiserdom"
+- `layouts/index.html`: hero label → full SEB name; hero title → "Digitales Lernen – von Eltern für Schule und Familie"; sample-notice explicitly names SEB; teacher card wording sourced from SEB perspective
+- `layouts/partials/footer.html`: copyright → SEB name only; new `seb_disclaimer` paragraph rendered below copyright
+- `static/css/style.css`: `.site-footer__disclaimer` style added (italic, muted white)
+- `content/_index.md`: page description updated to SEB initiative framing
+- `content/impressum/_index.md`: responsible party → SEB; placeholder guidance points to SEB contacts not school admin
+- `content/datenschutz/_index.md`: responsible party → SEB; placeholder guidance updated
+- `README.md`: title and subtitle reflect SEB ownership
+
+**Build result:** `hugo --minify` → 34 pages, 180ms, zero warnings ✓
+
+**Pattern learned:** Centralise the disclaimer string in `hugo.toml` as `seb_disclaimer` so footer, legal pages, and any future template can render it without duplication. Easy to update in one place when real legal text is provided.
+
+**Pre-launch blocker added:** Impressum and Datenschutz must now list SEB contact details (not school admin). Holger to supply SEB address, chair name, and email before public launch.
+
+
 
 **Trigger:** Team decision finalized on 2026-05-31; implementation completed same day.
 
