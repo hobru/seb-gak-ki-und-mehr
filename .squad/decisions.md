@@ -815,3 +815,15 @@ All 16 links verified live, German-language (or German-accessible), school-appro
 - All meaningful changes require team consensus
 - Document architectural decisions here
 - Keep history focused on work, decisions focused on direction
+
+---
+
+## Pending Directive: KI Page UX Update (2026-05-31)
+
+**By:** Holger Bruchelt  
+**Date:** 2026-05-31T21:34:59+02:00  
+**Status:** Pending Review  
+
+**Request:** On the KI in der Schule page, the Einstieg & Überblick section should start with the critical-use disclaimer and then go directly into Google NotebookLM as an actionable KI learning assistant. Avoid non-actionable overview content without links or further documentation.
+
+**Rationale:** User reviewed the migrated KI page and wants the Einstieg section to be useful immediately (action-focused, not informational).
