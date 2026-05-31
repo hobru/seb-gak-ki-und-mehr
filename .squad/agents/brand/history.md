@@ -173,6 +173,55 @@
 
 **Guidance source:** `.squad/decisions/inbox/mouth-seb-positioning.md` (Mouth's content reframing guidance, Option A chosen throughout for maximum legal clarity).
 
+
+### 2026-05-31 — KI-Seite Migration: hobru.github.io/KI-an-der-Schule/
+
+**Trigger:** Holger Bruchelt requested full migration of the content, layout, and interaction patterns from https://hobru.github.io/KI-an-der-Schule/ into the existing KI section.
+
+**Gate:** `.squad/decisions/inbox/one-eyed-willy-ki-migration-gate.md` — APPROVE WITH CONDITIONS (6 mandatory conditions; all satisfied).
+
+**Changes implemented (4 content/template files + 1 CSS file, commit 49b3bb6):**
+
+1. **`static/css/style.css`** — Appended 4 new component sections (sections 22–25):
+   - `.ki-subnav` — sticky in-page nav (`top: 3.75rem`, overflow-x scroll, no scrollbar)
+   - `.ki-intro-box` — yellow warning box (flex + emoji slot)
+   - `.ki-section`, `.ki-section__icon--{color}`, `.ki-tool-grid`, `.ki-tool-card`, `.ki-tool-link` — full tool section system with green/purple/blue/amber icon variants, 3-col auto-grid, pill-style link buttons
+   - `.prompt-section`, `.prompt-grid`, `.prompt-item`, `.prompt-item__bad`, `.prompt-item__good`, `.prompt-tip` — bad/good prompt comparison grid
+
+2. **`layouts/ki/list.html`** — Substantially extended:
+   - Added sticky in-page subnav (rendered from `tool_sections` front matter)
+   - Added intro warning box
+   - Renamed idea-grid eyebrow to "Einstieg & Überblick"
+   - Added loop over `tool_sections` rendering `<section id>` per section
+   - Added prompt-examples section
+   - All template `<a>` tags include `target="_blank" rel="noopener noreferrer"` (OEW condition)
+   - Kept markdown body (`{{ with .Content }}`) at bottom for Leitfragen
+
+3. **`content/ki/_index.md`** — Full restructure:
+   - Added `intro:` field (warning text)
+   - Added `tool_sections:` (7 sections, ~19 cards total): NotebookLM, ChatGPT, Weitere Chatbots, Recherche, Bilder, Wie KI funktioniert, Datenschutz
+   - Added `prompt_examples:` (6 bad/good pairs + 3-Ks tip)
+   - Kept `ideas:` array unchanged (6 SEB-original starter cards)
+   - Trimmed markdown body: removed duplicated "Was ist KI?", "KI im Schulalltag", "Wichtige Ressourcen" sections (now in tool sections); kept SEB-specific audience guidance + Sechs Leitfragen + attribution footer
+
+4. **`content/impressum/_index.md`** — Added `### Quellenhinweis` section attributing KI-an-der-Schule content to Holger Bruchelt (OEW mandatory condition #1)
+
+**Build result:** `hugo --minify` → 34 pages, 307ms, zero warnings ✓
+
+**OEW gate conditions satisfied:**
+- Attribution in Impressum: ✓ `Quellenhinweis` section added
+- Content deduplication: ✓ Overlapping sections removed from markdown body
+- External link hygiene: ✓ All template `<a>` tags include `target="_blank" rel="noopener noreferrer"`
+- Asset localization: ✓ Source had no images (emoji-only); no hotlinks needed
+- No external scripts: ✓ Source had no JS; nothing added
+- Privacy notice consistency: ✓ Datenschutz tool section covers telli, Fobizz, DeepL with DSGVO notes
+
+**Patterns learned:**
+- YAML single-quoted strings avoid escaping when card titles/descriptions contain `"` — German typographic quotes (`„"`) are the cleaner solution that avoids YAML gotchas entirely.
+- `top: 3.75rem` is the right sticky offset for the subnav (header `padding-block: 0.875rem` × 2 + logo font-size ≈ 60px).
+- The render hook (`_markup/render-link.html`) handles markdown links only; template-generated `<a>` tags always need manual `target/_blank/rel` attributes — create a checklist habit when writing template links.
+- Hugo's `markdownify` function in templates (e.g., `{{ .desc | markdownify }}`) is useful for front matter fields that contain bold/italic Markdown like `**Schritt-für-Schritt-Erklärung**`.
+
 **Files changed (9):**
 - `hugo.toml`: `title` → "GAK Digital – Schulelternbeirat"; `school` → full SEB name; `shortName` → "SEB GAK Digital"; `description` leads with "Eine Initiative des Schulelternbeirats"; added `seb_disclaimer` param for reuse
 - `layouts/partials/header.html`: logo sub-line → "Schulelternbeirat des Gymnasiums am Kaiserdom"
