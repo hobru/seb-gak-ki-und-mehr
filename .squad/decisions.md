@@ -4,45 +4,44 @@
 
 ### Technology Platform: GAK Website (2026-05-31)
 
-**Proposers:** Data (Tech Architect), Sloth (UX), One-Eyed Willy (Security), Mikey (Product Coordinator)  
-**Status:** Decided (2026-05-31 team consensus: Jekyll for Phase 1)  
+**Proposers:** Data (Tech Architect), Sloth (UX), One-Eyed Willy (Security), Mikey (Product Coordinator), Brand (Full-stack)  
+**Status:** Decided (2026-05-31 team consensus: **Hugo from day one** — supersedes Jekyll Phase 1, per clarified user preference and issue-driven news pipeline requirement)  
 **Decision Frame:** [Mikey] See decision timeline at end of this section.
 
 #### Rechecks Completed (2026-05-31)
-- **Data** (Tech Architect) **[RETRACT HUGO, RECOMMEND JEKYLL]**: GitHub Pages native defaults matter for non-specialist maintenance. Jekyll's native build advantage (avoiding custom Actions) is real. Issue-to-news still works with Jekyll + Actions for intake. Local setup (Hugo advantage) is secondary to actual contributor model (GitHub Web UI, issues, PRs). For a small school website, GitHub-managed Jekyll is simpler security/maintenance story than Hugo with custom Actions. **Threshold to switch to Hugo:** custom Actions accepted day 1, multilingual required soon, content >200 pages, i18n bundling needed, or developer-heavy maintenance becomes norm.
-- **Mikey** (Product Coordinator) **[REAFFIRM HUGO]**: Product risk analysis: Hugo wins on operational surface area (single binary vs. Ruby + 30 gems), Windows friction, failure debugging speed, bus factor. Jekyll's "GitHub-native" advantage is moot because moderation gate requires custom Actions in both cases. Editorial workflow is generator-neutral (both tie). **Issue-to-news pipeline reliability favors Hugo** (fewer MTTF points). Prototyping both = 1 week lost with no winner; validation approach = 2–3 days, ship Friday EOW.
-- **Sloth** (UX/Accessibility) **[TIE-BREAK: JEKYLL FOR PHASE 1]**: Jekyll minimizes **contributor friction** for schools. Editorial entry barrier (GitHub Web UI + direct edits), moderation gate predictability (native Pages vs. Action debugging), maintenance handoff (any GitHub-fluent teacher vs. Go expertise), "just works" in Phase 1 (30s from commit vs. Action debugging). **Concedes:** Hugo is technically superior on single-binary, taxonomies, i18n. **Reality:** school culture = GitHub fluency, not optimization. Reversible in Phase 2 (Liquid → Go templates = 4–6 hrs, no data loss). **Success metric:** contributor retention ≥2 trained editors by week 3 (Jekyll = higher likelihood).
+- **Data** (Tech Architect) **[RETRACT JEKYLL, RECOMMEND HUGO IMMEDIATELY]**: Initial Jekyll recommendation stood because Data's stated threshold to switch ("custom Actions accepted day 1") has been met—Holger now explicitly requests GitHub Action-based issue-to-news pipeline. With Actions required regardless, Hugo's operational advantages (single binary, zero Ruby friction, 4–6 hr migration cost avoided, ~50ms builds) dominate. Starting with Hugo eliminates throwaway work before content exists. Same security/privacy guardrails apply. Setup complexity ~3.5 hrs (modest and front-loaded).
+- **Mikey** (Product Coordinator) **[AFFIRM HUGO — NO JEKYLL PHASE 1]**: Holger's directive resolves the ambiguity: Actions are accepted day 1. Phased approach (Jekyll → Hugo) now creates risk: contributor training debt, content structure re-mapping, 4–6 hr engineering tax. Build real project from day one. Hugo homepage + 2 static sections + issue-to-news news loop is tractable in 3–4 hours setup.
+- **Brand** (Full-stack Implementer) **[HUGO FEASIBILITY CONFIRMED]**: Created detailed implementation sketch. Repository structure, issue template (no PII fields), 2-step workflow (issue-to-news Action with validation, moderation gate), GitHub Pages deploy, legal pages (Impressum/Datenschutzerklärung), accessibility/privacy guardrails all realistic. Concrete setup breakdown: config (10 min), content stubs (20 min), layouts (45 min), workflows (90 min), testing (30 min) = ~3.5 hrs one-time. Ongoing: issue-to-live < 5 min; static page edits ~1 min.
+- **Sloth** (UX/Accessibility) **[DEFERS TO TEAM, ACCESSIBILITY PROTOCOL STANDS]**: Original tie-break (Jekyll for contributor friction) assumed Jekyll avoids Actions complexity. New reality: Actions are day 1 regardless. Sloth's accessibility and contributor retention success metrics remain unchanged; framework choice is neutral to WCAG 2.1 AA audit and editor onboarding. Confirms accessible Hugo themes exist (e.g. PaperMod); theme selection can reduce setup overhead to ~1.5 hrs if custom templating skipped.
 
 #### Competing Recommendations
 
-**Option A: Hugo** (Mikey's recommendation)
+**Option A: Hugo** (Mikey + Data consensus — **NOW DECIDED**) ✓ **DECIDED**
 - Zero-runtime dependencies; single Go binary; fastest builds (~50ms)
-- Built-in i18n; issue-to-news pipeline simple
+- Built-in i18n; issue-to-news pipeline simple and reliable
 - GitHub Actions `peaceiris/actions-hugo` deploys in seconds
 - Issue template captures: title, abstract, link, audience, category
-- GitHub Action workflow: issue labeled `news` → markdown file generated → auto-publish
-- **Risk:** Issue parsing fragile without structured YAML templates
-- **Operational advantage:** Lower MTTF, better Windows debugging, resilient bus factor
+- GitHub Action workflow: issue labeled `freigegeben` → markdown file generated → auto-publish
+- **Operational advantage:** Lower MTTF, simpler Windows debugging, resilient single-binary model
+- **Setup time:** ~3–3.5 hrs one-time (config, layouts, workflows)
+- **Avoids:** 4–6 hr future migration; throwaway Jekyll Phase 1 work
 
-**Option B: Jekyll** (Sloth's recommendation, chosen for Phase 1) ✓ **DECIDED**
+**Option B: Jekyll** (Previously Phase 1 — superseded)
 - GitHub Pages native support; Ruby ecosystem stable
 - Same issue-to-news workflow with bot validation
-- Accessibility baseline higher due to deterministic static HTML
-- Markdown editing native to GitHub Web UI (low barrier for non-coders)
-- **Strength:** Minimizes contributor friction for schools; GitHub-native culture alignment; safe fallback (direct file editing) when automation breaks
-- **Risk:** Ruby ecosystem maintenance burden vs. Hugo's single binary
-- **Reversible:** Phase 2 migration to Hugo if taxonomy scaling or multilingual demands justify it (Liquid → Go templates = 4–6 hours)
-- **Note:** Sloth also approves Hugo as fallback ("if team prefers" or Phase 2+ scaling demands)
+- **Why superseded:** User directive + Actions required day 1 removes native Pages advantage; Hugo's simpler operational model wins when Actions are baseline
 
 **Decision Outcome (2026-05-31):**
-- **Recommendation:** **Jekyll for Phase 1 MVP** (Data + Sloth consensus; Mikey documents Hugo rationale for Phase 2 migration path)
-- **Rationale:** Non-specialist maintainers (teachers, staff) benefit from GitHub-native editing, visible workflows, predictable failures, and lower Phase 1 friction. Operational resilience trade-off (Ruby maintenance burden) is accepted for contributor retention and simpler Phase 1 stabilization.
+- **Recommendation:** **Hugo from day one** (Data + Brand consensus; Sloth confirms accessibility neutral; Mikey aligns on product timeline; One-Eyed Willy security guardrails unchanged)
+- **Rationale:** Holger's explicit request for GitHub Action-based news publishing satisfies Data's threshold to switch. Phase 1 Jekyll advantage (native Pages, no Actions) evaporates. With Actions required regardless, Hugo's single-binary operational simplicity + elimination of 4–6 hr future migration cost + front-loaded setup (3–3.5 hrs) make Hugo the right choice from day one. Zero throwaway work before content exists.
 - **Architecture:**
-  - Hosting/build: GitHub Pages with native Jekyll
-  - Content: Markdown + front matter in `_posts/` or `_news` collection
+  - Hosting/build: GitHub Pages with Hugo deployed via GitHub Actions
+  - Content: Markdown + front matter in `content/` (homepage, informatik, ki sections, news/)
   - Editing: GitHub Web UI or PRs for content
-  - Automation: GitHub issue form → validation Action → moderation label → auto-rebuild
-  - Privacy: no PII fields, visible German privacy warning in issue template
+  - Automation: GitHub issue form → validation Action (anti-PII, field length) → moderation label (`freigegeben`) → auto-PR + merge → auto-rebuild
+  - Privacy: Issue Form has no PII fields; German privacy warning at top; Impressum + Datenschutzerklärung as static pages
+  - Validation: Action checks title ≤ 80 chars, summary ≤ 200 chars, regex anti-PII scan (email/phone patterns)
+  - Rollback: Delete/revert generated `.md` file → push to main → rebuild
 
 #### Privacy & Security Guardrails (Non-negotiable blockers)
 
@@ -63,11 +62,12 @@
 #### MVP Scope (Product & Timeline)
 
 **Phase 1 (MVP — 2 weeks):**
-- Platform: Static site generator (Jekyll or Hugo TBD)
-- Hosting: GitHub Pages
-- Publishing: GitHub Actions on issue creation
-- Deliver: Homepage + news + CS + AI sections + accessibility baseline + privacy baseline
+- Platform: Hugo (static site generator)
+- Hosting: GitHub Pages (Actions-based deploy)
+- Publishing: GitHub Actions on labeled issue creation (`freigegeben` label)
+- Deliver: Homepage + news + Informatik + KI sections + accessibility baseline + privacy baseline
 - **Out of scope:** Newsletter, advanced search, CMS UI
+- **Setup time:** ~3–3.5 hours front-loaded
 
 **Phase 2 (MVP+1 — 6 weeks after stable):**
 - Evaluate Decap CMS (optional UI editing)
