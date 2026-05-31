@@ -1,0 +1,34 @@
+<article class="news-card">
+  <div class="news-card__badges">
+    {{ if .Params.sample }}<span class="badge badge--sample">Beispiel</span>{{ end }}
+    {{ range .Params.categories }}
+      {{ $label := . }}
+      {{ $classMap := dict
+        "KI"          "ki"
+        "Informatik"  "informatik"
+        "Lernen"      "lernen"
+        "Eltern"      "eltern"
+        "Datenschutz" "datenschutz"
+        "Projektidee" "projektidee"
+        "Coding"      "coding"
+        "Tools"       "tools"
+      }}
+      {{ $class := index $classMap $label | default "tools" }}
+      <span class="badge badge--{{ $class }}">{{ $label }}</span>
+    {{ end }}
+  </div>
+  <h3 class="news-card__title">
+    <a href="{{ .RelPermalink }}" style="color:inherit;text-decoration:none;">{{ .Title }}</a>
+  </h3>
+  {{ with .Params.abstract }}
+  <p class="news-card__abstract">{{ . }}</p>
+  {{ end }}
+  <div class="news-card__meta">
+    <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02.01.2006" }}</time>
+    {{ with .Params.audiences }}
+      <span aria-hidden="true">&middot;</span>
+      <span>{{ delimit . ", " }}</span>
+    {{ end }}
+  </div>
+  <a class="news-card__link" href="{{ .RelPermalink }}">Weiterlesen</a>
+</article>

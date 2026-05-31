@@ -1,0 +1,153 @@
+{{- define "main" -}}
+
+{{- /* Sample content notice */}}
+{{ if site.Params.sampleSite }}
+<div class="sample-notice" role="note">
+  <strong>Hinweis:</strong> Diese Website befindet sich im Aufbau. Alle Beiträge sind als Beispielinhalt gekennzeichnet und stellen keine offizielle Schulkommunikation dar.
+</div>
+{{ end }}
+
+{{- /* ── HERO ──────────────────────────────────────────── */}}
+<section class="hero" aria-labelledby="hero-title">
+  <div class="container">
+    <div class="hero__inner">
+      <span class="hero__label">Gymnasium am Kaiserdom Speyer</span>
+      <h1 class="hero__title" id="hero-title">Digitales Lernen am Kaiserdom</h1>
+      <p class="hero__subtitle">
+        Informatik verstehen, KI verantwortungsvoll nutzen und gemeinsam Neues ausprobieren –
+        für Schülerinnen und Schüler, Lehrkräfte und Eltern.
+      </p>
+      <div class="hero__ctas">
+        <a class="btn btn--primary btn--lg" href="{{ "/informatik/" | relURL }}">Zu Digitales &amp; Informatik</a>
+        <a class="btn btn--outline-light btn--lg" href="{{ "/ki/" | relURL }}">Zu KI in der Schule</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{- /* ── AUDIENCE CARDS ──────────────────────────────── */}}
+<section class="audience-section" aria-labelledby="audience-title">
+  <div class="container">
+    <header class="section-header">
+      <p class="section-header__eyebrow">Für wen ist das?</p>
+      <h2 class="section-header__title" id="audience-title">Was bringt mir das?</h2>
+    </header>
+    <div class="audience-grid">
+
+      <article class="audience-card">
+        <div class="audience-card__icon" aria-hidden="true">🎒</div>
+        <h3 class="audience-card__title">Schülerinnen und Schüler</h3>
+        <p class="audience-card__text">
+          Entdecke Projekte, Tools und Ideen, mit denen du Programmieren, Daten und KI
+          praktisch ausprobieren kannst – verständlich erklärt und mit klaren nächsten Schritten.
+        </p>
+      </article>
+
+      <article class="audience-card">
+        <div class="audience-card__icon" aria-hidden="true">📚</div>
+        <h3 class="audience-card__title">Lehrkräfte</h3>
+        <p class="audience-card__text">
+          Finde Anregungen für Unterricht, AGs und Projektwochen – von Einstiegen in die Informatik
+          bis zu reflektierten KI-Methoden für den Schulalltag. Als Inspiration, nicht als Vorschrift.
+        </p>
+      </article>
+
+      <article class="audience-card">
+        <div class="audience-card__icon" aria-hidden="true">👨‍👩‍👧</div>
+        <h3 class="audience-card__title">Eltern</h3>
+        <p class="audience-card__text">
+          Erhalte Orientierung, wie digitale Themen und KI in Schule und Alltag wirken –
+          sachlich, nachvollziehbar und mit Blick auf Chancen und Risiken.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+{{- /* ── CONTENT PILLARS ─────────────────────────────── */}}
+<section class="pillars-section" aria-labelledby="pillars-title">
+  <div class="container">
+    <header class="section-header">
+      <p class="section-header__eyebrow">Themenbereiche</p>
+      <h2 class="section-header__title" id="pillars-title">Was findest du hier?</h2>
+    </header>
+    <div class="pillars-grid">
+
+      <article class="pillar-card">
+        <div class="pillar-card__icon" aria-hidden="true">💻</div>
+        <h3 class="pillar-card__title">Digitales &amp; Informatik</h3>
+        <p class="pillar-card__text">
+          Grundlagen, Tutorials und Projektideen rund um Coding, Daten, Algorithmen,
+          Medienkompetenz und digitale Werkzeuge.
+        </p>
+        <a class="pillar-card__link" href="{{ "/informatik/" | relURL }}">
+          Zu Digitales &amp; Informatik
+        </a>
+      </article>
+
+      <article class="pillar-card">
+        <div class="pillar-card__icon" aria-hidden="true">🤖</div>
+        <h3 class="pillar-card__title">KI in der Schule</h3>
+        <p class="pillar-card__text">
+          Verständliche Einstiege, Praxisideen und Leitfragen zum verantwortungsvollen
+          Umgang mit Künstlicher Intelligenz.
+        </p>
+        <a class="pillar-card__link" href="{{ "/ki/" | relURL }}">
+          Zu KI in der Schule
+        </a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+{{- /* ── LATEST NEWS ──────────────────────────────────── */}}
+<section class="news-section" aria-labelledby="news-title">
+  <div class="container">
+    <header class="section-header">
+      <p class="section-header__eyebrow">Aktuelles</p>
+      <h2 class="section-header__title" id="news-title">Neuigkeiten</h2>
+      <p class="section-header__lead">Aktuelle Beiträge, Impulse und Ideen aus dem GAK-Digital-Bereich.</p>
+    </header>
+
+    {{ $news := first 3 (where site.RegularPages "Section" "news") }}
+    {{ if $news }}
+    <div class="news-grid">
+      {{ range $news }}
+        {{ partial "news-card.html" . }}
+      {{ end }}
+    </div>
+    {{ else }}
+    <p class="news-empty">Noch keine Beiträge vorhanden. Bald mehr hier.</p>
+    {{ end }}
+
+    <div class="news-section__cta">
+      <a class="btn btn--outline" href="{{ "/news/" | relURL }}">Neuigkeiten ansehen</a>
+    </div>
+  </div>
+</section>
+
+{{- /* ── CONTRIBUTE ───────────────────────────────────── */}}
+<section class="contribute-section" aria-labelledby="contribute-title">
+  <div class="container">
+    <header class="section-header">
+      <p class="section-header__eyebrow">Mitmachen</p>
+      <h2 class="section-header__title" id="contribute-title">Eigene Ideen einbringen</h2>
+      <p class="section-header__lead">
+        Hast du eine Projektidee, einen Tool-Tipp oder einen Unterrichtsimpuls?
+        Schlage einen Beitrag vor – nach kurzer Prüfung wird er hier veröffentlicht.
+      </p>
+    </header>
+    <div class="flex-center mt-lg">
+      <a class="btn btn--primary btn--lg"
+         href="https://github.com/issues/new?template=news.yml"
+         target="_blank"
+         rel="noopener noreferrer">
+        Beitrag vorschlagen
+      </a>
+    </div>
+  </div>
+</section>
+
+{{- end -}}

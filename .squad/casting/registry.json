@@ -1,0 +1,67 @@
+{
+  "agents": {
+    "lead-product-coordinator": {
+      "persistent_name": "Mikey",
+      "universe": "The Goonies",
+      "created_at": "2026-05-31T10:16:22.644+02:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "technology-architect": {
+      "persistent_name": "Data",
+      "universe": "The Goonies",
+      "created_at": "2026-05-31T10:16:22.644+02:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "full-stack-implementer": {
+      "persistent_name": "Brand",
+      "universe": "The Goonies",
+      "created_at": "2026-05-31T10:16:22.644+02:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "german-content-editor": {
+      "persistent_name": "Mouth",
+      "universe": "The Goonies",
+      "created_at": "2026-05-31T10:16:22.644+02:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "pupil-reviewer": {
+      "persistent_name": "Chunk",
+      "universe": "The Goonies",
+      "created_at": "2026-05-31T10:16:22.644+02:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "teacher-reviewer": {
+      "persistent_name": "Andy",
+      "universe": "The Goonies",
+      "created_at": "2026-05-31T10:16:22.644+02:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "parent-reviewer": {
+      "persistent_name": "Stef",
+      "universe": "The Goonies",
+      "created_at": "2026-05-31T10:16:22.644+02:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "ux-accessibility-expert": {
+      "persistent_name": "Sloth",
+      "universe": "The Goonies",
+      "created_at": "2026-05-31T10:16:22.644+02:00",
+      "legacy_named": false,
+      "status": "active"
+    },
+    "security-privacy-advisor": {
+      "persistent_name": "One-Eyed Willy",
+      "universe": "The Goonies",
+      "created_at": "2026-05-31T10:16:22.644+02:00",
+      "legacy_named": false,
+      "status": "active"
+    }
+  }
+}

@@ -1,0 +1,68 @@
+{{- define "main" -}}
+
+{{- /* Page hero */}}
+<section class="page-hero" aria-labelledby="page-title">
+  <div class="container">
+    <h1 class="page-hero__title" id="page-title">{{ .Title }}</h1>
+    {{ with .Params.lead }}
+    <p class="page-hero__lead">{{ . }}</p>
+    {{ end }}
+  </div>
+</section>
+
+{{- /* Idea cards from front matter */}}
+{{ with .Params.ideas }}
+<div class="page-content">
+  <div class="container">
+    <header class="section-header" style="text-align:left;margin-bottom:1.5rem;">
+      <p class="section-header__eyebrow">Beispielideen &amp; Impulse</p>
+      <h2 style="font-size:1.5rem;color:var(--c-primary);">Womit kann ich starten?</h2>
+    </header>
+    <div class="sample-notice" role="note">
+      <strong>Beispielinhalte:</strong> Die folgenden Ideen sind Musterbeispiele und keine verbindlichen Unterrichtsvorgaben.
+    </div>
+    <div class="idea-grid">
+      {{ range . }}
+      <article class="idea-card">
+        <div class="idea-card__icon" aria-hidden="true">{{ .icon }}</div>
+        <div class="idea-card__badge-row">
+          {{ range .badges }}
+            {{ $label := . }}
+            {{ $classMap := dict
+              "KI"          "ki"
+              "Informatik"  "informatik"
+              "Lernen"      "lernen"
+              "Eltern"      "eltern"
+              "Datenschutz" "datenschutz"
+              "Projektidee" "projektidee"
+              "Coding"      "coding"
+              "Tools"       "tools"
+              "Lehrkräfte"  "lehrkraefte"
+            }}
+            {{ $class := index $classMap $label | default "tools" }}
+            <span class="badge badge--{{ $class }}">{{ $label }}</span>
+          {{ end }}
+          <span class="idea-card__duration">{{ .duration }}</span>
+        </div>
+        <h3 class="idea-card__title">{{ .title }}</h3>
+        <p class="idea-card__desc">{{ .desc }}</p>
+        <p style="font-size:0.8rem;color:var(--c-text-muted);">Für: {{ .audience }}</p>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</div>
+{{ end }}
+
+{{- /* Markdown body */}}
+{{ with .Content }}
+<div class="page-content" style="padding-top:0;">
+  <div class="container">
+    <div class="page-content__body">
+      {{ . }}
+    </div>
+  </div>
+</div>
+{{ end }}
+
+{{- end -}}

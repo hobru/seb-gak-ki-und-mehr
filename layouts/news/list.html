@@ -1,0 +1,35 @@
+{{- define "main" -}}
+
+{{- /* News list header */}}
+<section class="news-list-header" aria-labelledby="news-list-title">
+  <div class="container">
+    <h1 class="news-list-header__title" id="news-list-title">{{ .Title }}</h1>
+    {{ with .Params.lead }}
+    <p class="news-list-header__lead">{{ . }}</p>
+    {{ end }}
+  </div>
+</section>
+
+{{- /* News list */}}
+<div class="news-list-section">
+  <div class="container">
+    {{ if site.Params.sampleSite }}
+    <div class="sample-notice" role="note">
+      <strong>Hinweis:</strong> Alle Beiträge mit dem Label „Beispiel" sind Musterbeiträge und stellen keine offizielle Schulkommunikation dar.
+    </div>
+    {{ end }}
+
+    {{ $pages := .Pages | default (where site.RegularPages "Section" "news") }}
+    {{ if $pages }}
+    <div class="news-list-grid mt-lg">
+      {{ range $pages.ByDate.Reverse }}
+        {{ partial "news-card.html" . }}
+      {{ end }}
+    </div>
+    {{ else }}
+    <p style="margin-top:2rem;">Noch keine Beiträge vorhanden. Bald mehr hier.</p>
+    {{ end }}
+  </div>
+</div>
+
+{{- end -}}

@@ -1,0 +1,39 @@
+baseURL = "/"
+languageCode = "de-DE"
+defaultContentLanguage = "de"
+title = "GAK Digital – Informatik & KI"
+
+[params]
+  description = "Informatik, KI und digitale Bildung am Gymnasium am Kaiserdom Speyer – für Schülerinnen und Schüler, Lehrkräfte und Eltern."
+  school      = "Gymnasium am Kaiserdom Speyer"
+  shortName   = "GAK Digital"
+  sampleSite  = true   # Set to false when site has real content
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = false
+
+[[menu.main]]
+  identifier = "home"
+  name       = "Start"
+  url        = "/"
+  weight     = 1
+
+[[menu.main]]
+  identifier = "informatik"
+  name       = "Digitales & Informatik"
+  url        = "/informatik/"
+  weight     = 2
+
+[[menu.main]]
+  identifier = "ki"
+  name       = "KI in der Schule"
+  url        = "/ki/"
+  weight     = 3
+
+[[menu.main]]
+  identifier = "news"
+  name       = "Neuigkeiten"
+  url        = "/news/"
+  weight     = 4

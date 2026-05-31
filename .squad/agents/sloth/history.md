@@ -44,4 +44,67 @@
 
 **Next:** Unblock issue template design (One-Eyed Willy), legal content (Impressum + Datenschutzerklärung), moderation gate wiring. Begin Phase 1 with Jekyll architecture.
 
+### 2026-05-31T17:53:42+02:00 — UX Direction for Day 1 Homepage ✓
+
+**Status:** ✓ **DELIVERED** — Comprehensive UX direction for first homepage implementation
+
+**Rationale:**
+- Team decided **Hugo from day 1** (superseding Jekyll; Data/Brand consensus; Actions automation justified the switch)
+- Sloth confirms accessibility guardrails are **framework-neutral**; Hugo + static CSS is fully WCAG 2.1 AA compatible
+- **UX focus:** Information architecture, visual tone, mobile-first layout, and accessibility constraints must guide implementation before coding starts
+
+**Homepage UX Direction Finalized:**
+
+**Information Architecture (One-Page Scroll, Three Sections):**
+- Hero + Quick Nav (3 cards: Informatik, KI, Aktuelles) → News Spotlight (3–4 latest) → CTA Band → Footer
+- Mobile-first: 1 column baseline; desktop: 3 columns for cards
+- 5-second IA test: Pupils find "What can I learn?" via hero CTAs or quick cards
+
+**Visual Tone:**
+- Calm, trustworthy (school context, no trendy decoration)
+- Color palette: Deep blue primary (#003d7a), teal secondary (#17a2b8), neutral grays
+- System fonts (no web font load friction), 1.6 line-height for readability
+- 8px grid for consistent spacing
+
+**Accessibility Guardrails (Non-Negotiable):**
+1. Color contrast ≥ 4.5:1 (WCAG AA)
+2. Semantic HTML (proper heading hierarchy h1→h2→h3)
+3. All images have descriptive alt text
+4. Skip link for screen readers
+5. Focus-visible outlines on all interactive elements
+6. Touch targets ≥ 44px × 44px
+7. Form labels associated with inputs (aria-label or `<label>`)
+8. `lang="de"` on `<html>` tag
+9. Lighthouse targets: Accessibility ≥95, Performance ≥85, SEO ≥90
+
+**Mobile Behavior (Mobile-First CSS Strategy):**
+- Base CSS for 320px (1 column, 16px padding)
+- @media (min-width: 600px) for tablet (2 columns)
+- @media (min-width: 1024px) for desktop (3 columns, max-width 1200px, centered)
+- Hero: stacked on mobile, CTAs ≥ 48px height
+- News cards: full-width, image above text on mobile
+- Footer: stacked link groups (no multi-column on mobile)
+- Lazy-load images; system fonts; no animations on load
+
+**Layout Recommendation for Hugo:**
+- Single CSS file (~500–800 lines) with CSS Grid + variables
+- No framework overhead; vanilla JS for hamburger menu only
+- Hugo template structure: layouts/ for templates, content/ for pages, static/ for assets
+- Responsive images with Hugo's built-in processing
+- Issue-to-news cards: use Hugo `{{ range first 4 }}` front matter; title, summary, date
+
+**Success Metrics:**
+- Lighthouse Accessibility ≥95; Performance ≥85 (mobile 4G)
+- Pupils find "What can I learn?" in <5 seconds
+- News published in <5 min (issue → live)
+- WCAG 2.1 AA pass on keyboard, screen reader, mobile
+
+**Key Outcome for Brand/Implementation Team:**
+UX direction is **implementable in one first version** with Hugo + static CSS. No custom infrastructure needed. Accessibility baked into IA and CSS strategy from Day 1, not bolted on later. Three-audience IA (pupils, teachers, parents) balanced with low editorial friction (news via GitHub issue).
+
+**Learning for Sloth:**
+- Hugo platform choice is **acceleration, not risk** for accessibility: static HTML, no runtime dependencies, clean template architecture simplifies WCAG 2.1 AA compliance
+- **Mobile-first CSS strategy** (not mobile breakpoints added last) cuts responsive bugs and improves perceived performance
+- **Accessibility as IA principle** (not afterthought): heading hierarchy, skip links, semantic roles must be in Day 1 template, not retrofitted in Week 3
+
 
