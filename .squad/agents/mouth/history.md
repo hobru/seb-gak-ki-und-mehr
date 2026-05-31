@@ -35,3 +35,17 @@
 - Non-technical contributors can edit via GitHub Web UI + preview without git
 - Moderation gate (Phase 1: manual `sample: false` flag; Phase 2: automated approval workflow)
 
+### SEB Ownership Reframing (2026-05-31)
+
+**Context:** User clarified that the site is created by the Schulelternbeirat (SEB) des Gymnasiums am Kaiserdom, not official school communication. Site must be explicitly repositioned to reflect this independent, parent-led initiative.
+
+**Guidance produced:** `.squad/decisions/inbox/mouth-seb-positioning.md`
+
+**Key learnings:**
+- **Ownership clarity prevents reputational risk:** Explicitly naming SEB in hero, footer, logo, and README avoids any impression of false school authority
+- **Legal distinction matters:** SEB = independent parent council; communications are parent-association output, not school policy
+- **Transparency builds trust:** Visitors immediately understand who authored content (parents, not school bureaucracy)
+- **Multi-touchpoint reinforcement needed:** Hero + footer + logo + legal pages + config all must consistently reference SEB to avoid contradictory messaging
+- **Persona structure survives reframe:** Three audiences (pupils/teachers/parents) and three content pillars remain effective; only attribution language changes
+- **Phrases to audit:** Content claims like "Finde Anregungen für Unterricht" (implies school authority) should become "Entdecke Anregungen... vom Schulelternbeirat" (signals parent sourcing)
+

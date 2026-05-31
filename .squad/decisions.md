@@ -248,6 +248,58 @@ Deploy to GitHub Pages:
 
 ---
 
+## SEB Positioning & Ownership Clarification (2026-05-31)
+
+**Status:** Decided & implemented | **Commits:** fa67966, 40e2d6f  
+**Responsible:** Mouth (guidance), Brand (implementation)  
+**Requested by:** Holger Bruchelt
+
+### Background
+
+Holger clarified that the website must be presented as created and maintained by the **Schulelternbeirat (SEB) des Gymnasiums am Kaiserdom Speyer**, not as official school communication.
+
+### Decision
+
+The site is reframed throughout as a **Schulelternbeirat initiative**, paralleling the SEB-only model at https://seb-shgym-diez.de/. All official-sounding claims are removed.
+
+### What Changed
+
+**Site identity:**
+- Header: "Schulelternbeirat des Gymnasiums am Kaiserdom Speyer"
+- Hero: "Digitales Lernen – von Eltern für Schule und Familie"
+- Footer: "© 2026 Schulelternbeirat des Gymnasiums am Kaiserdom Speyer" + disclaimer: "Diese Website ist ein Projekt des Schulelternbeirats und stellt keine offizielle Schulkommunikation dar."
+- Legal pages (Impressum, Datenschutz): SEB authorship
+- README.md: "GAK Digital – Schulelternbeirat des Gymnasiums am Kaiserdom Speyer"
+- hugo.toml: `title = "GAK Digital – Schulelternbeirat"`, new param `seb_disclaimer` for reuse
+
+**Phrases to avoid/replace:**
+- ❌ "Offizielle Seite des Gymnasiums am Kaiserdom" → ✅ "Ein Projekt des Schulelternbeirats"
+- ❌ "Vom Gymnasium" (alone) → ✅ "Vom Schulelternbeirat"
+- ❌ "Schulische Initiative" (implying authority) → ✅ "Eine Initiative der Eltern"
+
+### Implementation Checklist
+
+- ✅ Hero label & title updated (Option A: Full SEB attribution + "von Eltern für Schule und Familie")
+- ✅ Header logo & site branding changed to SEB
+- ✅ Footer copyright & disclaimer added
+- ✅ Sample-site notice emphasizes SEB origin
+- ✅ README.md updated
+- ✅ hugo.toml title, description, school param, shortName, seb_disclaimer all updated
+- ✅ Impressum & Datenschutz responsible parties updated to SEB
+- ⏳ Pending: Supply SEB chair name, address, e-mail for Impressum (Holger / SEB)
+- ⏳ Pending: Supply SEB contact for Datenschutz responsible party (Holger / SEB)
+- ⏳ Pending: Confirm final wording of `seb_disclaimer` with SEB board (Holger / Mouth)
+
+### Build Verification
+
+Hugo build: 34 pages, 180 ms, zero warnings ✓
+
+### Rationale
+
+Clear ownership avoids legal/reputational risk. Transparency about SEB authorship is more trustworthy than school-branded unofficial content. The SEB remains the neutral, parent-led voice for digital literacy without claiming school authority.
+
+---
+
 ## Governance
 
 - All meaningful changes require team consensus
