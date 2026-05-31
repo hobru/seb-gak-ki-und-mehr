@@ -6,14 +6,13 @@ layout: "single"
 
 ## Datenschutzerklärung
 
-**Hinweis:** Diese Datenschutzerklärung ist ein Platzhalter und muss vor der Veröffentlichung durch eine rechtlich geprüfte Version ersetzt werden (DSGVO / BDSG).
-
 Diese Website ist ein Projekt des **Schulelternbeirats des Gymnasiums am Kaiserdom Speyer** und stellt keine offizielle Schulkommunikation dar.
 
 ### Verantwortliche Stelle
 
+Holger Bruchelt  
 Schulelternbeirat des Gymnasiums am Kaiserdom Speyer  
-[Anschrift eintragen]  
+Carl-Dupre-Str. 5  
 67346 Speyer
 
 ### Erhebung und Verarbeitung personenbezogener Daten
@@ -36,7 +35,8 @@ Eine Anmeldung zu Newslettern oder anderen Diensten ist auf dieser Website **nic
 ### Kontakt bei Datenschutzfragen
 
 Wenden Sie sich bei Fragen zum Datenschutz an:  
-[Datenschutzbeauftragten oder Schulleitung eintragen]
+Holger Bruchelt, Schulelternbeirat des Gymnasiums am Kaiserdom Speyer  
+E-Mail: seb-at-gak-speyer.de
 
 ### Änderungen
 

@@ -104,7 +104,35 @@
 
 **Decision implication:** A decision inbox entry was written recommending the team reconsider Jekyll Phase 1 in light of Holger's explicit acceptance of custom Actions and preference to avoid a Phase 2 migration.
 
-### 2026-05-31 — SEB Ownership Rebranding (Commit fa67966)
+
+### 2026-05-31 — Structural Update: Menu Order, News Position, Impressum, SEB Link
+
+**Trigger:** Holger Bruchelt requested four specific improvements.
+
+**Changes implemented (6 files):**
+
+1. **`hugo.toml`** — Reordered menu weights: Neuigkeiten → weight 2 (was 4); Digitales & Informatik → weight 3 (was 2); KI in der Schule → weight 4 (was 3). Start (1) and Mitmachen (5) unchanged.
+
+2. **`layouts/index.html`** — Moved Neuigkeiten/Aktuelles section immediately after hero, before audience cards and pillars. Section order is now: Hero → News → Audience Cards → Pillar Cards → Contribute CTA → Footer. Aligns with Sloth's UX recommendation in `.squad/decisions/inbox/sloth-news-first-ux.md`.
+
+3. **`content/impressum/_index.md`** — Replaced all placeholders with real details: name Holger Bruchelt, address Carl-Dupre-Str. 5, 67346 Speyer. Email displayed as obfuscated text `seb-at-gak-speyer.de` (no mailto link). Added link to official GAK SEB page. Removed placeholder warning banner.
+
+4. **`layouts/partials/footer.html`** — Added "Offiz. SEB-Seite" link to `https://gak-speyer.de/menschen-am-gak/schulelternbeirat` with `target="_blank" rel="noopener noreferrer"` in footer links list.
+
+5. **`content/datenschutz/_index.md`** — Aligned with Impressum: replaced address placeholder and GDPR contact placeholder with Holger Bruchelt details; removed placeholder banner. Required by One-Eyed Willy pre-launch blocker.
+
+**Build result:** `hugo --minify` → 34 pages, 207ms, zero warnings ✓
+
+**Decisions followed:**
+- Sloth UX inbox: news-first navigation and homepage ordering ✓
+- One-Eyed Willy inbox: email as obfuscated text, `rel="noopener noreferrer"` on external link ✓
+- Logo NOT added — awaiting One-Eyed Willy rights/privacy review ✓
+
+**Committed:** Yes — safe structural update with no content or external dependencies pending.
+
+**Pattern learned:** When One-Eyed Willy flags Impressum + Datenschutz as coupled pre-launch blockers, filling one requires updating the other in the same commit to maintain consistency (data controller name/address must match across both pages).
+
+
 
 **Trigger:** Holger Bruchelt clarified that the site is created by the **Schulelternbeirat (SEB) des Gymnasiums am Kaiserdom Speyer**, not an official school page — analogous to https://seb-shgym-diez.de/.
 

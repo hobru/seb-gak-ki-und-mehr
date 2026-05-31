@@ -22,21 +22,21 @@ title = "GAK Digital – Schulelternbeirat"
   weight     = 1
 
 [[menu.main]]
+  identifier = "news"
+  name       = "Neuigkeiten"
+  url        = "/news/"
+  weight     = 2
+
+[[menu.main]]
   identifier = "informatik"
   name       = "Digitales & Informatik"
   url        = "/informatik/"
-  weight     = 2
+  weight     = 3
 
 [[menu.main]]
   identifier = "ki"
   name       = "KI in der Schule"
   url        = "/ki/"
-  weight     = 3
-
-[[menu.main]]
-  identifier = "news"
-  name       = "Neuigkeiten"
-  url        = "/news/"
   weight     = 4
 
 [[menu.main]]

@@ -6,25 +6,30 @@ layout: "single"
 
 ## Impressum
 
-**Hinweis:** Dieses Impressum ist ein Platzhalter und muss vor der Veröffentlichung durch die offiziellen Angaben des Schulelternbeirats ersetzt werden (§ 5 TMG).
-
 Diese Website ist ein Projekt des **Schulelternbeirats des Gymnasiums am Kaiserdom Speyer** und stellt keine offizielle Schulkommunikation dar.
 
 ### Angaben gemäß § 5 TMG
 
-Schulelternbeirat des Gymnasiums am Kaiserdom Speyer  
-[Straße und Hausnummer eintragen]  
+Holger Bruchelt  
+Carl-Dupre-Str. 5  
 67346 Speyer
 
 **Vertreten durch:**  
-[Name der/des SEB-Vorsitzenden eintragen]
+Holger Bruchelt
 
 **Kontakt:**  
-E-Mail: [E-Mail-Adresse des SEB eintragen]
+E-Mail: seb-at-gak-speyer.de
 
 ### Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV
 
-[Name und Anschrift der verantwortlichen Person im SEB eintragen]
+Holger Bruchelt  
+Carl-Dupre-Str. 5  
+67346 Speyer
+
+### Offizieller Schulelternbeirat
+
+Weitere Informationen zum Schulelternbeirat des Gymnasiums am Kaiserdom Speyer finden Sie auf der offiziellen GAK-Website:  
+[gak-speyer.de – Schulelternbeirat](https://gak-speyer.de/menschen-am-gak/schulelternbeirat)
 
 ### Haftungsausschluss
 

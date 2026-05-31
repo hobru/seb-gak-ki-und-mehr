@@ -25,6 +25,32 @@
   </div>
 </section>
 
+{{- /* ── LATEST NEWS ──────────────────────────────────── */}}
+<section class="news-section" aria-labelledby="news-title">
+  <div class="container">
+    <header class="section-header">
+      <p class="section-header__eyebrow">Aktuelles</p>
+      <h2 class="section-header__title" id="news-title">Neuigkeiten</h2>
+      <p class="section-header__lead">Aktuelle Beiträge, Impulse und Ideen aus dem GAK-Digital-Bereich.</p>
+    </header>
+
+    {{ $news := first 3 (where site.RegularPages "Section" "news") }}
+    {{ if $news }}
+    <div class="news-grid">
+      {{ range $news }}
+        {{ partial "news-card.html" . }}
+      {{ end }}
+    </div>
+    {{ else }}
+    <p class="news-empty">Noch keine Beiträge vorhanden. Bald mehr hier.</p>
+    {{ end }}
+
+    <div class="news-section__cta">
+      <a class="btn btn--outline" href="{{ "/news/" | relURL }}">Neuigkeiten ansehen</a>
+    </div>
+  </div>
+</section>
+
 {{- /* ── AUDIENCE CARDS ──────────────────────────────── */}}
 <section class="audience-section" aria-labelledby="audience-title">
   <div class="container">
@@ -99,32 +125,6 @@
         </a>
       </article>
 
-    </div>
-  </div>
-</section>
-
-{{- /* ── LATEST NEWS ──────────────────────────────────── */}}
-<section class="news-section" aria-labelledby="news-title">
-  <div class="container">
-    <header class="section-header">
-      <p class="section-header__eyebrow">Aktuelles</p>
-      <h2 class="section-header__title" id="news-title">Neuigkeiten</h2>
-      <p class="section-header__lead">Aktuelle Beiträge, Impulse und Ideen aus dem GAK-Digital-Bereich.</p>
-    </header>
-
-    {{ $news := first 3 (where site.RegularPages "Section" "news") }}
-    {{ if $news }}
-    <div class="news-grid">
-      {{ range $news }}
-        {{ partial "news-card.html" . }}
-      {{ end }}
-    </div>
-    {{ else }}
-    <p class="news-empty">Noch keine Beiträge vorhanden. Bald mehr hier.</p>
-    {{ end }}
-
-    <div class="news-section__cta">
-      <a class="btn btn--outline" href="{{ "/news/" | relURL }}">Neuigkeiten ansehen</a>
     </div>
   </div>
 </section>
