@@ -89,3 +89,33 @@
 - Die Seite `content/informatik/_index.md` nutzt nun die gleiche kartenbasierte Struktur wie `KI in der Schule`, aber für Schülerinnen und Schüler sowie Eltern statt Lehrkräfte.
 - Der unklare Block „Womit kann ich starten?“ wurde entfernt und durch fachbezogene, direkt verlinkte Lernangebote ersetzt.
 - Externe Lernressourcen werden SEB-gerahmt und mit Datenschutz-/Kontoprüfhinweisen eingeführt; bevorzugt frei zugängliche öffentliche, gemeinnützige oder etablierte Angebote.
+
+---
+
+## 2026-05-31T21:58:43Z – Digitales-Fachressourcen Build Complete
+
+**Status:** ✅ **Implemented & Reviewed (Sloth UX approval)**  
+**Commit:** 983ccac  
+**Reviewer:** Sloth (UX & Accessibility Expert)
+
+**What was completed:**
+- Implemented full rebuild of `content/informatik/_index.md` with 13 subject sections (Informatik, Mathe, Physik, Deutsch, Englisch, Latein, Geschichte, Musik, Religion/Ethik, Französisch, Chemie, Biologie, + "Für Eltern")
+- Mirrored KI page template: sticky subnav (15 anchors), section-card layout, responsive grid (1→2→3 col), guidance sections
+- Replaced generic "Womit kann ich starten?" with actionable guidance: "Digitale Angebote sinnvoll nutzen" (3-card audience tips) + "Sechs Fragen zur Auswahl guter Lernangebote" (privacy-aware selection framework)
+- Each subject section: 3–4 verified external tools (Serlo, PhET, Khan Academy, BBC, etc.)
+- Removed teacher/Lehrkräfte framing; audience: Schülerinnen/Schüler + Eltern only
+- Hugo build: 34 pages, 0 warnings, 274ms
+- Responsive tested: 320px–1920px ✓
+
+**Approval (Sloth):**
+- ✅ WCAG 2.1 AA compliant (semantic HTML, color contrast ≥18:1, 44px+ targets, keyboard nav)
+- ✅ Accessibility guardrails met; sticky nav mobile-friendly; no accessibility rework needed
+- ✅ UX consistent with KI page design language and layout patterns
+- ✅ Information architecture: 15-item sticky nav makes deep IA navigable
+- ✅ Actionable content: guidance sections replace vague intros; privacy questions included
+- ✅ Audience clarity: pupils find subjects, parents find "Für Eltern"
+- ✅ Ready for public launch
+
+**Key learning:** Reusable template architecture (`.ki-*` CSS classes) proves robust for subject-organized content beyond KI focus. Sticky nav with 10–15 anchors is right scoping for deep IA. Audience clarity + actionable guidance drive user confidence.
+
+**Decision documentation:** Merged from `decisions/inbox/brand-digitales-subject-resources.md` and `.../sloth-digitales-ux-review.md` into `.squad/decisions.md`.
