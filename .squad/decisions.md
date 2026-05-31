@@ -827,3 +827,50 @@ All 16 links verified live, German-language (or German-accessible), school-appro
 **Request:** On the KI in der Schule page, the Einstieg & Überblick section should start with the critical-use disclaimer and then go directly into Google NotebookLM as an actionable KI learning assistant. Avoid non-actionable overview content without links or further documentation.
 
 **Rationale:** User reviewed the migrated KI page and wants the Einstieg section to be useful immediately (action-focused, not informational).
+
+---
+
+## Implemented: KI Page — Disclaimer First, NotebookLM as First Actionable Content (2026-05-31)
+
+**By:** Brand (Holger Bruchelt request)  
+**Status:** ✅ Implemented  
+**Commit:** 43774dd (bundled with scribe session commit)
+
+### Changes
+
+- `content/ki/_index.md`: Updated `intro:` to user's exact text with "du" address form and "Wichtig:" lead
+- `layouts/ki/list.html`: Removed non-actionable idea-card grid ("Einstieg & Überblick / Womit kann ich starten?") from the template. The data (`ideas:`) remains in front matter but is no longer rendered
+- Page flow after change: Disclaimer → NotebookLM → remaining tool sections → Prompting → Leitfragen
+- Subnav unchanged — already started with NotebookLM (derived from `tool_sections[0]`)
+
+### Rationale
+
+The idea cards had no links and no further documentation, creating a wall of non-actionable content before the first useful tool (NotebookLM). All topics covered by the cards are already addressed in the tool sections below.
+
+### Build
+
+34 pages, 0 warnings, 116ms ✓
+
+---
+
+## Implemented: KI Page Bottom Sections UX Polish (2026-05-31)
+
+**By:** Brand  
+**Status:** ✅ Completed & deployed  
+**Commit:** 3396367
+
+### Decision
+
+Render the KI page bottom sections (audience guidance and responsible-use Leitfragen) from structured front matter into the same card/section system used above the page.
+
+### Rationale
+
+The KI page already teaches users through scannable cards, icon-led section headings, and compact grids. Keeping the bottom guidance in plain Markdown made important SEB framing feel less actionable and visually weaker. Structured front matter keeps future edits simple while preserving consistent UX.
+
+### Scope
+
+Applies to `content/ki/_index.md`, `layouts/ki/list.html`, and KI-specific CSS only. No broader redesign or new service dependency.
+
+### Build
+
+Hugo build successful; changes staged and committed.
