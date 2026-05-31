@@ -10,7 +10,41 @@
 
 ## Learnings
 
-### 2026-05-31 — Hugo Real-Project Feasibility Assessment
+### 2026-05-31 — Hugo Site v1 Implemented and Built
+
+**Trigger:** Holger Bruchelt requested the first version of the GAK Digital homepage.
+
+**What was built:**
+- `hugo.toml` with German locale, nav menu (Start / Digitales & Informatik / KI / Neuigkeiten)
+- `content/`: Homepage, Informatik section, KI section, News section (3 sample posts), Impressum placeholder, Datenschutz placeholder
+- `layouts/`: Custom baseof, homepage (index.html), single, list, section-specific layouts (informatik, ki, news), partials (header, footer, news-card)
+- `static/css/style.css`: ~550 lines, responsive mobile-first, CSS custom properties, WCAG AA colour contrast, skip link, visible focus rings, card hover states
+- `.github/workflows/deploy.yml`: GitHub Pages via peaceiris/actions-hugo (SHA-pinned)
+- `README.md`: Build, run, deploy, and contribution instructions
+
+**Design decisions:**
+- No external theme dependency — full custom layouts and CSS. Every contributor can read and change it.
+- Badge/category system: `badge--ki`, `badge--informatik`, etc., mapped from front matter `categories` array via template dict.
+- Idea cards for Informatik and KI sections stored in front matter (`ideas:` list) so content editors update YAML, not HTML.
+- Sample content notice banner controlled by `site.Params.sampleSite` bool in `hugo.toml`.
+- Date format: DD.MM.YYYY (German standard, no month names to avoid i18n complexity).
+
+**Build result:** `hugo v0.134.3`, 32 pages, 68ms, zero warnings.
+
+**One-Eyed Willy requirements honoured:**
+- No PII collected; no analytics; no cookies
+- Impressum + Datenschutz pages present (as legal placeholders)
+- External links need `rel="noopener noreferrer"` — template adds this where needed
+- GitHub Actions SHA-pinned
+
+**Deferred (as agreed):**
+- Issue → News GitHub Action workflow (structure ready: `content/news/` YAML front matter matches future pipeline)
+- Real Impressum/Datenschutz legal text (placeholder until school provides)
+- Newsletter / PII features
+
+**Key learning:** Putting structured data (idea cards) in front matter instead of template HTML keeps the barrier to editing low for non-technical school contributors. The `dict` lookup in templates for CSS class mapping avoids a partial proliferation.
+
+
 
 **Trigger:** Holger Bruchelt asked whether we should skip the Jekyll MVP and start directly with Hugo, given Hugo is the long-term recommendation.
 

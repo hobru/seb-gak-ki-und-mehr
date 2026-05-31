@@ -1,0 +1,63 @@
+name: "News- oder Beitragsvorschlag"
+description: "Einen Vorschlag für GAK Digital einreichen. Veröffentlichung erst nach redaktioneller Prüfung."
+title: "[Beitrag]: "
+labels: ["news-vorschlag"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Danke für den Vorschlag! Bitte keine personenbezogenen Daten eintragen.
+        Die Issue Form veröffentlicht nichts automatisch auf der Website.
+  - type: input
+    id: title
+    attributes:
+      label: "Titel"
+      description: "Kurzer, verständlicher Titel des Beitrags."
+      placeholder: "Beispiel: KI-Begriffe einfach erklärt"
+    validations:
+      required: true
+  - type: textarea
+    id: abstract
+    attributes:
+      label: "Kurzbeschreibung"
+      description: "Worum geht es? Maximal zwei kurze Sätze."
+      placeholder: "Ein kurzer Einstieg in ..."
+    validations:
+      required: true
+  - type: dropdown
+    id: audience
+    attributes:
+      label: "Zielgruppe"
+      multiple: true
+      options:
+        - "Schülerinnen und Schüler"
+        - "Lehrkräfte"
+        - "Eltern"
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: "Kategorie"
+      multiple: true
+      options:
+        - "KI"
+        - "Informatik"
+        - "Lernen"
+        - "Projektidee"
+        - "Tools"
+        - "Datenschutz"
+        - "Eltern"
+    validations:
+      required: true
+  - type: input
+    id: link
+    attributes:
+      label: "Optionaler Link"
+      description: "Nur Links eintragen, die öffentlich zugänglich und passend sind."
+      placeholder: "https://..."
+  - type: textarea
+    id: notes
+    attributes:
+      label: "Hinweise für die Redaktion"
+      description: "Gibt es etwas zu beachten, z. B. Aktualität, Quelle oder gewünschter Zeitraum?"

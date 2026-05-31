@@ -37,3 +37,9 @@ title = "GAK Digital – Informatik & KI"
   name       = "Neuigkeiten"
   url        = "/news/"
   weight     = 4
+
+[[menu.main]]
+  identifier = "mitmachen"
+  name       = "Mitmachen"
+  url        = "/mitmachen/"
+  weight     = 5

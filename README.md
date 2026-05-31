@@ -49,6 +49,8 @@ content/
 ├── news/              # Neuigkeiten / Beiträge
 │   ├── _index.md
 │   └── YYYY-MM-DD-titel.md   # einzelne Beiträge
+├── mitmachen/         # Beitrag vorschlagen / Redaktionsprozess
+│   └── _index.md
 ├── impressum/
 │   └── _index.md
 └── datenschutz/
@@ -56,6 +58,8 @@ content/
 ```
 
 ## Neuen Beitrag hinzufügen
+
+Über die Seite `/mitmachen/` können Beitragideen vorbereitet werden. Sobald das GitHub-Repository öffentlich konfiguriert ist, kann dafür die Issue Form `.github/ISSUE_TEMPLATE/news.yml` genutzt werden. Sie erstellt nur Vorschläge; veröffentlicht wird nichts automatisch ohne redaktionelle Prüfung.
 
 Erstelle eine neue Datei in `content/news/`:
 
