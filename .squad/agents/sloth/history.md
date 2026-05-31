@@ -146,4 +146,96 @@ UX direction is **implementable in one first version** with Hugo + static CSS. N
 
 **Key learning:** Sloth's early IA guidance prevented accessibility rework. Static HTML + clean CSS + semantic markup from day 1 makes WCAG 2.1 AA compliance straightforward.
 
+### 2026-05-31: UX Direction — News-First Homepage & KI-an-der-Schule Inspired Design
+
+**Status:** ✅ UX Direction Delivered  
+**Requested by:** Holger Bruchelt  
+**Outcome:** Comprehensive design direction written (not implemented; for Brand review)
+
+**Request Summary:**
+1. Menu: Move Neuigkeiten to 2nd position (after Start)
+2. Homepage: Move Aktuelles/Neuigkeiten section to top (above audience cards)
+3. KI & Informatik pages: Draw design inspiration from https://hobru.github.io/KI-an-der-Schule/ (not copy)
+4. Define card styling, accessibility guardrails, mobile behavior
+5. Specify GAK logo + SEB link placement/strategy
+
+**UX Analysis & Direction:**
+
+**Navigation Reordering Rationale:**
+- News signals liveness and active curation (pupils/teachers/parents expect "What's new?" early)
+- Aligns with GitHub issue→news automation (news is primary content stream, not afterthought)
+- Matches mental models from school news sites (e.g., hobru places resources before topic deep-dives)
+- Mobile scanning behavior: Users check news before exploring content sections
+
+**Homepage Section Flow (New):**
+1. Hero (unchanged)
+2. **Latest News Spotlight** (NEW POSITION) — 2–3 latest articles + headline + dates
+3. Audience Cards (personas: pupils/teachers/parents)
+4. Pillar Cards (Informatik + KI teasers)
+5. Contribute CTA
+6. Footer
+
+**Design Inspiration from KI-an-der-Schule (Adapt, Not Copy):**
+- **Structure:** Icon-led cards (emoji + title + description)
+- **Copy tone:** Action-focused, benefit-led ("Herleitungen verstehen" vs. "Text summarization")
+- **Minimal decoration:** Clean typography, whitespace, no stock photos
+- **Audience transparency:** Mark who each card targets (badges or implicit)
+- **Scannability:** Keep descriptions ≤80 chars; 6–12 cards max per section
+
+**GAK Differentiation:**
+- hobru: Self-contained tutorials for pupils
+- GAK: Curated resource list for 3 audiences (pupils/teachers/parents)
+- *Implication:* GAK cards are prompts-to-explore, not lessons; hobru cards are lessons
+- *Implication:* GAK requires audience tags; hobru implicit (pupil-first voice)
+- *Implication:* GAK prioritizes DSGVO-safe tools; hobru emphasizes convenience
+
+**Card Styling Refinement:**
+- Add **audience badges** (span with `font-size: 0.75rem`, uppercase, muted text)
+- Reduce visual weight: Replace 6px shadow with 1px border (#e0ddd5)
+- Trim descriptions to ≤80 chars (currently 90–140)
+- Mobile-first layout: 1 col (320px) → 2 col (600px) → 3 col (1024px)
+
+**Accessibility Guardrails (Confirmed WCAG 2.1 AA Compatible):**
+- ✅ Semantic HTML (section/article/nav/header/footer)
+- ✅ Heading hierarchy (h1→h2→h3)
+- ✅ Color contrast ≥4.5:1 (body text #1c1c1e on #f7f6f2 = ~18:1)
+- ✅ Touch targets ≥44px; focus outlines 3px offset
+- ✅ Emoji as decorative: aria-hidden="true"
+- ✅ Skip link present
+- ✅ Form labels explicit or aria-label
+- ✅ Lighthouse targets: Accessibility ≥95, Performance ≥85
+
+**Mobile Behavior (Refinement):**
+- Hamburger menu on mobile; inline above 600px if space
+- Hero: 60vh, centered text, stacked CTAs (≥48px height)
+- Cards: 1 col mobile → 2 col tablet → 3 col desktop (max-width 1180px, centered)
+- News cards: Minimal (time + title + link), full-width on mobile, grid on desktop
+- No horizontal scroll at any breakpoint; readable at 320px
+
+**SEB Link Placement (Ranked):**
+1. **Option A (Recommended):** Footer, left-aligned
+   - Text: "Schulelternbeirat des Gymnasiums am Kaiserdom Speyer"
+   - URL: https://gak-speyer.de/menschen-am-gak/schulelternbeirat
+   - Attributes: `target="_blank" rel="noopener noreferrer"`
+   - *Rationale:* Clear ownership, not intrusive, aligns with footer pattern
+   
+2. Option B: Footer, branded button (CTA emphasis)
+3. Option C: Hero (immediate visibility, but competing CTA)
+
+**Implementation Checklist for Brand:**
+1. Menu weights: Start(1), Neuigkeiten(2), Informatik(3), KI(4), Mitmachen(5)
+2. Homepage: Reorder sections in layouts/index.html (news before audience)
+3. Card styling: Add audience badges; reduce shadow; trim copy
+4. Footer: Add SEB link with proper attributes
+5. QA: Lighthouse ≥95, mobile test (320–1920px), keyboard nav, screen reader
+
+**Key Learning for Sloth:**
+- **News-first IA** is not a trendy pivot; it's a fundamental signal of site liveness and relevance to pupils/teachers/parents
+- **Design inspiration vs. copying** requires explicit differentiation: GAK (3-audience resource list) ≠ hobru (pupil tutorials). Audience is the differentiator.
+- **Card styling details matter:** Badges, copy length, shadow vs. border, emoji treatment all contribute to "feels curated and accessible" vs. "feels generic and heavy"
+- **Accessibility + simplicity are the same goal:** WCAG 2.1 AA compliance requires semantic HTML, clear hierarchy, and minimal decoration — exactly what hobru demonstrates visually
+- **SEB transparency is a trust signal:** Footer link back to school SEB page reassures parents/teachers that site is accountable to school community
+
+**Outcome:** Complete UX direction document written to `.squad/decisions/inbox/sloth-news-first-ux.md`. Ready for Brand implementation review. No file edits made; direction is prescriptive but allows implementation flexibility.
+
 

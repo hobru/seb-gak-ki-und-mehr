@@ -38,3 +38,7 @@ Die Inhalte dieser Website wurden mit größtmöglicher Sorgfalt vom Schuleltern
 ### Externe Links
 
 Diese Website enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber verantwortlich.
+
+### Quellenhinweis
+
+Teile der Inhalte auf der KI-Seite sind inspiriert von [KI an der Schule](https://hobru.github.io/KI-an-der-Schule/) von Holger Bruchelt, veröffentlicht unter [hobru.github.io/KI-an-der-Schule/](https://hobru.github.io/KI-an-der-Schule/). Die Inhalte wurden mit Zustimmung des Autors übernommen und für den SEB-Kontext angepasst.

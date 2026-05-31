@@ -10,15 +10,37 @@
   </div>
 </section>
 
-{{- /* Idea cards from front matter */}}
-{{ with .Params.ideas }}
+{{- /* In-page anchor navigation */}}
+{{ with .Params.tool_sections }}
+<nav class="ki-subnav" aria-label="Abschnitte dieser Seite">
+  <ul class="ki-subnav__list">
+    {{ range . }}
+    <li><a href="#{{ .id }}">{{ .icon }} {{ .nav_label | default .title }}</a></li>
+    {{ end }}
+    <li><a href="#prompting">✏️ Richtig Prompten</a></li>
+    <li><a href="#leitfragen">🧭 Leitfragen</a></li>
+  </ul>
+</nav>
+{{ end }}
+
 <div class="page-content">
   <div class="container">
+
+    {{- /* Intro / warning box */}}
+    {{ with .Params.intro }}
+    <div class="ki-intro-box" role="note">
+      <span class="ki-intro-box__emoji" aria-hidden="true">⚠️</span>
+      <p>{{ . | markdownify }}</p>
+    </div>
+    {{ end }}
+
+    {{- /* Starter idea-cards */}}
+    {{ with .Params.ideas }}
     <header class="section-header" style="text-align:left;margin-bottom:1.5rem;">
-      <p class="section-header__eyebrow">Ideen &amp; Impulse</p>
+      <p class="section-header__eyebrow">Einstieg &amp; Überblick</p>
       <h2 style="font-size:1.5rem;color:var(--c-primary);">Womit kann ich starten?</h2>
     </header>
-    <div class="idea-grid">
+    <div class="idea-grid" style="margin-bottom:var(--sp-xl);">
       {{ range . }}
       <article class="idea-card">
         <div class="idea-card__icon" aria-hidden="true">{{ .icon }}</div>
@@ -29,26 +51,27 @@
           {{ range .badges }}
             {{ $label := . }}
             {{ $classMap := dict
-              "KI"               "ki"
-              "Informatik"       "informatik"
-              "Lernen"           "lernen"
-              "Eltern"           "eltern"
-              "Datenschutz"      "datenschutz"
-              "Projektidee"      "projektidee"
-              "Coding"           "coding"
-              "Tools"            "tools"
-              "Lehrkräfte"       "lehrkraefte"
-              "Anfänger"         "anfaenger"
-              "Datenanalyse"     "datenanalyse"
-              "Medienkompetenz"  "medienkompetenz"
-              "Denken"           "denken"
-              "DSGVO"            "dsgvo"
-              "Kreativität"      "kreativitaet"
-              "Unterstützung"    "unterstuetzung"
-              "Praktisch"        "praktisch"
-              "Grundlagen"       "grundlagen"
-              "Verantwortung"    "verantwortung"
-              "Reflexion"        "reflexion"
+              "KI"                "ki"
+              "Informatik"        "informatik"
+              "Lernen"            "lernen"
+              "Eltern"            "eltern"
+              "Datenschutz"       "datenschutz"
+              "Projektidee"       "projektidee"
+              "Coding"            "coding"
+              "Tools"             "tools"
+              "Lehrkräfte"        "lehrkraefte"
+              "Anfänger"          "anfaenger"
+              "Datenanalyse"      "datenanalyse"
+              "Medienkompetenz"   "medienkompetenz"
+              "Denken"            "denken"
+              "DSGVO"             "dsgvo"
+              "Kreativität"       "kreativitaet"
+              "Unterstützung"     "unterstuetzung"
+              "Praktisch"         "praktisch"
+              "Grundlagen"        "grundlagen"
+              "Verantwortung"     "verantwortung"
+              "Reflexion"         "reflexion"
+              "Kritisches Denken" "kritisches-denken"
             }}
             {{ $class := index $classMap $label | default "tools" }}
             <span class="badge badge--{{ $class }}">{{ $label }}</span>
@@ -58,13 +81,68 @@
       </article>
       {{ end }}
     </div>
-  </div>
-</div>
-{{ end }}
+    {{ end }}
 
-{{- /* Markdown body */}}
+    {{- /* Tool sections */}}
+    {{ with .Params.tool_sections }}
+    <div class="ki-sections">
+      {{ range . }}
+      <section id="{{ .id }}" class="ki-section" aria-labelledby="ki-h-{{ .id }}">
+        <div class="ki-section__heading">
+          <div class="ki-section__icon ki-section__icon--{{ .color | default "blue" }}" aria-hidden="true">{{ .icon }}</div>
+          <h2 class="ki-section__title" id="ki-h-{{ .id }}">{{ .title }}</h2>
+        </div>
+        {{ with .cards }}
+        <div class="ki-tool-grid">
+          {{ range . }}
+          <article class="ki-tool-card">
+            <h3 class="ki-tool-card__title">{{ .title }}</h3>
+            <p class="ki-tool-card__desc">{{ .desc | markdownify }}</p>
+            {{ with .links }}
+            <div class="ki-tool-card__links">
+              {{ range . }}
+              <a class="ki-tool-link" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .label }} ↗</a>
+              {{ end }}
+            </div>
+            {{ end }}
+          </article>
+          {{ end }}
+        </div>
+        {{ end }}
+      </section>
+      {{ end }}
+    </div>
+    {{ end }}
+
+    {{- /* Prompt examples */}}
+    {{ with .Params.prompt_examples }}
+    <section id="prompting" class="ki-section" aria-labelledby="ki-h-prompting" style="border-top:1px solid var(--c-border);">
+      <div class="ki-section__heading">
+        <div class="ki-section__icon ki-section__icon--amber" aria-hidden="true">✏️</div>
+        <h2 class="ki-section__title" id="ki-h-prompting">Richtig Prompten – So bekommst du bessere Antworten</h2>
+      </div>
+      <div class="prompt-section">
+        <p class="prompt-section__intro">Ein „Prompt" ist deine Eingabe an die KI. Je genauer du fragst, desto besser die Antwort:</p>
+        <div class="prompt-grid">
+          {{ range . }}
+          <div class="prompt-item">
+            <div class="prompt-item__label">{{ .label }}</div>
+            <div class="prompt-item__bad">❌ {{ .bad }}</div>
+            <div class="prompt-item__good">✅ {{ .good }}</div>
+          </div>
+          {{ end }}
+        </div>
+        <p class="prompt-tip"><strong>Tipp:</strong> Denke an die 3&nbsp;Ks – <strong>Kontext</strong> (Wer bist du? Welche Klasse?), <strong>Klarheit</strong> (Was genau willst du?), <strong>Kriterien</strong> (Wie soll die Antwort aussehen?).</p>
+      </div>
+    </section>
+    {{ end }}
+
+  </div>{{- /* /container */}}
+</div>
+
+{{- /* Markdown body – Leitfragen, audience guidance, attribution */}}
 {{ with .Content }}
-<div class="page-content" style="padding-top:0;">
+<div class="page-content" style="padding-top:0;" id="leitfragen">
   <div class="container">
     <div class="page-content__body">
       {{ . }}
