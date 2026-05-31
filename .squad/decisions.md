@@ -300,6 +300,374 @@ Clear ownership avoids legal/reputational risk. Transparency about SEB authorshi
 
 ---
 
+---
+
+## UX Direction: News-First Navigation (2026-05-31)
+
+**Status:** Decided (Team recommendation: implement)  
+**Proposer:** Sloth (UX/Accessibility)  
+**For:** Brand (Implementation)
+
+### Changes Approved
+
+**Navigation menu reorder:**
+- Before: Start → Informatik → KI → News → Mitmachen
+- After: Start → News → Informatik → KI → Mitmachen
+- Rationale: News elevated signals liveness; pupils/parents check "What's new?" first; aligns with GitHub issue→automation workflow
+
+**Homepage section reorder:**
+- Before: Hero → Audience cards → Pillars → News → Contribute → Footer
+- After: Hero → **News spotlight** → Audience cards → Pillars → Contribute → Footer
+- Rationale: Latest articles visible above fold; increases engagement
+
+**Design language (inspired, not copied from KI-an-der-Schule):**
+- Emoji/icon-led cards + clean typography + minimal shadows
+- Audience badges on idea cards (`[Schüler·innen]`, `[Lehrkräfte]`, `[Eltern]`)
+- Mobile-first CSS: 320px base, @media 600px (tablet), 1024px (desktop)
+- Descriptions trimmed to ≤80 chars for scannability
+
+### Accessibility Guardrails (Non-Negotiable)
+
+- Heading hierarchy preserved (h1 → h2 → h3)
+- Color contrast ≥4.5:1 (WCAG AA)
+- Touch targets ≥44px × 44px
+- Focus visible on all interactive elements
+- Emoji in cards: `aria-hidden="true"`
+- Screen reader support: `<section>`, `<article>`, `<nav>` semantic HTML
+
+### Implementation Checklist (Brand)
+
+| Task | Status |
+|------|--------|
+| Update hugo.toml menu weights | ⏳ Pending |
+| Reorder homepage sections (layouts/index.html) | ⏳ Pending |
+| Add audience badges to idea cards | ⏳ Pending |
+| Add SEB link to footer (target="_blank", rel="noopener noreferrer") | ⏳ Pending |
+| Lighthouse audit (Accessibility ≥95, Performance ≥85) | ⏳ Pending |
+
+### SEB Link Placement (Chosen: Option A)
+
+Footer text + link to official SEB page (https://gak-speyer.de/menschen-am-gak/schulelternbeirat) with full security attributes. Not intrusive; maintains focus on content.
+
+---
+
+## Real Content Integration: Informatik & KI Pages (2026-05-31)
+
+**Status:** Ready for implementation  
+**Proposer:** Mouth (German Content Editor)  
+**For:** Brand (Implementation)  
+**Commitment:** All external links verified; zero `[SAMPLE]` markers; paraphrased + cited (no verbatim copying)
+
+### What's New
+
+**Informatik Section:**
+- Six concrete idea cards (HTML/CSS, data analysis, media literacy, teacher checklist, video production, parent explainer)
+- Real lead text: "Dieser Bereich sammelt Impulse... ein Projekt des Schulelternbeirats"
+- Eight curated external links (Serlo, openHPI, BWINF, klicksafe, etc.)
+- Parent FAQ: "Braucht mein Kind einen Computer?" + 2 more
+
+**KI Section:**
+- Six practical cards (prompt challenges, hallucination awareness, glossary, parent guide, DSGVO overview, reflection framework)
+- Real lead text: "KI ist längst Realität im Schulalltag..."
+- Eight curated links (KI-an-der-Schule, ChatGPT, NotebookLM, Perplexity, telli, klicksafe, KMK, BMBF)
+- Six Leitfragen for responsible AI use (audience-independent reflection toolkit)
+
+### Implementation Steps (Brand)
+
+1. Replace `content/informatik/_index.md` with DRAFT content (ready to copy-paste)
+2. Replace `content/ki/_index.md` with DRAFT content
+3. Set `sample: false` in both front matter
+4. Run: `hugo server` → verify no 404s, Lighthouse ≥85 (Performance), ≥95 (Accessibility)
+5. Spot-check all 16 external links are live
+
+### Approval Checklist
+
+- [ ] Holger: SEB attribution tone acceptable
+- [ ] Andy: Informatik cards match curriculum grades (9–13)
+- [ ] Stef (parent rep): Parent links/FAQ appropriate
+- [ ] Sloth: Accessibility targets met post-integration
+- [ ] One-Eyed Willy: All external links DSGVO-safe
+
+### Pending Reviews
+
+1. **Andy (teacher/curriculum):** Do the 6 Informatik project ideas fit GAK syllabus & grade levels?
+2. **One-Eyed Willy:** Are ChatGPT + telli.de acceptable under school media policy?
+3. **Mouth:** Should "Grundbegriffe" expand from 5 to 8–10 terms with definitions?
+
+---
+
+## Brand: Hugo Patterns & Decisions (2026-05-31)
+
+**Status:** Implemented  
+**Implementer:** Brand (Full-stack)  
+**Commit:** 7055847
+
+### Decision 1: Hugo Render Hook for External Link Security
+
+**Problem:** All external links need `rel="noopener noreferrer"` (One-Eyed Willy requirement). Goldmark's `unsafe = false` prevents raw HTML in Markdown.
+
+**Solution:** Hugo render hook at `layouts/_default/_markup/render-link.html` (Hugo 0.62+):
+```html
+{{- $url := .Destination -}}
+{{- if or (strings.HasPrefix $url "http://") (strings.HasPrefix $url "https://") -}}
+  <a href="{{ $url }}" target="_blank" rel="noopener noreferrer"{{ with .Title }} title="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a>
+{{- else -}}
+  <a href="{{ $url }}"{{ with .Title }} title="{{ . }}"{{ end }}>{{ .Text | safeHTML }}</a>
+{{- end -}}
+```
+
+**Why:** Single file covers all Markdown links site-wide; no XSS risk; no need for `unsafe = true`.
+
+**Do NOT:** Switch to `unsafe = true` (allows XSS) or add raw HTML per-link in .md files.
+
+### Decision 2: Badge System Extension Pattern
+
+**Rule:** Add new badge labels as key-value pairs in `$classMap` dict (informatik/list.html, ki/list.html) + corresponding CSS class.
+
+**Badge naming:**
+- Dict key = exact front matter label (e.g., `"Kritisches Denken"`)
+- CSS class = ASCII-safe kebab-case (ä→ae, ö→oe, spaces→dashes)
+- Default fallback: `"tools"` (any unmapped label falls back)
+
+**New badges in this integration:**
+Anfänger, Datenanalyse, Medienkompetenz, DSGVO, Kreativität, Unterstützung, Praktisch, Grundlagen, Verantwortung, Reflexion, Kritisches Denken, Denken
+
+### Decision 3: Card Structure (Sloth Alignment)
+
+**Old:** icon → badges → h3 → description → audience  
+**New:** icon → h3 → p.audience → p.description → badges
+
+**Why:** Title and audience are scannable first; metadata at card bottom. Implemented as Sloth recommends. `.idea-card__badge-row` uses `margin-top: auto` for flex alignment.
+
+**This is the canonical structure.** Do not revert.
+
+### Decision 4: DRAFT File Cleanup
+
+Local DRAFT files (DRAFT_informatik_index.md, DRAFT_ki_index.md) deleted post-merge. Convention for future: place DRAFT files in project root or `drafts/` folder, name as `DRAFT_{section}_{file}.md`, delete after integration (superseded by real content).
+
+### Decision 5: sampleSite Flag
+
+`sampleSite = false` in hugo.toml. Homepage banner suppressed. Individual news posts with `sample: true` in front matter still show per-post badges (addressed when news section populated with real content).
+
+---
+
+## Structural Updates: Menu, Homepage, Impressum, SEB Link (2026-05-31)
+
+**Status:** Implemented & built  
+**Implementer:** Brand (Full-stack)  
+**Commit:** 975f31d  
+**Build:** 34 pages, 207ms, zero warnings
+
+### Four Self-Contained Changes
+
+**1. Menu order (hugo.toml):**
+- Before: Start → Informatik → KI → News → Mitmachen
+- After: Start → News → Informatik → KI → Mitmachen (follows Sloth UX recommendation)
+
+**2. Homepage section order (layouts/index.html):**
+- Before: Hero → Audience cards → Pillars → News → Contribute → Footer
+- After: Hero → **News** → Audience cards → Pillars → Contribute → Footer (news elevated above fold)
+
+**3. Impressum real data (content/impressum/_index.md):**
+- Name: Holger Bruchelt
+- Address: Carl-Dupre-Str. 5, 67346 Speyer
+- Email: seb-at-gak-speyer.de (obfuscated text, no mailto)
+- GAK SEB link: https://gak-speyer.de/menschen-am-gak/schulelternbeirat added in body
+- Placeholder warning removed
+
+**4. Footer SEB link (layouts/partials/footer.html):**
+- Added "Offiz. SEB-Seite" link to https://gak-speyer.de/menschen-am-gak/schulelternbeirat
+- Attributes: `target="_blank" rel="noopener noreferrer"` ✓
+
+**5. Datenschutz alignment (content/datenschutz/_index.md):**
+- Aligned responsible party + GDPR contact with Impressum (same name/address)
+
+### Deliberately NOT Done
+
+- **GAK logo:** Not added. One-Eyed Willy reviewing rights/privacy. Layout slot exists in CSS for future use.
+- **Informatik/KI rewrite:** Deferred. Mouth and Sloth preparing content/UX guidance.
+- **mailto link:** Not added. No safe pattern exists; obfuscated text per instructions.
+
+### For Team Review
+
+| Agent | Review Needed |
+|-------|---------------|
+| One-Eyed Willy | Confirm obfuscated email format acceptable; confirm Holger's personal address is intentional (vs. organizational) |
+| Mouth | Review new Impressum wording; Datenschutz alignment |
+| Sloth | Verify news-first homepage meets UX intent |
+| Mikey | Impressum blocker now cleared; update decisions.md status |
+
+---
+
+## Privacy & Security Review: Impressum, Logo, Content Reuse, External Links (2026-05-31)
+
+**Status:** Recommendations provided  
+**Reviewer:** One-Eyed Willy (Security & Privacy)  
+**Requested by:** Holger Bruchelt
+
+### Summary
+
+Site is well-positioned for privacy compliance. Key risks are low-severity and mitigated by conservative defaults (no analytics, no cookies, no PII collection). Recommendations focus on practical hardening: email obfuscation, logo licensing clarity, content reuse discipline, and link sanitization.
+
+### 1. Impressum Details & Email Display
+
+**Current state:** Placeholders partially filled; email not yet public.
+
+**Email harvesting (low risk):**
+- Public email in Impressum is standard under §5 TMG (legal requirement).
+- Obfuscation is optional; recommend plaintext for compliance simplicity.
+- Phase 2: Add contact form if spam becomes unmanageable.
+
+**SEB Chair PII (medium risk):**
+- Publishing personal name + residential address may create security concern if chair changes or faces harassment.
+- **Recommendation:** Use organizational address (school building) instead of personal home address. Example: "Schulelternbeirat des Gymnasiums am Kaiserdom Speyer, Domplatz 5, 67346 Speyer" (school office).
+- For "Vertreten durch" (represented by): Use formal title ("SEB-Vorsitzende/r") rather than full legal name if school policy permits.
+- For "Verantwortlich für den Inhalt" (content responsibility): Attribute to **organization**, not individual person.
+
+**Holger's choice:** Provided personal address explicitly. Acknowledged as implementation input; flagged as medium-level launch risk but accepted per user directive.
+
+### 2. GAK Logo: Licensing, Hotlinking, and Safe Implementation
+
+**Current state:** No logo used; text branding only (`"GAK Digital – Schulelternbeirat"`).
+
+**Hotlinking risks (high):**
+1. Bandwidth/availability: School can move/delete without warning.
+2. School ownership: School may disclaim SEB site later; logo removal becomes necessary.
+3. Copyright/TM liability: Using school trademark without written permission creates legal gray area.
+
+**Three-tier recommendation:**
+
+**Tier 1 (Safest — Recommended for Launch):**
+- Do NOT use GAK logo in header.
+- Use text branding only (already compliant).
+- Mention school affiliation in footer disclaimer + Impressum.
+- **Why:** Zero licensing ambiguity; clear SEB ownership; no bandwidth risk; cleaner separation.
+
+**Tier 2 (If Logo Required):**
+- Request written permission from school leadership.
+- Download + store in `/static/images/gak-logo.png` (version-controlled).
+- Use local image, not hotlink.
+- Add attribution in Impressum: "Logo © Gymnasium am Kaiserdom, verwendet mit Genehmigung."
+
+**Tier 3 (Hotlinking with Safeguards — Not Recommended):**
+- Add fallback image; use `<img onerror>` to serve local version if remote fails.
+- Add `referrerpolicy="no-referrer"` (privacy courtesy).
+- Cache-bust on update with query param.
+
+**Holger flagged private address + logo permission uncertainty as pre-launch risk.** One-Eyed Willy advises: confirm logo decision before going live; recommended Tier 1 (text-only, no logo) safest path.
+
+### 3. External Content Reuse: Safe vs. High-Risk Patterns
+
+**Safe patterns (recommended):**
+- ✅ Hyperlinks to official pages (school, SEB, government)
+- ✅ Summaries & paraphrasing (extract facts, rewrite in own words, cite source)
+- ✅ Inspiration (tone, structure, concepts — not protected)
+- ✅ Public domain & Creative Commons (always check license header)
+
+**High-risk patterns (avoid):**
+- ❌ Verbatim copying (copyright infringement risk)
+- ❌ Images without license (hotlinking school logo is primary concern)
+- ❌ Email lists, personal data from external sources (GDPR violation)
+
+**Mouth's approach:** Paraphrased + linked (not verbatim copying). All content reuse paraphrased/linked, not copied. **Compliant.**
+
+### 4. External Links: Security & Privacy Attributes
+
+**Current best practice (implemented):**
+- All external links must have `rel="noopener noreferrer"` + `target="_blank"`
+- `rel="noopener"`: Prevents XSS via window.opener
+- `rel="noreferrer"`: Prevents Referrer header leaking SEB site info
+
+**Brand deployed Hugo render hook for this.** ✓
+
+**Phase 2:** When issue-to-news Action deployed, add link validation bot (check against safe domain allow-list; flag suspicious URLs in review).
+
+### 5. Datenschutz Wording: Compliance Check
+
+**Current state:**
+- ✅ No PII collection, no cookies, no tracking scripts
+- ✅ GitHub as host acknowledged; privacy policy linked
+- ✅ No newsletter (Phase 1)
+- ⚠️ Data controller unclear (placeholder for "Datenschutzbeauftragter oder Schulleitung")
+
+**Impressum + Datenschutz alignment (medium risk):**
+- Issue: Impressum says "SEB responsible"; Datenschutz says contact "school" or "data officer."
+- Recommendation: Make consistent. "Verantwortliche Stelle für Datenschutz: [SEB Chair Name] im Namen des Schulelternbeirats."
+- Why: GDPR Art. 13-14 requires clear data controller identification. If SEB in Impressum, SEB must be clear in Datenschutz.
+
+**GitHub DPA (compliant):**
+- Current disclosure adequate for MVP. Phase 2: If school requests formal DPA, file in project docs.
+
+**Newsletter (Phase 2):**
+- When added, update Datenschutz immediately with: data collected, third-party processor, double opt-in flow, unsubscribe rights.
+
+**SEB Legal Status (important clarification):**
+- SEB is separate legal entity from school (organizational separation confirmed).
+- Data controller: SEB (not school).
+- SEB liability: SEB alone liable for GDPR/BDSG compliance.
+- Recommendation: Add clarifying note in Datenschutz: "Diese Website wird betrieben vom Schulelternbeirat... unabhängig von der Schulleitung... kein offizielle Schulkommunikation."
+
+### 6. Pre-Launch Blockers
+
+| Item | Risk | Action | Timeline |
+|------|------|--------|----------|
+| **Email in Impressum** | Low | Plaintext (TMG §5 required); document spam protocol for Phase 2 | Launch |
+| **SEB Chair PII** | Medium | Use organization address + title instead of personal home address | **Before live Impressum** |
+| **Logo Use** | High | **Do NOT hotlink.** Text-only branding for launch (Tier 1 recommended). If needed, request written permission + download (Tier 2). | Launch |
+| **External Content** | Low | Paraphrasing + links safe. Mouth compliant. Add reuse policy to docs. | Launch docs |
+| **External Links** | Low | All external links must have `rel="noopener noreferrer"` + `target="_blank"` (Hugo render hook deployed) | Launch ✅ |
+| **Datenschutz Alignment** | Medium | Clarify SEB as data controller; align with Impressum | **Before live Datenschutz** |
+| **Newsletter (Phase 2)** | Medium | Defer processing; double opt-in mandatory; formal DPA needed | Phase 2 |
+
+---
+
+## Real Content Research & Source Guidance (2026-05-31)
+
+**Status:** Research completed; content ready  
+**Researcher:** Mouth (German Content Editor)  
+**Requested by:** Holger Bruchelt
+
+### Sources Analyzed
+
+1. **FMSG SEB page** (https://fmsg-speyer.de/seb) — parent-focused structure
+2. **KI-an-der-Schule** (hobru.github.io) — practical AI student guide
+3. **German education platforms** (Serlo, SimpleClub, openHPI, BWINF)
+4. **Datenschutzbehörden & KMK guidance** on responsible AI in schools
+
+### Key Insights
+
+- **Parent content works best** when structured around *concerns* (safety, learning, support) not *features*
+- **Student content needs concrete examples** + links to free German tools
+- **AI in schools** is highest-engagement topic
+- **Real links matter more than sample text** — parents/students share URLs, not prose
+
+### Content Approach
+
+- ✅ No verbatim copying from FMSG or KI-an-der-Schule; paraphrase + link + cite
+- ✅ Tone: Friendly, non-patronizing, respectful of privacy
+- ✅ Accessibility: Flesch-Kincaid Grade 8–9, active voice, short paragraphs
+- ✅ Structure: Idea cards + lead text + curated link list
+
+### Tone Samples (Approved Style)
+
+**Parent-Friendly:** "Digitale Medien sind im Schulalltag nicht wegzudenken. Der Schulelternbeirat sammelt hier Tipps, damit Sie Ihre Kinder bei verantwortungsvollem Umgang unterstützen können."
+
+**Student-Practical:** "ChatGPT ist ein Werkzeug — nicht mehr und nicht weniger. Nutze es, um Lösungswege zu verstehen, nicht um sie abzuschreiben."
+
+**Teacher-Actionable:** "Diese Orientierungshilfe zeigt konkrete Vorschläge, nicht verbindliche Schulrichtlinien."
+
+### External Link Vetting
+
+All 16 links verified live, German-language (or German-accessible), school-appropriate. No school-blocked URLs. Includes: Serlo, openHPI, BWINF, klicksafe, Schau Hin!, Internet-ABC, Medienkompetenzblog, KMK, KI-an-der-Schule, ChatGPT, NotebookLM, Perplexity, telli, BMBF.
+
+### Pending Confirmations
+
+1. **Parent links:** klicksafe, Schau Hin!, Internet-ABC baseline? (Recommendation: Start with these; add school-specific FAQ Phase 2)
+2. **KI tools:** telli (school option) vs. ChatGPT + Perplexity (student research)? (Recommendation: Feature both)
+3. **Teacher curriculum audit:** Will Andy verify Informatik cards match actual Gym syllabus?
+
+---
+
 ## Governance
 
 - All meaningful changes require team consensus
