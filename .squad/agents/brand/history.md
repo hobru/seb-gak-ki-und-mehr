@@ -134,7 +134,42 @@
 
 
 
-**Trigger:** Holger Bruchelt clarified that the site is created by the **Schulelternbeirat (SEB) des Gymnasiums am Kaiserdom Speyer**, not an official school page — analogous to https://seb-shgym-diez.de/.
+### 2026-05-31 — Real Content Integration: Informatik & KI Sections
+
+**Trigger:** Holger Bruchelt requested replacement of sample content with Mouth's researched real content, plus CSS/layout polish per Sloth's UX guidance.
+
+**Changes implemented (7 files, commit 7055847):**
+
+1. **`content/informatik/_index.md`** — Replaced 6 generic sample cards with 6 specific real cards (first website in HTML, data analysis Python/Excel, media literacy, teacher tools, video/podcast production, parent explainer). Added parent FAQ (3 Q&As), enriched Grundbegriffe, added SEB attribution paragraph, 8 curated external links in three audience categories. Front matter `description` and `lead` updated to SEB-framed copy.
+
+2. **`content/ki/_index.md`** — Replaced 6 sample cards with 6 researched cards (Prompt-Challenge, KI-Antworten prüfen, KI-Begriffe, Eltern-Leitfragen, Datenschutz, Leitfragen-Framework). Added "Was alle wissen sollten" audience-split section, 10 curated links in three audience categories, Six Leitfragen reflection framework. Fixed typo from DRAFT (`bezeichnetProgramme` → `bezeichnet Programme`). Corrected `lead` typo (`nutzten` → `nutzen`).
+
+3. **`layouts/informatik/list.html`** + **`layouts/ki/list.html`** (identical update):
+   - Removed `sample-notice` banner (real content; no longer applicable)
+   - Updated section eyebrow from "Beispielideen & Impulse" → "Ideen & Impulse"
+   - Restructured idea-card HTML: icon → **h3 title** → audience badge (`<p class="idea-card__audience">`) → desc → badge-row (badges + duration). Aligns with Sloth's semantic card guidance.
+   - Extended badge `dict` with 12 new label→class mappings (Anfänger, Datenanalyse, Medienkompetenz, Denken, DSGVO, Kreativität, Unterstützung, Praktisch, Grundlagen, Verantwortung, Reflexion, Kritisches Denken)
+
+4. **`layouts/_default/_markup/render-link.html`** — New Hugo link render hook. All external links in Markdown (`http://` / `https://`) automatically get `target="_blank" rel="noopener noreferrer"`. Resolves One-Eyed Willy's requirement without requiring per-link raw HTML or unsafe Goldmark mode.
+
+5. **`static/css/style.css`** — Added `.idea-card__audience` (0.75rem, uppercase, primary color, letter-spacing); updated `.idea-card__badge-row` to `margin-top: auto; padding-top: 0.5rem` (pushes badges to card bottom). Added 13 new `.badge--*` classes with distinct but restrained color pairs.
+
+6. **`hugo.toml`** — Set `sampleSite = false` (real content now active; removes homepage sample-content notice banner).
+
+**Build result:** `hugo --minify` → 34 pages, 0 warnings ✓
+
+**Decisions followed:**
+- Mouth's `DRAFT_informatik_index.md` and `DRAFT_ki_index.md` integrated as-is (minor fixes applied)
+- Logo NOT added (One-Eyed Willy review pending) ✓
+- SEB attribution in both page footers via link to `https://gak-speyer.de/menschen-am-gak/schulelternbeirat` ✓
+- No verbatim text from KI-an-der-Schule or FMSG; inspired design only ✓
+- External links: render-hook adds `rel="noopener noreferrer"` automatically ✓
+
+**Caveats:**
+- The `Kritisches Denken` badge contains a space, which maps to CSS class `badge--kritisches-denken`. This works in Hugo's `index $classMap` lookup but only if the key exactly matches (including the space). Since the DRAFT uses `"Kritisches Denken"` as a badge label, the dict key must also be `"Kritisches Denken"` — confirmed in template.
+- Goldmark `unsafe = false` remains in `hugo.toml`. Raw HTML in markdown is still blocked. The render-hook approach is the correct Hugo-native solution.
+
+**Pattern learned:** Hugo's `_markup/render-link.html` render hook is the cleanest way to globally enforce security attributes on external links without touching CSS, content, or disabling Goldmark safety. One file solves the entire problem for all Markdown content. Prefer this over per-link HTML or global `unsafe = true`., not an official school page — analogous to https://seb-shgym-diez.de/.
 
 **Guidance source:** `.squad/decisions/inbox/mouth-seb-positioning.md` (Mouth's content reframing guidance, Option A chosen throughout for maximum legal clarity).
 
