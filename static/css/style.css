@@ -180,6 +180,10 @@ ul, ol { padding-left: 1.5rem; }
 .badge--informatik  { background: #dcfce7; color: #14532d; }
 .badge--lernen      { background: #fef9c3; color: #713f12; }
 .badge--eltern      { background: #fce7f3; color: #831843; }
+.badge--schueler    { background: #dbeafe; color: #1e3a8a; }
+.badge--lehrkraefte { background: #ede9fe; color: #4c1d95; }
+.badge--seb         { background: #ccfbf1; color: #134e4a; }
+.badge--allgemein   { background: #f1f5f9; color: #1e293b; }
 .badge--datenschutz { background: #f3e8ff; color: #581c87; }
 .badge--projektidee { background: #ffedd5; color: #7c2d12; }
 .badge--coding      { background: #e0f2fe; color: #0c4a6e; }
@@ -475,28 +479,7 @@ ul, ol { padding-left: 1.5rem; }
 .news-card__badges { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .news-card__title { font-size: var(--text-lg); font-weight: 700; color: var(--c-text); line-height: 1.3; }
 .news-card__abstract { font-size: var(--text-sm); color: var(--c-text-muted); line-height: 1.55; flex: 1; }
-.news-meta-audience {
-  display: inline-flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.25rem;
-  padding: 0.08rem 0.5rem;
-  border-radius: 999px;
-  background: var(--c-primary-light);
-  color: var(--c-primary-dark);
-  font-weight: 600;
-}
-.news-meta-audience__label { font-weight: 700; }
-.news-meta-audience--on-dark {
-  background: rgba(255,255,255,0.14);
-  border: 1px solid rgba(255,255,255,0.28);
-  color: #fff;
-}
 .news-card__meta { font-size: var(--text-sm); color: var(--c-text-muted); display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
-.news-card__meta .news-meta-audience { margin-left: -0.15rem; }
-@media (max-width: 420px) {
-  .news-meta-audience { border-radius: var(--radius); }
-}
 .news-card__link {
   font-size: var(--text-sm);
   font-weight: 600;

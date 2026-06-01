@@ -1,13 +1,21 @@
 <article class="news-card" data-news-card data-audiences="{{ delimit .Params.audiences "|" }}" data-categories="{{ delimit .Params.categories "|" }}">
   <div class="news-card__badges">
     {{ if .Params.sample }}<span class="badge badge--sample">Beispiel</span>{{ end }}
-    {{ range .Params.categories }}
+    {{ $topTags := slice }}
+    {{ range .Params.categories }}{{ $topTags = $topTags | append . }}{{ end }}
+    {{ range .Params.audiences }}{{ $topTags = $topTags | append . }}{{ end }}
+    {{ range uniq $topTags }}
       {{ $label := . }}
       {{ $classMap := dict
         "KI"          "ki"
         "Informatik"  "informatik"
         "Lernen"      "lernen"
         "Eltern"      "eltern"
+        "Schüler:innen" "schueler"
+        "Schülerinnen und Schüler" "schueler"
+        "Lehrkräfte"  "lehrkraefte"
+        "SEB"         "seb"
+        "Allgemein"   "allgemein"
         "Datenschutz" "datenschutz"
         "Projektidee" "projektidee"
         "Coding"      "coding"
@@ -28,13 +36,6 @@
   </h3>
   <div class="news-card__meta" aria-label="Metadaten">
     <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02.01.2006" }}</time>
-    {{ with .Params.audiences }}
-      <span aria-hidden="true">&middot;</span>
-      <span class="news-meta-audience">
-        <span class="news-meta-audience__label">Zielgruppe:</span>
-        <span>{{ delimit . ", " }}</span>
-      </span>
-    {{ end }}
     {{ with .Params.valid_until }}
       <span aria-hidden="true">&middot;</span>
       <span>aktuell bis {{ time.Format "02.01.2006" . }}</span>

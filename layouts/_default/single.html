@@ -5,13 +5,21 @@
   <div class="container">
     <div class="post-header__badges">
       {{ if .Params.sample }}<span class="badge badge--sample">Beispielinhalt</span>{{ end }}
-      {{ range .Params.categories }}
+      {{ $topTags := slice }}
+      {{ range .Params.categories }}{{ $topTags = $topTags | append . }}{{ end }}
+      {{ range .Params.audiences }}{{ $topTags = $topTags | append . }}{{ end }}
+      {{ range uniq $topTags }}
         {{ $label := . }}
         {{ $classMap := dict
           "KI"          "ki"
           "Informatik"  "informatik"
           "Lernen"      "lernen"
           "Eltern"      "eltern"
+          "Schüler:innen" "schueler"
+          "Schülerinnen und Schüler" "schueler"
+          "Lehrkräfte"  "lehrkraefte"
+          "SEB"         "seb"
+          "Allgemein"   "allgemein"
           "Datenschutz" "datenschutz"
           "Projektidee" "projektidee"
           "Coding"      "coding"
@@ -30,13 +38,6 @@
     <h1 class="post-header__title" id="post-title">{{ .Title }}</h1>
     <p class="post-header__meta" aria-label="Metadaten">
       <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02.01.2006" }}</time>
-      {{ with .Params.audiences }}
-        <span aria-hidden="true">&middot;</span>
-        <span class="news-meta-audience news-meta-audience--on-dark">
-          <span class="news-meta-audience__label">Zielgruppe:</span>
-          <span>{{ delimit . ", " }}</span>
-        </span>
-      {{ end }}
     </p>
   </div>
 </section>
