@@ -119,3 +119,8 @@
 **Key learning:** Reusable template architecture (`.ki-*` CSS classes) proves robust for subject-organized content beyond KI focus. Sticky nav with 10–15 anchors is right scoping for deep IA. Audience clarity + actionable guidance drive user confidence.
 
 **Decision documentation:** Merged from `decisions/inbox/brand-digitales-subject-resources.md` and `.../sloth-digitales-ux-review.md` into `.squad/decisions.md`.
+
+## 2026-06-01 – Stadtbibliothek-Hinweis vor Digitales-Fächerkarten
+
+- Ergänzte auf `Digitales & Informatik` einen SEB-gerahmten Hinweis auf die Stadtbibliothek Speyer als kostenfreien Zugang zu Medien und, wo verfügbar, digitalen Lerntools wie Sofatutor und plan6.
+- Pattern learned: Kommunale Zugänge zu sonst kostenpflichtigen Lernangeboten gehören als prominenter Hinweis vor Fachkarten, damit Schülerinnen und Schüler sowie Eltern zuerst niedrigschwellige öffentliche Angebote prüfen.

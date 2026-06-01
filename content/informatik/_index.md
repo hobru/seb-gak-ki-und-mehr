@@ -5,6 +5,16 @@ lead: "Digitale Lernangebote können beim Wiederholen, Verstehen und Ausprobiere
 
 intro: "**Hinweis:** Diese Sammlung ist eine Orientierung des Schulelternbeirats, keine offizielle Empfehlung der Schule. Viele Angebote sind frei und ohne Konto nutzbar; trotzdem gilt: Nutzungsbedingungen und Datenschutz kurz prüfen, keine persönlichen Daten unnötig eingeben und Ergebnisse kritisch einordnen."
 
+library_notice:
+  icon: "🏛️"
+  title: "Hinweis: Lernzugänge über die Stadtbibliothek Speyer"
+  desc: "Die Stadtbibliothek Speyer bietet Schülerinnen und Schülern sowie Eltern nicht nur Zugang zu Büchern, Zeitschriften, Videos und weiteren Medien. Über die digitalen Angebote können – je nach Verfügbarkeit und Nutzungsbedingungen – auch Lernwerkzeuge wie Sofatutor oder plan6 erreichbar sein. Ein Blick auf die Bibliotheksseite lohnt sich besonders, bevor kostenpflichtige Lernangebote privat gebucht werden."
+  links:
+    - label: "Stadtbibliothek Speyer"
+      url: "https://www.speyer.de/de/bildung/stadtbibliothek/"
+    - label: "Digitale Angebote"
+      url: "https://www.speyer.de/de/bildung/stadtbibliothek/digitale-angebote/"
+
 tool_sections:
   - id: "informatik-medien"
     icon: "💻"

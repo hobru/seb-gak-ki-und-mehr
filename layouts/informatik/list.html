@@ -34,6 +34,24 @@
     </div>
     {{ end }}
 
+    {{- /* Stadtbibliothek Speyer notice */}}
+    {{ with .Params.library_notice }}
+    <article class="ki-info-card" aria-labelledby="digital-library-notice">
+      <div class="ki-info-card__icon" aria-hidden="true">{{ .icon | default "ℹ️" }}</div>
+      <div class="ki-info-card__body">
+        <h2 class="ki-info-card__title" id="digital-library-notice">{{ .title }}</h2>
+        <p class="ki-info-card__desc">{{ .desc | markdownify }}</p>
+        {{ with .links }}
+        <div class="ki-tool-card__links">
+          {{ range . }}
+          <a class="ki-tool-link" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .label }} ↗</a>
+          {{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </article>
+    {{ end }}
+
     {{- /* Resource sections */}}
     {{ with .Params.tool_sections }}
     <div class="ki-sections">
