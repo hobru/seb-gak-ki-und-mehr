@@ -2,6 +2,17 @@
 
 ## Active Decisions
 
+### Digitales & Informatik: Profiled subject order and stable links (2026-06-01)
+
+**Status:** Decided & Implemented  
+**Proposer:** Holger Bruchelt directive, implemented by Brand  
+
+**Decision:** On `content/informatik/_index.md`, subject resources should open with language/humanities areas to reflect GAK's humanist Gymnasium profile with Latin, then continue into MINT/digital topics. External learning links on the page should prefer stable, directly reachable alternatives when existing offers fail link checks.
+
+**Rationale:** The ordering better represents the school's profile without devaluing MINT/Informatik. Reliable links matter more for pupils and parents than brand recognition when links return errors or app failure pages.
+
+**Verification:** Brand reported all 43 external URLs on the page checked with GET + redirects, final HTTP status < 400, no scanned error texts, and `hugo --minify` successful.
+
 ### Technology Platform: GAK Website (2026-05-31)
 
 **Proposers:** Data (Tech Architect), Sloth (UX), One-Eyed Willy (Security), Mikey (Product Coordinator), Brand (Full-stack)  
