@@ -321,7 +321,34 @@ ul, ol { padding-left: 1.5rem; }
     radial-gradient(ellipse at 15% 75%, rgba(26,79,122,0.2) 0%, transparent 50%);
   pointer-events: none;
 }
-.hero__inner { position: relative; max-width: 760px; }
+.hero__inner { position: relative; max-width: 860px; }
+.hero__headline {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-md);
+  margin-bottom: var(--sp-sm);
+}
+.hero__headline-copy { min-width: 0; }
+.hero__logo-link {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(7.5rem, 18vw, 11.5rem);
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--radius-lg);
+  background: rgba(255,255,255,0.94);
+  box-shadow: var(--shadow);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+.hero__logo-link:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-hover);
+}
+.hero__logo {
+  width: 100%;
+  height: auto;
+}
 .hero__label {
   display: inline-block;
   background: rgba(255,255,255,0.14);
@@ -349,6 +376,15 @@ ul, ol { padding-left: 1.5rem; }
   max-width: 62ch;
 }
 .hero__ctas { display: flex; flex-wrap: wrap; gap: var(--sp-sm); align-items: center; }
+
+@media (max-width: 639px) {
+  .hero__headline {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: var(--sp-sm);
+  }
+  .hero__logo-link { width: 8.75rem; }
+}
 
 /* ----------------------------------------------------------
    11. Audience Cards

@@ -130,3 +130,11 @@
 - Die Seite `Digitales & Informatik` beginnt nun passend zum humanistischen GAK-Profil mit Sprachen (Deutsch, Englisch, Französisch, Latein), danach Gesellschaft/Kultur, MINT und erst anschließend Informatik/Digitales.
 - Stadtbibliothek-Hinweis präzisiert: Sofatutor oder plan6 können je nach Verfügbarkeit und Nutzungsbedingungen über digitale Angebote **kostenfrei** erreichbar sein.
 - Pattern learned: Nach Nutzerhinweisen auf defekte Bildungslinks alle externen URLs per GET prüfen und auch sichtbare Fehlertexte scannen; bei 404/403/App-Fehlern lieber stabile Alternativen mit gleichem Schüler-/Elternnutzen einsetzen.
+
+## Learnings
+
+### 2026-06-01T09:48:44.273+02:00 – Homepage-GAK-Logo im SEB-Frame
+
+- Homepage-Hero liegt in `layouts/index.html`; zugehörige responsive Styles liegen in `static/css/style.css`.
+- GAK-Logo wurde lokal unter `static/images/gak-logo.png` abgelegt, mit festen `width`/`height`-Attributen gegen Layout Shift und Alt-Text für Barrierefreiheit.
+- Pattern learned: Offizielle Schulmarken auf SEB-Initiativseiten als unterstützende Wiedererkennung einsetzen, nicht als Ownership-Signal; SEB-Label im Hero sichtbar lassen und Logo-Link extern mit `target="_blank" rel="noopener noreferrer"` absichern.
