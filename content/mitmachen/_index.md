@@ -22,8 +22,8 @@ GAK Digital lebt von guten Ideen: kurze Tool-Tipps, Projektvorschläge, Lernimpu
 - vertrauliche Informationen aus dem Schulalltag
 - ungeprüfte Behauptungen über Regeln, Noten oder Schulentscheidungen
 
-### GitHub-Vorschlag vorbereiten
+### GitHub-Vorschlag einreichen
 
-Für die spätere Redaktion liegt eine Issue Form unter `.github/ISSUE_TEMPLATE/news.yml` bereit. Sie fragt Titel, Kurzbeschreibung, Zielgruppe, Kategorie und optional einen Link ab. Die Form erstellt nur einen Vorschlag; eine Veröffentlichung erfolgt erst nach Prüfung.
+Die Issue Form unter `.github/ISSUE_TEMPLATE/news.yml` fragt Titel, Kurzbeschreibung, Zielgruppe, Thema/Kategorie, GAK/SEB-Relevanz und optional Details oder einen externen Link ab. Sie enthält eine verpflichtende Datenschutz-Bestätigung: Bitte keine Namen, E-Mail-Adressen, Telefonnummern, Adressen, Fotos oder privaten Angaben eintragen.
 
-Bis das Repository endgültig eingerichtet ist, können Beispielbeiträge direkt als Markdown-Dateien unter `content/news/` vorbereitet werden.
+Nach redaktioneller Prüfung setzt ein Maintainer das Label `freigegeben`. Daraus entsteht automatisch ein Pull Request mit einer Hugo-Markdown-Datei; veröffentlicht wird erst nach Review und Merge.

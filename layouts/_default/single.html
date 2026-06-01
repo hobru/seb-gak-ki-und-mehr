@@ -16,6 +16,12 @@
           "Projektidee" "projektidee"
           "Coding"      "coding"
           "Tools"       "tools"
+          "Veranstaltung" "veranstaltung"
+          "Wettbewerb"  "wettbewerb"
+          "Material"    "material"
+          "Empfehlung"  "empfehlung"
+          "Hinweis"     "hinweis"
+          "Sonstiges"   "sonstiges"
         }}
         {{ $class := index $classMap $label | default "tools" }}
         <span class="badge badge--{{ $class }}">{{ $label }}</span>
@@ -38,9 +44,17 @@
       {{ with .Params.abstract }}
       <p class="post-content__abstract">{{ . }}</p>
       {{ end }}
+      {{ with .Params.valid_until }}
+      <p class="post-content__meta-note"><strong>Aktuell bis:</strong> {{ time.Format "02.01.2006" . }}</p>
+      {{ end }}
       <div class="post-content__body">
         {{ .Content }}
       </div>
+      {{ with .Params.external_link }}
+      <p class="post-content__external">
+        <a class="btn btn--outline" href="{{ . }}" target="_blank" rel="noopener noreferrer">Externen Link öffnen</a>
+      </p>
+      {{ end }}
       <div class="post-back">
         <a class="btn btn--outline" href="{{ "news/" | relURL }}">&larr; Alle Neuigkeiten</a>
       </div>

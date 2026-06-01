@@ -21,15 +21,71 @@
 
     {{ $pages := .Pages | default (where site.RegularPages "Section" "news") }}
     {{ if $pages }}
+    {{ $audiences := slice }}
+    {{ $categories := slice }}
+    {{ range $pages }}
+      {{ range .Params.audiences }}{{ $audiences = $audiences | append . }}{{ end }}
+      {{ range .Params.categories }}{{ $categories = $categories | append . }}{{ end }}
+    {{ end }}
+    {{ if or $audiences $categories }}
+    <div class="news-filters mt-lg" aria-label="Neuigkeiten filtern">
+      <div class="news-filters__group">
+        <span class="news-filters__label">Zielgruppe:</span>
+        <a class="news-filter-chip" href="{{ "news/" | relURL }}" data-filter-reset>Alle</a>
+        {{ range sort (uniq $audiences) }}
+          <a class="news-filter-chip" href="?zielgruppe={{ . | urlquery }}" data-filter-type="audience" data-filter-value="{{ . }}">{{ . }}</a>
+        {{ end }}
+      </div>
+      <div class="news-filters__group">
+        <span class="news-filters__label">Thema:</span>
+        <a class="news-filter-chip" href="{{ "news/" | relURL }}" data-filter-reset>Alle</a>
+        {{ range sort (uniq $categories) }}
+          <a class="news-filter-chip" href="?kategorie={{ . | urlquery }}" data-filter-type="category" data-filter-value="{{ . }}">{{ . }}</a>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
     <div class="news-list-grid mt-lg">
       {{ range $pages.ByDate.Reverse }}
         {{ partial "news-card.html" . }}
       {{ end }}
     </div>
+    <p class="news-filter-empty" hidden>Keine Neuigkeit passt zu diesem Filter.</p>
     {{ else }}
     <p style="margin-top:2rem;">Noch keine Beiträge vorhanden. Bald mehr hier.</p>
     {{ end }}
   </div>
 </div>
+
+<script>
+  (function () {
+    var params = new URLSearchParams(window.location.search);
+    var audience = params.get("zielgruppe");
+    var category = params.get("kategorie");
+    if (!audience && !category) return;
+
+    var visible = 0;
+    document.querySelectorAll("[data-news-card]").forEach(function (card) {
+      var audiences = (card.getAttribute("data-audiences") || "").split("|");
+      var categories = (card.getAttribute("data-categories") || "").split("|");
+      var matchesAudience = !audience || audiences.indexOf(audience) !== -1;
+      var matchesCategory = !category || categories.indexOf(category) !== -1;
+      var show = matchesAudience && matchesCategory;
+      card.hidden = !show;
+      if (show) visible += 1;
+    });
+
+    document.querySelectorAll("[data-filter-type]").forEach(function (link) {
+      var type = link.getAttribute("data-filter-type");
+      var value = link.getAttribute("data-filter-value");
+      if ((type === "audience" && value === audience) || (type === "category" && value === category)) {
+        link.setAttribute("aria-current", "true");
+      }
+    });
+
+    var empty = document.querySelector(".news-filter-empty");
+    if (empty) empty.hidden = visible !== 0;
+  }());
+</script>
 
 {{- end -}}

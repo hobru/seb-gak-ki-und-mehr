@@ -60,21 +60,33 @@ content/
     └── _index.md
 ```
 
-## Neuen Beitrag hinzufügen
+## Neuigkeiten veröffentlichen
 
-Über die Seite `/mitmachen/` können Beitragideen vorbereitet werden. Sobald das GitHub-Repository öffentlich konfiguriert ist, kann dafür die Issue Form `.github/ISSUE_TEMPLATE/news.yml` genutzt werden. Sie erstellt nur Vorschläge; veröffentlicht wird nichts automatisch ohne redaktionelle Prüfung.
+Der bevorzugte Redaktionsweg läuft über GitHub Issues und Pull Requests:
 
-Erstelle eine neue Datei in `content/news/`:
+1. Über **Issues → New issue → Neuigkeit vorschlagen** wird ein Vorschlag eingereicht.
+2. Die Issue Form fragt Titel, Kurzbeschreibung, optionale Details/externen Link, Zielgruppe, Thema/Kategorie, GAK/SEB-Relevanz und optional „gültig bis“ ab.
+3. Es werden keine personenbezogenen Daten abgefragt. Die Datenschutz-Bestätigung ist Pflicht; Namen, E-Mail-Adressen, Telefonnummern, Adressen, Fotos oder private Angaben gehören nicht in Issues.
+4. Redakteur:innen prüfen Inhalt, Relevanz und externe Links. Wenn der Vorschlag passt, setzen Maintainer das Label `freigegeben`.
+5. Der Workflow `.github/workflows/news-from-issue.yml` validiert das Issue, erzeugt eine bereinigte Hugo-Markdown-Datei und öffnet einen Pull Request.
+6. Erst Review und Merge des Pull Requests veröffentlichen die Neuigkeit über den bestehenden GitHub-Pages-Deploy.
+
+Approver erhalten Benachrichtigungen über GitHub, z. B. durch Repository-Watching, Issue-Zuweisung, Erwähnungen oder CODEOWNERS/Review-Anfragen. Es wird keine externe Mail- oder Tracking-Infrastruktur verwendet.
+
+Fallback für manuelle Beiträge: Erstelle eine neue Datei in `content/news/`:
+
 
 ```markdown
 ---
 title: "Titel des Beitrags"
 date: 2026-06-01
 draft: false
-categories: ["KI"]                   # KI, Informatik, Lernen, Eltern, Coding, Tools, …
-audiences: ["Schülerinnen und Schüler"]
+categories: ["KI"]                   # KI, Informatik, Veranstaltung, Wettbewerb, Material, Empfehlung, Hinweis, Sonstiges
+audiences: ["Schüler:innen"]         # Schüler:innen, Eltern, Lehrkräfte, SEB, Allgemein
 abstract: "Kurze Zusammenfassung (max. 200 Zeichen)"
 sample: false
+external_link: "https://example.org" # optional
+valid_until: "2026-09-30"            # optional
 ---
 
 Inhalt des Beitrags in Markdown…

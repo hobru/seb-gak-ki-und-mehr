@@ -1,4 +1,4 @@
-<article class="news-card">
+<article class="news-card" data-news-card data-audiences="{{ delimit .Params.audiences "|" }}" data-categories="{{ delimit .Params.categories "|" }}">
   <div class="news-card__badges">
     {{ if .Params.sample }}<span class="badge badge--sample">Beispiel</span>{{ end }}
     {{ range .Params.categories }}
@@ -12,6 +12,12 @@
         "Projektidee" "projektidee"
         "Coding"      "coding"
         "Tools"       "tools"
+        "Veranstaltung" "veranstaltung"
+        "Wettbewerb"  "wettbewerb"
+        "Material"    "material"
+        "Empfehlung"  "empfehlung"
+        "Hinweis"     "hinweis"
+        "Sonstiges"   "sonstiges"
       }}
       {{ $class := index $classMap $label | default "tools" }}
       <span class="badge badge--{{ $class }}">{{ $label }}</span>
@@ -28,6 +34,10 @@
     {{ with .Params.audiences }}
       <span aria-hidden="true">&middot;</span>
       <span>{{ delimit . ", " }}</span>
+    {{ end }}
+    {{ with .Params.valid_until }}
+      <span aria-hidden="true">&middot;</span>
+      <span>aktuell bis {{ time.Format "02.01.2006" . }}</span>
     {{ end }}
   </div>
   <a class="news-card__link" href="{{ .RelPermalink }}">Weiterlesen</a>

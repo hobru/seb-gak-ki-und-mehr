@@ -1,0 +1,82 @@
+name: Neuigkeit aus freigegebenem Issue
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
+concurrency:
+  group: news-issue-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  create-news-pr:
+    if: github.event.label.name == 'freigegeben'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Generate sanitized Hugo news file
+        id: news
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          python .github/scripts/news_issue_to_markdown.py 2>&1 | tee news-generation.log
+
+      - name: Comment on validation failure
+        if: steps.news.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          {
+            echo "Der Neuigkeiten-Vorschlag konnte noch nicht in einen Pull Request umgewandelt werden."
+            echo
+            echo '```'
+            cat news-generation.log
+            echo '```'
+            echo
+            echo "Bitte Issue korrigieren und das Label \`freigegeben\` danach erneut setzen."
+          } > news-validation-comment.md
+          gh issue comment "$ISSUE_NUMBER" --body-file news-validation-comment.md
+          exit 1
+
+      - name: Create pull request
+        if: steps.news.outcome == 'success'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          DEFAULT_BRANCH: ${{ github.event.repository.default_branch }}
+          NEWS_FILE: ${{ steps.news.outputs.file }}
+          NEWS_SLUG: ${{ steps.news.outputs.slug }}
+          NEWS_TITLE: ${{ steps.news.outputs.title }}
+        run: |
+          branch="news/issue-${ISSUE_NUMBER}-${NEWS_SLUG}"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add "$NEWS_FILE"
+          git commit -m "Add Neuigkeit: ${NEWS_TITLE}"
+          git push --set-upstream origin "$branch"
+          pr_url="$(gh pr create \
+            --base "$DEFAULT_BRANCH" \
+            --head "$branch" \
+            --title "Neuigkeit veröffentlichen: ${NEWS_TITLE}" \
+            --body "Erzeugt aus #${ISSUE_NUMBER} nach dem Label \`freigegeben\`.
+
+          Bitte vor dem Merge prüfen:
+          - Inhalt enthält keine personenbezogenen Daten.
+          - Externe Links sind passend und sicher.
+          - Zielgruppe und Kategorie stimmen.
+
+          Nach dem Merge veröffentlicht der bestehende GitHub-Pages-Workflow die Neuigkeit.")"
+          gh issue comment "$ISSUE_NUMBER" --body "Danke! Aus diesem freigegebenen Vorschlag wurde ein Pull Request erstellt: ${pr_url}"

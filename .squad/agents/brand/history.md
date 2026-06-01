@@ -133,6 +133,12 @@
 
 ## Learnings
 
+### 2026-06-01T12:56:42.320+02:00 – Neuigkeiten per Issue-Form und PR-Gate
+
+- Neuigkeiten-Vorschläge laufen jetzt privacy-sicher über `.github/ISSUE_TEMPLATE/news.yml`: Zielgruppe und Thema/Kategorie sind getrennt, GAK/SEB-Relevanz sowie No-PII-Bestätigung sind Pflicht.
+- Das Maintainer-Label `freigegeben` erzeugt über `.github/workflows/news-from-issue.yml` nur einen Pull Request mit bereinigter Hugo-Markdown-Datei; Veröffentlichung bleibt an Review und Merge gekoppelt.
+- Pattern learned: Für Schul-/SEB-News keine unbekannten Reviewer hardcoden; GitHub-native Benachrichtigung über Watching, Assignment, Erwähnungen oder CODEOWNERS dokumentieren und externe Mail-Infrastruktur vermeiden.
+
 ### 2026-06-01T09:48:44.273+02:00 – Homepage-GAK-Logo im SEB-Frame
 
 - Homepage-Hero liegt in `layouts/index.html`; zugehörige responsive Styles liegen in `static/css/style.css`.

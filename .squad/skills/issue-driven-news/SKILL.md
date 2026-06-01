@@ -1,103 +1,82 @@
 ---
-name: "Issue-Driven News Publishing for Static Sites"
+name: "Issue-Driven News Publishing for Hugo + GitHub Pages"
 category: "Content Management"
-audience: "Teams maintaining blogs/news feeds on GitHub + Jekyll"
-date: 2026-05-31
+audience: "Teams maintaining Hugo news feeds on GitHub Pages"
+date: 2026-06-01
 ---
 
-# Issue-Driven News Publishing for Static Sites
+# Issue-Driven News Publishing for Hugo + GitHub Pages
 
 ## Pattern
 
-Use GitHub Issues as a lightweight CMS for non-technical contributors to publish news, blog posts, or announcements to a static site. A bot (GitHub Actions) validates the issue, transforms it to Markdown, and triggers a site rebuild.
+Use GitHub Issues as a lightweight intake queue for non-technical contributors to propose news, blog posts, or announcements. A GitHub Action validates an approved issue, transforms it to Hugo Markdown, and opens a pull request. Publishing happens only after PR review and merge.
 
-**Best for:** Teams without dedicated DevOps; sites hosted on GitHub Pages; non-technical content creators.
+**Best for:** Teams without dedicated DevOps; Hugo sites hosted on GitHub Pages; school/community sites where privacy review matters.
 
 ## How It Works
 
-1. **Issue template** (`.github/ISSUE_TEMPLATE/news.md`):
-   - Defines required metadata fields (title, date, summary, link, audience)
-   - Includes examples and validation rules
-   - Prevents typos and incomplete posts
+1. **Issue template** (`.github/ISSUE_TEMPLATE/news.yml`):
+   - Defines required metadata fields: title, summary, target audience, category, relevance, no-PII confirmation.
+   - Separates `Zielgruppe` from `Thema/Kategorie` to avoid confusing filter semantics.
+   - Includes German examples, visible character limits, and clear warnings against names, emails, phone numbers, addresses, photos, or private data.
 
-2. **GitHub Actions workflow** triggers on issue label `news:publish`:
-   - Validates template compliance (required fields, max/min lengths)
-   - Checks accessibility red flags (e.g., "click here" link text)
-   - Generates preview URL so editor can review
-   - Only publishes if validation passes
+2. **GitHub Actions workflow** triggers on a maintainer-only approval label such as `freigegeben`:
+   - Validates template compliance, allowed choices, date format, and required privacy acknowledgement.
+   - Checks privacy red flags such as email/phone patterns.
+   - Creates `content/news/YYYY-MM-DD-slug.md` with sanitized front matter/content.
+   - Opens a pull request instead of publishing directly from the label.
 
-3. **Bot transforms issue to Jekyll post**:
-   - Creates `/news/YYYY-MM-DD-title.md` with proper front-matter
-   - Links back to source issue for audit trail
-   - Rebases site; new post appears on homepage within 5 minutes
+3. **Review and publish**:
+   - Editors review the generated Markdown, external links, categories, and audience filters in the PR.
+   - Merge triggers the existing GitHub Pages deploy workflow.
+   - Rollback is a normal Git revert or a PR deleting the generated Markdown file.
 
-4. **Rollback via issue reversion** (if needed):
-   - Edit the GitHub issue → bot re-publishes automatically
-   - Or delete the generated `.md` file + trigger rebuild
-
-## Accessibility Guardrails (Critical!)
-
-Add these checks to your bot to prevent non-technical contributors from breaking WCAG compliance:
+## Guardrails
 
 ```yaml
 # GitHub Actions validation pseudocode
-- Check if link text is descriptive (not "click here", "read more", "link")
-- Check if summary is ≤ 200 characters
-- Check if category is in predefined list (enum)
-- Warn if title has ALL CAPS (accessibility: hard to read for dyslexic users)
-- Flag missing audience checkboxes (who is this for?)
+- Require issue label: news-vorschlag
+- Require approval label: freigegeben
+- Require no-PII checkbox checked
+- Check title and summary length
+- Check category/audience are in predefined lists
+- Reject email and phone-number patterns
+- Sanitize Markdown/front matter before writing files
+- Open PR; do not publish directly
 ```
 
 ## Trade-offs
 
 ### Advantages
-- Non-developers can publish without `git` knowledge
-- Version history built-in (issue edit history)
-- Minimal infrastructure overhead
-- GitHub notifications work as editorial alerts
+- Non-developers can propose news without `git` knowledge.
+- GitHub issue history and PR review provide an audit trail.
+- GitHub notifications work as editorial alerts via watching, assignment, mentions, CODEOWNERS, or review requests.
+- No external mail, CMS, analytics, or tracking infrastructure is required.
 
 ### Risks (Mitigation Required)
-- **Bot failures:** If validation fails, where does the error message go? → Set up Slack/Teams alerts
-- **Metadata typos:** "Pupil" vs. "pupil" vs. "pupils" breaks filtering → Use checkboxes, not text fields
-- **No preview before publish:** Contributor can't see rendered HTML → Bot generates preview link; editor clicks before approving
-- **Editing complexity:** Fixing a typo requires editing issue + re-triggering bot → Document process clearly
+- **Validation failures:** Comment on the issue or rely on failed workflow notifications; keep the error actionable.
+- **Metadata typos:** Use dropdowns/checkboxes, not free text, for filter values.
+- **External link risk:** Require editorial review before merging the PR.
+- **Editing complexity:** Fix generated content in the PR or update the issue and re-trigger by re-labeling.
 
 ## German Language Note
 
-For German-language sites, adapt the issue template to use German field names and examples:
+Use concise German labels and helper text:
 
 ```markdown
-**Datum:** 2026-05-31
-**Kategorie:** [Informatik / KI / Allgemeines]
-**Zielgruppe:** [ ] Schüler [ ] Lehrer [ ] Eltern
-**Zusammenfassung (max. 200 Zeichen):**
+**Titel:** KI-Begriffe einfach erklärt
+**Kurzbeschreibung:** Max. 220 Zeichen.
+**Zielgruppe:** Schüler:innen / Eltern / Lehrkräfte / SEB / Allgemein
+**Thema/Kategorie:** KI / Informatik / Veranstaltung / Wettbewerb / Material / Empfehlung / Hinweis / Sonstiges
+**Datenschutz:** Keine Namen, E-Mails, Telefonnummern, Adressen, Fotos oder privaten Angaben.
 ```
-
-## Minimal Implementation
-
-If a bot feels like overkill, use **Markdown files instead:**
-
-1. Contributor copies `_template_news.md` → `_posts/2026-05-31-title.md`
-2. Edits locally, previews with `jekyll serve`
-3. Submits pull request (one-step review)
-4. Merge triggers auto-publish
-
-**Trade-off:** Requires `git` and local Ruby setup; but eliminates bot complexity.
 
 ## Checklist Before Launch
 
-- [ ] Issue template exists and is enforced
-- [ ] Bot validates metadata (no typos, no empty fields)
-- [ ] Bot checks accessibility rules (link text, capitalization, etc.)
-- [ ] Preview link generated for manual review
-- [ ] Failure notifications go to Slack/Teams (or email)
-- [ ] Contributors trained on template & process
-- [ ] Rollback process documented
-- [ ] Monthly audit of published posts (accessibility, accuracy)
-
-## Related
-
-- GitHub Issue templates: https://docs.github.com/en/communities/using-templates-to-encourage-useful-issues-and-pull-requests
-- GitHub Actions workflows: https://docs.github.com/en/actions
-- Jekyll + GitHub Pages: https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll
-
+- [ ] Issue template exists and is enforced by workflow validation.
+- [ ] Approval label is documented and maintainers know who may apply it.
+- [ ] Workflow opens a PR, not a direct commit to the publishing branch.
+- [ ] Generated content has sanitized front matter and no raw HTML.
+- [ ] External links are reviewed before merge.
+- [ ] Approver notifications stay GitHub-native.
+- [ ] Rollback process is documented.

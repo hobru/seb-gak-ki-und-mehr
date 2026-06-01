@@ -1,18 +1,21 @@
-name: "News- oder Beitragsvorschlag"
-description: "Einen Vorschlag für GAK Digital einreichen. Veröffentlichung erst nach redaktioneller Prüfung."
-title: "[Beitrag]: "
+name: "Neuigkeit vorschlagen"
+description: "Einen privacy-sicheren Vorschlag für die Neuigkeiten-Seite einreichen."
+title: "[Neuigkeit]: "
 labels: ["news-vorschlag"]
 body:
   - type: markdown
     attributes:
       value: |
-        Danke für den Vorschlag! Bitte keine personenbezogenen Daten eintragen.
-        Die Issue Form veröffentlicht nichts automatisch auf der Website.
+        Danke für den Vorschlag! Dieses Issue ist öffentlich sichtbar.
+
+        **Wichtig:** Bitte keine personenbezogenen Daten eintragen – keine Namen, E-Mail-Adressen, Telefonnummern, Adressen, Fotos oder privaten Angaben zu einzelnen Personen.
+
+        Ein Vorschlag wird erst nach redaktioneller Prüfung freigegeben. Die Veröffentlichung erfolgt über einen Pull Request, nicht direkt aus dem Issue.
   - type: input
     id: title
     attributes:
       label: "Titel"
-      description: "Kurzer, verständlicher Titel des Beitrags."
+      description: "Kurz und verständlich, maximal 80 Zeichen."
       placeholder: "Beispiel: KI-Begriffe einfach erklärt"
     validations:
       required: true
@@ -20,43 +23,66 @@ body:
     id: abstract
     attributes:
       label: "Kurzbeschreibung"
-      description: "Worum geht es? Maximal zwei kurze Sätze."
-      placeholder: "Ein kurzer Einstieg in ..."
+      description: "Worum geht es? Maximal 220 Zeichen, keine personenbezogenen Daten."
+      placeholder: "Beispiel: Ein kurzer Einstieg in wichtige KI-Begriffe für Schülerinnen und Schüler."
     validations:
       required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: "Details oder externer Link (optional)"
+      description: "Optional: kurze Details oder ein öffentlich erreichbarer Link. Externe Links werden vor Veröffentlichung geprüft."
+      placeholder: "Beispiel: https://example.org/material oder 2–3 Sätze Kontext."
   - type: dropdown
     id: audience
     attributes:
       label: "Zielgruppe"
+      description: "Wer soll den Hinweis vor allem sehen? Mehrfachauswahl möglich."
       multiple: true
       options:
-        - "Schülerinnen und Schüler"
+        - "Schüler:innen"
         - "Eltern"
+        - "Lehrkräfte"
+        - "SEB"
+        - "Allgemein"
     validations:
       required: true
   - type: dropdown
     id: category
     attributes:
-      label: "Kategorie"
+      label: "Thema/Kategorie"
+      description: "Worum geht es inhaltlich? Mehrfachauswahl möglich."
       multiple: true
       options:
         - "KI"
         - "Informatik"
-        - "Lernen"
-        - "Projektidee"
-        - "Tools"
-        - "Datenschutz"
-        - "Eltern"
+        - "Veranstaltung"
+        - "Wettbewerb"
+        - "Material"
+        - "Empfehlung"
+        - "Hinweis"
+        - "Sonstiges"
+    validations:
+      required: true
+  - type: textarea
+    id: relevance
+    attributes:
+      label: "GAK/SEB-Relevanz"
+      description: "Warum passt der Vorschlag zum GAK, zum SEB oder zur Schulgemeinschaft? 1–3 Sätze."
+      placeholder: "Beispiel: Das Material unterstützt Eltern und Schüler:innen beim sicheren Umgang mit KI."
     validations:
       required: true
   - type: input
-    id: link
+    id: valid_until
     attributes:
-      label: "Optionaler Link"
-      description: "Nur Links eintragen, die öffentlich zugänglich und passend sind."
-      placeholder: "https://..."
-  - type: textarea
-    id: notes
+      label: "Gültig/aktuell bis (optional)"
+      description: "Optionales Datum im Format JJJJ-MM-TT, z. B. bei Veranstaltungen oder Fristen."
+      placeholder: "2026-09-30"
+  - type: checkboxes
+    id: no_pii
     attributes:
-      label: "Hinweise für die Redaktion"
-      description: "Gibt es etwas zu beachten, z. B. Aktualität, Quelle oder gewünschter Zeitraum?"
+      label: "Datenschutz-Bestätigung"
+      description: "Diese Bestätigung ist erforderlich, weil Issues öffentlich sichtbar sind."
+      options:
+        - label: "Ich bestätige, dass der Vorschlag keine personenbezogenen Daten enthält (keine Namen, E-Mail-Adressen, Telefonnummern, Adressen, Fotos oder privaten Angaben)."
+          required: true
