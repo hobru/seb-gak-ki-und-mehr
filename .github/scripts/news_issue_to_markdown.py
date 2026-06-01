@@ -90,18 +90,21 @@ def clean_text(value: str, limit: int, field: str) -> str:
 def parse_multi(value: str, allowed: set[str], field: str) -> list[str]:
     items: list[str] = []
     for raw in value.splitlines():
-        entry = raw.strip()
-        if entry.startswith("- "):
-            entry = entry[2:].strip()
-        if entry in NO_RESPONSE:
-            continue
-        if not entry:
-            continue
-        entry = AUDIENCE_ALIASES.get(entry, entry)
-        if entry not in allowed:
-            raise NewsError(f"Ungültiger Wert in {field}: {entry}")
-        if entry not in items:
-            items.append(entry)
+        entries = [raw.strip()]
+        if "," in raw:
+            entries = [part.strip() for part in raw.split(",")]
+        for entry in entries:
+            if entry.startswith("- "):
+                entry = entry[2:].strip()
+            if entry in NO_RESPONSE:
+                continue
+            if not entry:
+                continue
+            entry = AUDIENCE_ALIASES.get(entry, entry)
+            if entry not in allowed:
+                raise NewsError(f"Ungültiger Wert in {field}: {entry}")
+            if entry not in items:
+                items.append(entry)
     if not items:
         raise NewsError(f"{field} fehlt.")
     return items
