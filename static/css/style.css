@@ -169,12 +169,21 @@ ul, ol { padding-left: 1.5rem; }
    6. Badges
    ---------------------------------------------------------- */
 .badge {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   padding: 0.2em 0.65em;
   border-radius: 2em;
   font-size: var(--text-sm);
   font-weight: 600;
   letter-spacing: 0.01em;
+  text-decoration: none;
+  transition: filter var(--transition), transform var(--transition);
+}
+a.badge:hover {
+  color: inherit;
+  filter: brightness(0.96);
+  transform: translateY(-1px);
+  text-decoration: none;
 }
 .badge--ki          { background: #dbeafe; color: #1e3a8a; }
 .badge--informatik  { background: #dcfce7; color: #14532d; }

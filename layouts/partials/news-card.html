@@ -1,34 +1,36 @@
 <article class="news-card" data-news-card data-audiences="{{ delimit .Params.audiences "|" }}" data-categories="{{ delimit .Params.categories "|" }}">
   <div class="news-card__badges">
     {{ if .Params.sample }}<span class="badge badge--sample">Beispiel</span>{{ end }}
-    {{ $topTags := slice }}
-    {{ range .Params.categories }}{{ $topTags = $topTags | append . }}{{ end }}
-    {{ range .Params.audiences }}{{ $topTags = $topTags | append . }}{{ end }}
-    {{ range uniq $topTags }}
+    {{ $classMap := dict
+      "KI"          "ki"
+      "Informatik"  "informatik"
+      "Lernen"      "lernen"
+      "Eltern"      "eltern"
+      "Schüler:innen" "schueler"
+      "Schülerinnen und Schüler" "schueler"
+      "Lehrkräfte"  "lehrkraefte"
+      "SEB"         "seb"
+      "Allgemein"   "allgemein"
+      "Datenschutz" "datenschutz"
+      "Projektidee" "projektidee"
+      "Coding"      "coding"
+      "Tools"       "tools"
+      "Veranstaltung" "veranstaltung"
+      "Wettbewerb"  "wettbewerb"
+      "Material"    "material"
+      "Empfehlung"  "empfehlung"
+      "Hinweis"     "hinweis"
+      "Sonstiges"   "sonstiges"
+    }}
+    {{ range uniq .Params.categories }}
       {{ $label := . }}
-      {{ $classMap := dict
-        "KI"          "ki"
-        "Informatik"  "informatik"
-        "Lernen"      "lernen"
-        "Eltern"      "eltern"
-        "Schüler:innen" "schueler"
-        "Schülerinnen und Schüler" "schueler"
-        "Lehrkräfte"  "lehrkraefte"
-        "SEB"         "seb"
-        "Allgemein"   "allgemein"
-        "Datenschutz" "datenschutz"
-        "Projektidee" "projektidee"
-        "Coding"      "coding"
-        "Tools"       "tools"
-        "Veranstaltung" "veranstaltung"
-        "Wettbewerb"  "wettbewerb"
-        "Material"    "material"
-        "Empfehlung"  "empfehlung"
-        "Hinweis"     "hinweis"
-        "Sonstiges"   "sonstiges"
-      }}
       {{ $class := index $classMap $label | default "tools" }}
-      <span class="badge badge--{{ $class }}">{{ $label }}</span>
+      <a class="badge badge--{{ $class }}" href="{{ "news/" | relURL }}?kategorie={{ $label | urlquery }}">{{ $label }}</a>
+    {{ end }}
+    {{ range uniq .Params.audiences }}
+      {{ $label := . }}
+      {{ $class := index $classMap $label | default "tools" }}
+      <a class="badge badge--{{ $class }}" href="{{ "news/" | relURL }}?zielgruppe={{ $label | urlquery }}">{{ $label }}</a>
     {{ end }}
   </div>
   <h3 class="news-card__title">
