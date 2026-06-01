@@ -138,3 +138,24 @@
 - Homepage-Hero liegt in `layouts/index.html`; zugehörige responsive Styles liegen in `static/css/style.css`.
 - GAK-Logo wurde lokal unter `static/images/gak-logo.png` abgelegt, mit festen `width`/`height`-Attributen gegen Layout Shift und Alt-Text für Barrierefreiheit.
 - Pattern learned: Offizielle Schulmarken auf SEB-Initiativseiten als unterstützende Wiedererkennung einsetzen, nicht als Ownership-Signal; SEB-Label im Hero sichtbar lassen und Logo-Link extern mit `target="_blank" rel="noopener noreferrer"` absichern.
+
+### 2026-06-01T10:29:46.920+02:00 – GAK-Logo aus Nutzerdatei übernommen
+
+- Holgers temporäre Datei `gak-seb-logo.jpg` wurde aus dem Repository-Root nach `static/images/gak-seb-logo.jpg` verschoben; die Root-Kopie wurde entfernt.
+- `layouts/index.html` referenziert nun die bereitgestellte JPG-Datei im Hero neben „Digitales Lernen – von Eltern für Schule und Familie“ mit intrinsischen Maßen `291x97` und bestehendem aussagekräftigem Alt-Text.
+- Pattern learned: Wenn Holger ein temporäres Branding-Asset im Root ablegt, die Datei unverändert in `static/images/` übernehmen, Template-Referenzen auf diesen lokalen Pfad aktualisieren und die temporäre Root-Datei entfernen.
+
+## 2026-06-01T10:29:46Z – SPAWN: Logo Asset Task (Scribe Orchestration)
+
+**Spawn Source:** Scribe orchestration (Spawn Manifest)  
+**Task Status:** Ready for execution  
+
+**Objective:** Move `gak-seb-logo.jpg` into proper static asset folder and place it next to homepage hero title "Digitales Lernen – von Eltern für Schule und Familie".
+
+**Expected Outcome:**
+- Logo moved to `static/images/gak-seb-logo.jpg`
+- Root copy removed
+- Homepage updated with alt text and dimensions
+- `hugo --minify` successful
+
+**Note:** Scribe has recorded this task in the orchestration log and team memory (decisions.md) for asynchronous handoff.

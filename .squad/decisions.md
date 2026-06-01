@@ -142,6 +142,17 @@
 
 **Verification:** `hugo --minify` ran successfully; notice displays on Digitales page; no accessibility or build issues.
 
+### Brand: GAK-Logo auf der Homepage (2026-06-01)
+
+**Status:** Implemented  
+**Owner:** Brand  
+
+**Decision:** Use Holgers provided local asset `gak-seb-logo.jpg` as the homepage GAK logo, stored at `static/images/gak-seb-logo.jpg`, and reference it from `layouts/index.html` in the existing hero logo slot next to „Digitales Lernen – von Eltern für Schule und Familie".
+
+**Rationale:** The user explicitly supplied the logo file and asked that it be placed in the correct project folder. Keeping it local under Hugo's static images folder avoids hotlinking, preserves GitHub Pages compatibility, and keeps the existing responsive/accessibility behavior.
+
+**Verification:** `hugo --minify` completed successfully with 34 pages and zero warnings.
+
 ---
 
 ---
