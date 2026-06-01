@@ -1026,3 +1026,26 @@ No accessibility, UX, or technical fixes required.
 - Reuse layout pattern for future subject collections (e.g., "Gesellschaft & Ethik", "MINT Ressourcen")
 - Maintain `.ki-*` CSS class naming for consistency
 - Next review: Post-launch Lighthouse audit + user feedback (~2 weeks)
+
+---
+
+## Brand: Homepage GAK Logo (2026-06-01)
+
+**Date:** 2026-06-01T09:48:44.273+02:00  
+**Status:** Implemented, pending team merge  
+**Proposer:** Brand
+
+### Decision
+
+The homepage hero may show the official GAK logo beside the headline as a recognition aid, while the text framing remains explicitly "Schulelternbeirat des Gymnasiums am Kaiserdom Speyer".
+
+### Implementation
+
+- Store the logo locally at `static/images/gak-logo.png` instead of hotlinking.
+- Render it in `layouts/index.html` beside the hero headline.
+- Link the logo to `https://gak-speyer.de/` with external-link safety attributes.
+- Keep layout responsive and add image dimensions plus descriptive alt text.
+
+### Rationale
+
+This satisfies the requested school recognition while preserving the site's SEB initiative positioning and avoiding runtime dependency on the official school's WordPress asset host.
