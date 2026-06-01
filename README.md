@@ -20,13 +20,16 @@ hugo server
 ## Produktions-Build (statische Dateien)
 
 ```bash
-hugo --minify --baseURL "https://<deine-domain>/"
+hugo --minify --baseURL "https://hobru.github.io/seb-gak-ki-und-mehr/"
 # Ausgabe in: ./public/
 ```
 
 ## Deployment via GitHub Pages
 
 Das Deployment erfolgt automatisch über GitHub Actions bei jedem Push auf `main` oder `master`.
+Für dieses Repository ist die Projektadresse:
+
+<https://hobru.github.io/seb-gak-ki-und-mehr/>
 
 **Einmalige Einrichtung:**
 1. Gehe zu **Settings → Pages** im GitHub-Repository
@@ -34,8 +37,8 @@ Das Deployment erfolgt automatisch über GitHub Actions bei jedem Push auf `main
 3. Der Workflow `.github/workflows/deploy.yml` baut und deployt die Seite automatisch
 
 **Base-URL anpassen:**  
-In `hugo.toml` und im Deploy-Workflow wird die `baseURL` automatisch gesetzt.
-Für eine eigene Domain: Trage die Domain in den GitHub Pages Einstellungen ein.
+In `hugo.toml` ist die GitHub-Pages-Projektadresse eingetragen. Der Deploy-Workflow überschreibt die `baseURL` beim Build zusätzlich mit der von GitHub Pages gelieferten Adresse.
+Für eine eigene Domain: Trage die Domain in den GitHub Pages Einstellungen ein und passe anschließend `baseURL` entsprechend an.
 
 ## Struktur
 
