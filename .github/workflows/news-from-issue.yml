@@ -73,6 +73,8 @@ jobs:
             --title "Neuigkeit veröffentlichen: ${NEWS_TITLE}" \
             --body "Erzeugt aus #${ISSUE_NUMBER} nach dem Label \`freigegeben\`.
 
+          Closes #${ISSUE_NUMBER}
+
           Bitte vor dem Merge prüfen:
           - Inhalt enthält keine personenbezogenen Daten.
           - Externe Links sind passend und sicher.
