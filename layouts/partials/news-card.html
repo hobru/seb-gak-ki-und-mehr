@@ -29,12 +29,16 @@
   {{ with .Params.abstract }}
   <p class="news-card__abstract">{{ . }}</p>
   {{ end }}
+  {{ with .Params.audiences }}
+  <div class="news-card__audiences" aria-label="Zielgruppe">
+    <span class="news-card__audiences-label">Zielgruppe:</span>
+    {{ range . }}
+      <span class="news-audience-chip">{{ . }}</span>
+    {{ end }}
+  </div>
+  {{ end }}
   <div class="news-card__meta">
     <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02.01.2006" }}</time>
-    {{ with .Params.audiences }}
-      <span aria-hidden="true">&middot;</span>
-      <span>{{ delimit . ", " }}</span>
-    {{ end }}
     {{ with .Params.valid_until }}
       <span aria-hidden="true">&middot;</span>
       <span>aktuell bis {{ time.Format "02.01.2006" . }}</span>

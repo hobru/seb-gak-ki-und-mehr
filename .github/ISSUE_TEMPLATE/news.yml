@@ -10,20 +10,22 @@ body:
 
         **Wichtig:** Bitte keine personenbezogenen Daten eintragen – keine Namen, E-Mail-Adressen, Telefonnummern, Adressen, Fotos oder privaten Angaben zu einzelnen Personen.
 
+        Die **Kurzbeschreibung darf maximal 220 Zeichen** lang sein. Längere Vorschläge können nicht automatisch in einen Pull Request umgewandelt werden.
+
         Bitte nutze das GitHub-Feld **Add a title** oben für den kurzen Nachrichtentitel. Ein Vorschlag wird erst nach redaktioneller Prüfung freigegeben. Die Veröffentlichung erfolgt über einen Pull Request, nicht direkt aus dem Issue.
   - type: textarea
     id: abstract
     attributes:
-      label: "Kurzbeschreibung"
-      description: "Worum geht es? Maximal 220 Zeichen, keine personenbezogenen Daten."
-      placeholder: "Beispiel: Ein kurzer Einstieg in wichtige KI-Begriffe für Schülerinnen und Schüler."
+      label: "Kurzbeschreibung (max. 220 Zeichen)"
+      description: "Worum geht es? Bitte vor dem Absenden auf maximal 220 Zeichen kürzen; keine personenbezogenen Daten."
+      placeholder: "Max. 220 Zeichen, z. B.: Ein kurzer Einstieg in wichtige KI-Begriffe für Schülerinnen und Schüler."
     validations:
       required: true
   - type: textarea
     id: details
     attributes:
       label: "Details oder externer Link (optional)"
-      description: "Optional: kurze Details oder ein öffentlich erreichbarer Link. Externe Links werden vor Veröffentlichung geprüft."
+      description: "Optional: kurze Details oder ein öffentlich erreichbarer Link. Links werden technisch als http(s)-URL erkannt und vor Veröffentlichung redaktionell angesehen; das ist keine automatische Inhalts- oder Sicherheitsprüfung."
       placeholder: "Beispiel: https://example.org/material oder 2–3 Sätze Kontext."
   - type: dropdown
     id: audience

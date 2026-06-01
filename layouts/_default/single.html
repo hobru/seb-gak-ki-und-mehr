@@ -30,10 +30,15 @@
     <h1 class="post-header__title" id="post-title">{{ .Title }}</h1>
     <p class="post-header__meta">
       <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02.01.2006" }}</time>
-      {{ with .Params.audiences }}
-        &nbsp;&middot;&nbsp; {{ delimit . ", " }}
-      {{ end }}
     </p>
+    {{ with .Params.audiences }}
+    <div class="post-header__audiences" aria-label="Zielgruppe">
+      <span class="post-header__audiences-label">Zielgruppe:</span>
+      {{ range . }}
+        <span class="news-audience-chip">{{ . }}</span>
+      {{ end }}
+    </div>
+    {{ end }}
   </div>
 </section>
 

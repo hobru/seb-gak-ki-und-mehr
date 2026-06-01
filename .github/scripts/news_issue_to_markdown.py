@@ -29,6 +29,7 @@ ALLOWED_CATEGORIES = {
 }
 FIELD_ALIASES = {
     "Kurzbeschreibung": "abstract",
+    "Kurzbeschreibung (max. 220 Zeichen)": "abstract",
     "Details oder externer Link (optional)": "details",
     "Zielgruppe": "audience",
     "Thema/Kategorie": "category",
@@ -219,7 +220,7 @@ def main() -> int:
     if details:
         lines.extend(["", "## Details", "", markdown_plain(details)])
     if external_link:
-        lines.extend(["", "## Externer Link", "", f"[Geprüften Link öffnen]({external_link})"])
+        lines.extend(["", "## Externer Link", "", f"[Externen Link öffnen]({external_link})"])
     lines.append("")
 
     file_path.parent.mkdir(parents=True, exist_ok=True)
