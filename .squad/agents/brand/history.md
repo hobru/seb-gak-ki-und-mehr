@@ -124,3 +124,9 @@
 
 - Ergänzte auf `Digitales & Informatik` einen SEB-gerahmten Hinweis auf die Stadtbibliothek Speyer als kostenfreien Zugang zu Medien und, wo verfügbar, digitalen Lerntools wie Sofatutor und plan6.
 - Pattern learned: Kommunale Zugänge zu sonst kostenpflichtigen Lernangeboten gehören als prominenter Hinweis vor Fachkarten, damit Schülerinnen und Schüler sowie Eltern zuerst niedrigschwellige öffentliche Angebote prüfen.
+
+## 2026-06-01 – Digitales-Reihenfolge und Linkcheck
+
+- Die Seite `Digitales & Informatik` beginnt nun passend zum humanistischen GAK-Profil mit Sprachen (Deutsch, Englisch, Französisch, Latein), danach Gesellschaft/Kultur, MINT und erst anschließend Informatik/Digitales.
+- Stadtbibliothek-Hinweis präzisiert: Sofatutor oder plan6 können je nach Verfügbarkeit und Nutzungsbedingungen über digitale Angebote **kostenfrei** erreichbar sein.
+- Pattern learned: Nach Nutzerhinweisen auf defekte Bildungslinks alle externen URLs per GET prüfen und auch sichtbare Fehlertexte scannen; bei 404/403/App-Fehlern lieber stabile Alternativen mit gleichem Schüler-/Elternnutzen einsetzen.

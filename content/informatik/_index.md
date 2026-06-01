@@ -1,14 +1,14 @@
 ---
 title: "Digitales & Informatik"
 description: "Digitale Lernangebote nach Fächern: frei zugängliche Tools, Erklärseiten und Übungsangebote für Schülerinnen und Schüler und Eltern – gesammelt vom Schulelternbeirat."
-lead: "Digitale Lernangebote können beim Wiederholen, Verstehen und Ausprobieren helfen. Hier sammelt der Schulelternbeirat fachbezogene Links für Schülerinnen und Schüler und Eltern – von Informatik über MINT bis Sprachen und Gesellschaft."
+lead: "Digitale Lernangebote können beim Wiederholen, Verstehen und Ausprobieren helfen. Hier sammelt der Schulelternbeirat fachbezogene Links für Schülerinnen und Schüler und Eltern – von Sprachen und Gesellschaft bis MINT, Informatik und Digitales."
 
 intro: "**Hinweis:** Diese Sammlung ist eine Orientierung des Schulelternbeirats, keine offizielle Empfehlung der Schule. Viele Angebote sind frei und ohne Konto nutzbar; trotzdem gilt: Nutzungsbedingungen und Datenschutz kurz prüfen, keine persönlichen Daten unnötig eingeben und Ergebnisse kritisch einordnen."
 
 library_notice:
   icon: "🏛️"
   title: "Hinweis: Lernzugänge über die Stadtbibliothek Speyer"
-  desc: "Die Stadtbibliothek Speyer bietet Schülerinnen und Schülern sowie Eltern nicht nur Zugang zu Büchern, Zeitschriften, Videos und weiteren Medien. Über die digitalen Angebote können – je nach Verfügbarkeit und Nutzungsbedingungen – auch Lernwerkzeuge wie Sofatutor oder plan6 erreichbar sein. Ein Blick auf die Bibliotheksseite lohnt sich besonders, bevor kostenpflichtige Lernangebote privat gebucht werden."
+  desc: "Die Stadtbibliothek Speyer bietet Schülerinnen und Schülern sowie Eltern Zugang zu Büchern, Zeitschriften, Videos und weiteren Medien. Über die digitalen Angebote können – je nach Verfügbarkeit und Nutzungsbedingungen – auch Lernwerkzeuge wie Sofatutor oder plan6 kostenfrei erreichbar sein. Ein Blick auf die Bibliotheksseite lohnt sich besonders, bevor kostenpflichtige Lernangebote privat gebucht werden."
   links:
     - label: "Stadtbibliothek Speyer"
       url: "https://www.speyer.de/de/bildung/stadtbibliothek/"
@@ -16,88 +16,17 @@ library_notice:
       url: "https://www.speyer.de/de/bildung/stadtbibliothek/digitale-angebote/"
 
 tool_sections:
-  - id: "informatik-medien"
-    icon: "💻"
-    color: "blue"
-    nav_label: "Informatik"
-    title: "Informatik & Medienkompetenz"
-    cards:
-      - title: "Serlo Informatik"
-        desc: "Freie Erklärungen und Aufgaben zu Programmierung, Algorithmen, Daten und Grundlagen der Informatik – gut für selbstständiges Wiederholen."
-        links:
-          - label: "Serlo Informatik"
-            url: "https://de.serlo.org/informatik"
-      - title: "openHPI"
-        desc: "Kostenlose Online-Kurse des Hasso-Plattner-Instituts zu Programmieren, Datenbanken, IT-Sicherheit und digitaler Grundbildung."
-        links:
-          - label: "openHPI öffnen"
-            url: "https://open.hpi.de/"
-      - title: "Bundeswettbewerb Informatik"
-        desc: "Knobelaufgaben, Wettbewerbe und Einstiegsmaterial für alle, die Informatik spielerisch und anspruchsvoll ausprobieren möchten."
-        links:
-          - label: "BWINF"
-            url: "https://www.bwinf.de/"
-      - title: "Internet-ABC"
-        desc: "Kindgerechte Lernmodule zu sicherer Internetnutzung, Recherche, Urheberrecht, Werbung und Verhalten online – auch hilfreich für Eltern."
-        links:
-          - label: "Internet-ABC"
-            url: "https://www.internet-abc.de/"
-
-  - id: "mathe"
-    icon: "📐"
-    color: "green"
-    nav_label: "Mathe"
-    title: "Mathematik"
-    cards:
-      - title: "GeoGebra Classic"
-        desc: "Interaktive Geometrie, Funktionen, Tabellen, CAS und 3D-Ansichten direkt im Browser – ideal zum Ausprobieren und Visualisieren."
-        links:
-          - label: "GeoGebra Classic"
-            url: "https://www.geogebra.org/classic"
-      - title: "Serlo Mathematik"
-        desc: "Freie Erklärungen, Beispiele und Aufgaben von Grundlagen bis Oberstufe – ohne Anmeldung nutzbar."
-        links:
-          - label: "Serlo Mathe"
-            url: "https://de.serlo.org/mathe"
-      - title: "Khan Academy Mathematik"
-        desc: "Viele Videos und Übungsaufgaben, besonders stark für Grundlagen und Schritt-für-Schritt-Erklärungen; Teile sind auf Deutsch verfügbar."
-        links:
-          - label: "Khan Academy Mathe"
-            url: "https://de.khanacademy.org/math"
-
-  - id: "physik"
-    icon: "🔭"
-    color: "purple"
-    nav_label: "Physik"
-    title: "Physik"
-    cards:
-      - title: "LEIFIphysik"
-        desc: "Sehr umfangreiche deutsche Physik-Lernseite mit Erklärungen, Aufgaben, Simulationen und Versuchen nach Themen und Klassenstufen."
-        links:
-          - label: "LEIFIphysik"
-            url: "https://www.leifiphysik.de/"
-      - title: "PhET Simulationen"
-        desc: "Interaktive Simulationen der University of Colorado für Physik, Chemie, Mathe und Biologie – viele davon auf Deutsch."
-        links:
-          - label: "PhET Deutsch"
-            url: "https://phet.colorado.edu/de/"
-      - title: "Welt der Physik"
-        desc: "Verständliche Artikel zu aktuellen Forschungsthemen – gut für Referate, Interessenvertiefung und Einordnung."
-        links:
-          - label: "Welt der Physik"
-            url: "https://www.weltderphysik.de/"
-
   - id: "deutsch"
     icon: "📚"
     color: "amber"
     nav_label: "Deutsch"
     title: "Deutsch"
     cards:
-      - title: "Serlo Deutsch"
-        desc: "Erklärungen und Aufgaben zu Grammatik, Rechtschreibung, Textsorten und Schreiben – frei zugänglich."
+      - title: "Lernhelfer Deutsch"
+        desc: "Schülerlexikon zu Sprache, Literatur, Textsorten und Grammatik – gut zum Nachschlagen und Einordnen."
         links:
-          - label: "Serlo Deutsch"
-            url: "https://de.serlo.org/deutsch"
+          - label: "Lernhelfer Deutsch"
+            url: "https://www.lernhelfer.de/schuelerlexikon/deutsch"
       - title: "Orthografietrainer"
         desc: "Kostenlose Übungen zu Rechtschreibung und Zeichensetzung; Kernübungen funktionieren ohne unnötige Dateneingaben."
         links:
@@ -115,11 +44,11 @@ tool_sections:
     nav_label: "Englisch"
     title: "Englisch"
     cards:
-      - title: "British Council LearnEnglish Teens"
-        desc: "Lese-, Hör- und Grammatikübungen für Jugendliche; gute Quelle für alltagsnahes Englisch."
+      - title: "Englisch-Hilfen"
+        desc: "Kostenlose Grammatik-, Wortschatz- und Prüfungsübungen für Englisch – schnell nach Thema auswählbar."
         links:
-          - label: "LearnEnglish Teens"
-            url: "https://learnenglishteens.britishcouncil.org/"
+          - label: "Englisch-Hilfen"
+            url: "https://www.englisch-hilfen.de/"
       - title: "BBC Learning English"
         desc: "Kurze Videos, Audioformate und Übungen zu Wortschatz, Aussprache und Grammatik – besonders gut zum regelmäßigen Üben."
         links:
@@ -131,17 +60,39 @@ tool_sections:
           - label: "Cambridge Dictionary"
             url: "https://dictionary.cambridge.org/de/"
 
+  - id: "franzoesisch"
+    icon: "🇫🇷"
+    color: "green"
+    nav_label: "Französisch"
+    title: "Französisch"
+    cards:
+      - title: "Lingolia Französisch"
+        desc: "Erklärungen und Übungen zu französischer Grammatik, Wortschatz und Zeiten – übersichtlich auf Deutsch erklärt."
+        links:
+          - label: "Lingolia Französisch"
+            url: "https://francais.lingolia.com/de/"
+      - title: "PONS Französisch"
+        desc: "Wörterbuch und Beispielsätze für Französisch–Deutsch; praktisch beim Schreiben, Übersetzen und Vokabellernen."
+        links:
+          - label: "PONS Französisch"
+            url: "https://de.pons.com/%C3%BCbersetzung/franz%C3%B6sisch-deutsch"
+      - title: "Le Point du FLE"
+        desc: "Große Sammlung frei zugänglicher Französischübungen nach Grammatik, Wortschatz und Niveau; Oberfläche überwiegend französisch."
+        links:
+          - label: "Le Point du FLE"
+            url: "https://www.lepointdufle.net/"
+
   - id: "latein"
     icon: "🏛️"
     color: "green"
     nav_label: "Latein"
     title: "Latein"
     cards:
-      - title: "Navigium – kostenlos üben"
-        desc: "Übungen zu Wortschatz und Formenlehre; einige Bereiche sind frei nutzbar, zusätzliche Funktionen können ein Konto erfordern."
+      - title: "Latein-Grammatik.at"
+        desc: "Kostenfreie Übersichten zu Grammatik, Metrik, Realienkunde und Übersetzungshilfen – ohne Werbung und gut zum Nachschlagen."
         links:
-          - label: "Navigium Übungen"
-            url: "https://www.navigium.de/uebungen.html"
+          - label: "Latein-Grammatik"
+            url: "https://www.latein-grammatik.at/"
       - title: "PONS Latein-Wörterbuch"
         desc: "Schnelles Nachschlagen von lateinischen Wörtern mit deutschen Bedeutungen – nützlich beim Übersetzen."
         links:
@@ -156,8 +107,8 @@ tool_sections:
   - id: "geschichte"
     icon: "🕰️"
     color: "purple"
-    nav_label: "Geschichte"
-    title: "Geschichte"
+    nav_label: "Geschichte/Gesellschaft"
+    title: "Geschichte & Gesellschaft"
     cards:
       - title: "LeMO – Lebendiges Museum Online"
         desc: "Deutsche Geschichte vom 19. Jahrhundert bis zur Gegenwart mit Zeitleisten, Quellen, Biografien und Objekten."
@@ -175,28 +126,6 @@ tool_sections:
           - label: "Planet Wissen Geschichte"
             url: "https://www.planet-wissen.de/geschichte/"
 
-  - id: "musik"
-    icon: "🎵"
-    color: "amber"
-    nav_label: "Musik"
-    title: "Musik"
-    cards:
-      - title: "BR-Klassik Wissen"
-        desc: "Hintergründe zu Komponistinnen und Komponisten, Werken, Musikgeschichte und Instrumenten vom öffentlich-rechtlichen Rundfunk."
-        links:
-          - label: "BR-Klassik Wissen"
-            url: "https://www.br-klassik.de/themen/wissen/"
-      - title: "Learning Music"
-        desc: "Interaktive Einführung in Beats, Melodien, Akkorde und Songaufbau – spielerisch und ohne Installation im Browser."
-        links:
-          - label: "Learning Music"
-            url: "https://learningmusic.ableton.com/de/"
-      - title: "Musicca Übungen"
-        desc: "Freie Übungen zu Notenlesen, Rhythmus und Gehörbildung; viele Inhalte funktionieren direkt im Browser."
-        links:
-          - label: "Musicca"
-            url: "https://www.musicca.com/de"
-
   - id: "religion-ethik"
     icon: "🧭"
     color: "blue"
@@ -208,38 +137,82 @@ tool_sections:
         links:
           - label: "Religionen entdecken"
             url: "https://www.religionen-entdecken.de/"
-      - title: "Planet Wissen Religion"
-        desc: "Dossiers zu Religionen, Weltanschauungen und gesellschaftlichen Fragen – als Einstieg für Referate geeignet."
+      - title: "bpb: Religion und Ethik"
+        desc: "Dossiers und Hintergrundtexte zu Religion, Weltanschauungen, Gesellschaft und Verantwortung – gut zum Einordnen."
         links:
-          - label: "Planet Wissen Religion"
-            url: "https://www.planet-wissen.de/gesellschaft/religion/"
-      - title: "HanisauLand Lexikon"
+          - label: "bpb Religion und Ethik"
+            url: "https://www.bpb.de/themen/religion-ethik/"
+      - title: "bpb: Das junge Politik-Lexikon"
         desc: "Einfach erklärte Begriffe zu Demokratie, Gesellschaft, Rechten und Verantwortung – hilfreich für Ethik und Sozialkunde."
         links:
-          - label: "HanisauLand Lexikon"
-            url: "https://www.hanisauland.de/wissen/lexikon/grosses-lexikon"
+          - label: "Junges Politik-Lexikon"
+            url: "https://www.bpb.de/kurz-knapp/lexika/das-junge-politik-lexikon/"
 
-  - id: "franzoesisch"
-    icon: "🇫🇷"
-    color: "green"
-    nav_label: "Französisch"
-    title: "Französisch"
+  - id: "musik"
+    icon: "🎵"
+    color: "amber"
+    nav_label: "Musik/Kultur"
+    title: "Musik & Kultur"
     cards:
-      - title: "TV5MONDE – Apprendre le français"
-        desc: "Kostenlose Übungen mit Videos, Hörverstehen und Niveauauswahl – besonders gut zum Training von Alltagssprache."
+      - title: "BR-KLASSIK – Klassik entdecken"
+        desc: "Hintergründe zu Komponistinnen und Komponisten, Werken, Musikgeschichte und Instrumenten vom öffentlich-rechtlichen Rundfunk."
         links:
-          - label: "TV5MONDE Übungen"
-            url: "https://apprendre.tv5monde.com/de"
-      - title: "PONS Französisch"
-        desc: "Wörterbuch und Beispielsätze für Französisch–Deutsch; praktisch beim Schreiben, Übersetzen und Vokabellernen."
+          - label: "BR-KLASSIK Klassik entdecken"
+            url: "https://www.br-klassik.de/themen/klassik-entdecken/index.html"
+      - title: "Learning Music"
+        desc: "Interaktive Einführung in Beats, Melodien, Akkorde und Songaufbau – spielerisch und ohne Installation im Browser."
         links:
-          - label: "PONS Französisch"
-            url: "https://de.pons.com/%C3%BCbersetzung/franz%C3%B6sisch-deutsch"
-      - title: "Le Point du FLE"
-        desc: "Große Sammlung frei zugänglicher Französischübungen nach Grammatik, Wortschatz und Niveau; Oberfläche überwiegend französisch."
+          - label: "Learning Music"
+            url: "https://learningmusic.ableton.com/de/"
+      - title: "Musicca Übungen"
+        desc: "Freie Übungen zu Notenlesen, Rhythmus und Gehörbildung; viele Inhalte funktionieren direkt im Browser."
         links:
-          - label: "Le Point du FLE"
-            url: "https://www.lepointdufle.net/"
+          - label: "Musicca"
+            url: "https://www.musicca.com/de"
+
+  - id: "mathe"
+    icon: "📐"
+    color: "green"
+    nav_label: "Mathe"
+    title: "Mathematik"
+    cards:
+      - title: "GeoGebra Classic"
+        desc: "Interaktive Geometrie, Funktionen, Tabellen, CAS und 3D-Ansichten direkt im Browser – ideal zum Ausprobieren und Visualisieren."
+        links:
+          - label: "GeoGebra Classic"
+            url: "https://www.geogebra.org/classic"
+      - title: "Mathebibel"
+        desc: "Erklärungen, Beispiele und Formelsammlungen zu vielen Mathethemen – gut zum Nachschlagen und Wiederholen."
+        links:
+          - label: "Mathebibel"
+            url: "https://www.mathebibel.de/"
+      - title: "Schlaukopf Mathematik"
+        desc: "Kostenlose Online-Übungen nach Klassenstufe und Thema – praktisch für kurze Wiederholungseinheiten."
+        links:
+          - label: "Schlaukopf Mathe"
+            url: "https://www.schlaukopf.de/gymnasium/klasse5/mathematik/"
+
+  - id: "physik"
+    icon: "🔭"
+    color: "purple"
+    nav_label: "Physik"
+    title: "Physik"
+    cards:
+      - title: "Lernhelfer Physik"
+        desc: "Schülerlexikon mit kompakten Erklärungen zu zentralen Physikbegriffen und Formeln – hilfreich zum Nachschlagen."
+        links:
+          - label: "Lernhelfer Physik"
+            url: "https://www.lernhelfer.de/schuelerlexikon/physik"
+      - title: "PhET Simulationen"
+        desc: "Interaktive Simulationen der University of Colorado für Physik, Chemie, Mathe und Biologie – viele davon auf Deutsch."
+        links:
+          - label: "PhET Deutsch"
+            url: "https://phet.colorado.edu/de/"
+      - title: "Welt der Physik"
+        desc: "Verständliche Artikel zu aktuellen Forschungsthemen – gut für Referate, Interessenvertiefung und Einordnung."
+        links:
+          - label: "Welt der Physik"
+            url: "https://www.weltderphysik.de/"
 
   - id: "chemie"
     icon: "⚗️"
@@ -247,11 +220,11 @@ tool_sections:
     nav_label: "Chemie"
     title: "Chemie"
     cards:
-      - title: "Serlo Chemie"
-        desc: "Freie Erklärungen und Aufgaben zu Stoffen, Reaktionen, Atombau, Bindungen und weiteren Chemie-Grundlagen."
+      - title: "Lernhelfer Chemie"
+        desc: "Schülerlexikon mit Erklärungen zu Stoffen, Reaktionen, Atombau, Bindungen und weiteren Chemie-Grundlagen."
         links:
-          - label: "Serlo Chemie"
-            url: "https://de.serlo.org/chemie"
+          - label: "Lernhelfer Chemie"
+            url: "https://www.lernhelfer.de/schuelerlexikon/chemie"
       - title: "PhET Chemie-Simulationen"
         desc: "Interaktive Simulationen zu Molekülen, Säuren/Basen, Reaktionen und Laborgrundlagen – oft auf Deutsch verfügbar."
         links:
@@ -269,21 +242,48 @@ tool_sections:
     nav_label: "Biologie"
     title: "Biologie"
     cards:
-      - title: "Serlo Biologie"
-        desc: "Freie Lerninhalte zu Zellen, Genetik, Ökologie, Evolution und Humanbiologie – gut für Wiederholung und Überblick."
+      - title: "Biologie-Schule.de"
+        desc: "Kompakte Erklärungen zu Zellen, Genetik, Ökologie, Evolution und Humanbiologie – gut für Wiederholung und Überblick."
         links:
-          - label: "Serlo Biologie"
-            url: "https://de.serlo.org/biologie"
-      - title: "Planet Wissen Biologie"
-        desc: "Verständliche Dossiers zu Natur, Körper, Evolution und Umwelt – mit öffentlich-rechtlichen Videos und Artikeln."
+          - label: "Biologie-Schule"
+            url: "https://www.biologie-schule.de/"
+      - title: "Planet Schule Biologie"
+        desc: "Filme und Lernmaterialien zu biologischen Themen – hilfreich für Überblick, Referate und Vertiefung."
         links:
-          - label: "Planet Wissen Biologie"
-            url: "https://www.planet-wissen.de/natur/biologie/"
+          - label: "Planet Schule Biologie"
+            url: "https://www.planet-schule.de/fach/biologie-102.html"
       - title: "PhET Biologie-Simulationen"
         desc: "Einzelne interaktive Modelle zu biologischen und naturwissenschaftlichen Themen – gut zum Visualisieren von Zusammenhängen."
         links:
           - label: "PhET Biologie"
             url: "https://phet.colorado.edu/de/simulations/filter?subjects=biology&type=html"
+
+  - id: "informatik-medien"
+    icon: "💻"
+    color: "blue"
+    nav_label: "Informatik/Digitales"
+    title: "Informatik & Digitales"
+    cards:
+      - title: "Informatik-Biber"
+        desc: "Knobelaufgaben und Einstiege in informatisches Denken – gut, um Algorithmen, Logik und Daten spielerisch auszuprobieren."
+        links:
+          - label: "Informatik-Biber"
+            url: "https://bwinf.de/biber/"
+      - title: "openHPI"
+        desc: "Kostenlose Online-Kurse des Hasso-Plattner-Instituts zu Programmieren, Datenbanken, IT-Sicherheit und digitaler Grundbildung."
+        links:
+          - label: "openHPI öffnen"
+            url: "https://open.hpi.de/"
+      - title: "Bundeswettbewerb Informatik"
+        desc: "Knobelaufgaben, Wettbewerbe und Einstiegsmaterial für alle, die Informatik spielerisch und anspruchsvoll ausprobieren möchten."
+        links:
+          - label: "BWINF"
+            url: "https://www.bwinf.de/"
+      - title: "Internet-ABC"
+        desc: "Kindgerechte Lernmodule zu sicherer Internetnutzung, Recherche, Urheberrecht, Werbung und Verhalten online – auch hilfreich für Eltern."
+        links:
+          - label: "Internet-ABC"
+            url: "https://www.internet-abc.de/"
 
   - id: "eltern"
     icon: "🏠"
