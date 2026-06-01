@@ -870,6 +870,387 @@ All 16 links verified live, German-language (or German-accessible), school-appro
 
 ---
 
+---
+
+## MVP Neuigkeiten Workflow: Product & Scope (2026-06-01)
+
+**Status:** Proposed  
+**Proposer:** Mikey (Product Coordinator)  
+**Requested by:** Holger Bruchelt  
+**Date:** 2026-06-01T12:56:42.320+02:00
+
+### Decision
+
+The Neuigkeiten MVP uses a GitHub-native moderation workflow:
+
+1. Contributor opens public GitHub Issue using the `News- oder Beitragsvorschlag` Issue Form.
+2. Issue receives `news:vorschlag` label.
+3. Editorial approvers triage with labels and comments.
+4. When ready, approver applies `news:freigegeben` (maintainer-only label).
+5. GitHub Actions creates a pull request converting issue fields into Hugo news Markdown under `content/news/`.
+6. GitHub CODEOWNERS requests review from news approver team.
+7. Merge publishes through existing Hugo/GitHub Pages deployment.
+
+**No direct publishing from issues without PR review.**
+
+### Required Issue Fields
+
+- **Titel** — short, readable title.
+- **Kurzbeschreibung** — 1–2 sentences, suitable for teaser text.
+- **Zielgruppe(n)** — multi-select: Schüler*innen, Lehrkräfte, Eltern, SEB/Schulgemeinschaft.
+- **Kategorie(n)** — multi-select for filtering: KI, Informatik, Lernen, Projektidee, Tools, Datenschutz, Eltern, Veranstaltung, Wettbewerb.
+- **Relevanz für GAK/SEB** — short explanation of site fit.
+- **Datenschutzbestätigung** — required checkbox: no personal data included.
+
+### Optional Issue Fields
+
+- **Details / Hinweise für die Redaktion** — extra context, angle, constraints.
+- **Externer Link / Quelle** — public HTTPS URL only.
+- **Aktualitätsdatum / gültig bis** — useful for time-limited announcements.
+
+### Moderation States (Labels)
+
+- `news:vorschlag` — submitted, not yet reviewed.
+- `news:prüfung` — editorial review in progress.
+- `news:änderung nötig` — needs clarification.
+- `news:abgelehnt` — not suitable.
+- `news:zurückgezogen` — proposer withdrew.
+- `news:freigegeben` — approved for PR generation (maintainer-only).
+- `news:preview` — generated PR exists.
+- `news:veröffentlicht` — merged and live.
+
+---
+
+## Neuigkeiten GitHub Issue Form Copy & UX Guidance (2026-06-01)
+
+**Status:** Draft for Review  
+**Proposer:** Mouth (German Content Editor)  
+**Date:** 2026-06-01T12:56:42.320+02:00  
+**Requested by:** Holger Bruchelt
+
+### Summary
+
+Current `.github/ISSUE_TEMPLATE/news.yml` is functional but needs UX refinement. This document proposes concise German field labels, actionable placeholders, helper text, audience vocabulary consistency, and category clarity.
+
+### Recommended Changes
+
+**1. Introductory Privacy Warning (more specific):**
+
+```
+Danke für Deinen Vorschlag! 🎉
+
+⚠️ **Wichtig:** Trage keine persönlichen Daten ein (Namen, E-Mails, 
+Telefonnummern, Adressen). Diese Form veröffentlicht nichts direkt. 
+Nach Prüfung durch die Redaktion wird Dein Beitrag ggfs. auf der 
+Website sichtbar.
+
+Fragen? Kontaktiere [Kontakt-E-Mail TBD].
+```
+
+**2. Title Field:**
+- Label: "Titel (max. 80 Zeichen)"
+- Description: "Einprägsam, klar, verständlich. Zielgruppe sollte sofort wissen, worum es geht."
+- Placeholder: "z.B. KI-Begriffe einfach erklärt | ChatGPT Tipps für Schüler"
+
+**3. Short Description:**
+- Label: "Kurzbeschreibung (max. 200 Zeichen)"
+- Description: "Wer sollte das lesen und warum? Sei konkret: Wer profitiert?"
+- Placeholder: "z.B. Eltern lernen, wie sie ihre Kinder beim Programmieren unterstützen | Schüler erfahren, welche KI-Tools im Unterricht erlaubt sind"
+
+**4. Audience Field (add Lehrkräfte):**
+- Options: `Schülerinnen und Schüler`, `Lehrkräfte`, `Eltern` (add Lehrkräfte)
+
+**5. Category Field (clarify topic-only, remove audience):**
+- Options:
+  - "KI & Machine Learning"
+  - "Informatik & Programmieren"
+  - "Datenschutz & Sicherheit"
+  - "Tools & Ressourcen"
+  - "Projektideen"
+  - "News & Ankündigungen"
+- (Remove "Eltern" which appears both in Audience and Category)
+
+**6. External Link Field:**
+- Label: "Link (optional)"
+- Description: "Externe Ressource? Link muss öffentlich zugänglich, aktuell und DSGVO-konform sein. Keine Affiliate-Links, keine Tracker. Im Zweifelsfall frag die Redaktion!"
+
+**7. Editorial Notes:**
+- Label: "Hinweise für die Redaktion (optional)"
+- Description: "Besonderheiten, die Redaktion beachten sollte: z.B. Sperrfrist, Quelle, Publikationszeitraum, Feedback an Vorschlagsteller?"
+- Placeholder: "z.B. Bitte vor 2026-06-15 veröffentlichen | Quelle: GAK Lehrkräfte-Treffen"
+
+---
+
+## Privacy & Security Constraints: Public Neuigkeiten Issue Intake (2026-06-01)
+
+**Status:** Binding Constraints  
+**Authority:** One-Eyed Willy (Security & Privacy Advisor)  
+**Date:** 2026-06-01
+
+### Binding Constraints
+
+1. **Form must not ask for:** name, email, phone, class, role, or contact preference.
+2. **Required fields:** public title, public short description, fixed categories, required no-PII acknowledgement checkbox.
+3. **Optional fields:** details and one public `https://` external link only.
+4. **Initial label:** `news-vorschlag`; publishing label: maintainer-only `freigegeben`.
+5. **No direct publication:** Issues require validation + manual maintainer approval before PR generation.
+6. **Generated Markdown excludes:** GitHub username, issue author metadata, comments, notification metadata, unapproved text.
+7. **Approver email:** Only issue number, title, category, link to GitHub; do NOT email full issue body by default.
+8. **External links:** HTTPS required, redirect/domain review, render with `target="_blank"` + `rel="noopener noreferrer"`.
+9. **Issue-triggered workflows:** No direct `contents: write`; generation via PR or maintainer-approved workflow only.
+
+### Required Warning Text
+
+> **Datenschutzhinweis:** Dieses GitHub-Issue ist öffentlich sichtbar. Bitte tragen Sie keine personenbezogenen Daten ein, insbesondere keine Namen von Schülerinnen/Schülern, Klassenlisten, E-Mail-Adressen, Telefonnummern, privaten Termine oder internen Schuldetails. Reichen Sie nur Inhalte ein, die grundsätzlich öffentlich auf der Website erscheinen dürfen.
+
+### Required Checkbox
+
+> Ich bestätige, dass mein Vorschlag keine personenbezogenen Daten oder vertraulichen Schul-/SEB-Informationen enthält.
+
+### Suggested Limits
+
+- Title: max 80 characters
+- Short description: max 200 characters
+- Optional details: max 1,000 characters
+- URL: max 300 characters
+
+### Approval Checklist
+
+- No PII or confidential school/SEB information
+- Public website suitability checked
+- Category from allow-list
+- External link reviewed and safe
+- Generated Markdown preview reviewed
+- `freigegeben` applied by maintainer only
+
+---
+
+## Technical Architecture: Issue-to-Publish Pipeline (2026-06-01)
+
+**Status:** Proposed for Implementation  
+**Owner:** Data (Technology Architect)  
+**Date:** 2026-06-01T12:56:42.320+02:00
+
+### Recommendation
+
+Use GitHub Issues as intake UI and Hugo Markdown as publishing source of truth. Keep workflow GitHub-native: issue form → validation → moderation → generated Markdown → GitHub Pages rebuild. **No CMS, external email service, database, or custom backend in MVP.**
+
+### Issue Form Schema
+
+Modify `.github/ISSUE_TEMPLATE/news.yml`:
+
+**Required:**
+- `title`: public news title
+- `abstract`: max ~200 characters
+- `filters`: one+ user-facing categories (Schüler·innen, Eltern, etc.; topical: KI, Informatik, Lernen, Projektidee, Tools, Datenschutz)
+
+**Optional:**
+- `details`: public body text (plain Markdown, no raw HTML)
+- `external_url`: one public URL
+- `editorial_notes`: internal only; not published
+
+**Privacy:**
+- Top warning: no personal data; issues are public
+- No PII fields (name, email, class, phone, student IDs)
+- Treat issue content as untrusted input; allowlist field names and filter values
+
+### Labels & States
+
+Use state labels, not many content labels:
+- `news:vorschlag` — initial intake
+- `news:needs-review` — validation passed; waiting for approver
+- `news:changes-requested` — needs edits
+- `news:approved` — human approval gate (maintainers only)
+- `news:published` — automation created/merged Markdown; issue closed/commented
+- `news:rejected` — not publishing
+
+Avoid mirroring every filter as a GitHub label. Canonical filters in issue fields + Hugo front matter.
+
+### Notification Mechanism
+
+On new/edited news issues:
+1. Lightweight workflow validates required fields + allowed filters.
+2. Add `news:needs-review` when valid.
+3. Assign configured approvers from `NEWS_APPROVERS` repository variable or comment with explicit `@user` mentions.
+4. Rely on GitHub's built-in issue assignment/mention email notifications. **No external SMTP/newsletter tool.**
+
+When `news:approved` applied:
+- Generate branch/PR, request same approvers as reviewers.
+- For shortest MVP path: auto-merge after Hugo build checks pass.
+- Otherwise: reviewer approves PR first.
+
+### Hugo Content Model
+
+**Generated file path:** `content/news/YYYY-MM-DD-slug.md`
+
+**Front matter:**
+```yaml
+title: "..."
+date: 2026-06-01
+draft: false
+abstract: "..."
+filters: ["Schülerinnen und Schüler", "Eltern", "KI"]
+audiences: ["Schülerinnen und Schüler", "Eltern"]
+categories: ["KI"]
+external_url: "https://..."
+source_issue: 123
+sample: false
+```
+
+**Rules:**
+- `filters`: user-facing filter set for Neuigkeiten page
+- `audiences`: audience-like filters (Schüler·innen, Eltern, Lehrkräfte)
+- `categories`: topical filters (KI, Informatik, etc.)
+- `details`: sanitized Markdown body only
+- `editorial_notes`: never written to public Markdown
+- Do not store submitter usernames as public authors
+
+### Automation Workflows
+
+**1. `.github/workflows/news-intake.yml`:**
+- Triggers: news issue opened/edited/reopened
+- Permissions: `issues: write`, `contents: read`
+- Validates schema, field length, allowed filters, URL shape
+- Posts validation comments, adds labels, assigns/mentions approvers
+
+**2. `.github/workflows/news-publish.yml`:**
+- Triggers: label `news:approved` added
+- Permissions: `contents: write`, `pull-requests: write`, `issues: write`
+- Parses issue form using allowlisted field IDs
+- Generates Markdown with escaped front matter + sanitized body
+- Runs `hugo --minify` check
+- Opens PR, links to issue, requests approvers, optionally auto-merges after checks
+- Adds `news:published`, comments with PR/live path, closes issue after merge
+
+Existing `.github/workflows/deploy.yml` publishes site on merge.
+
+### Filtering Approach
+
+For MVP, use client-side progressive enhancement or plain link-style filters on `/news/` using Hugo-rendered metadata; no search index or framework.
+
+Practical path:
+- Hugo list page computes all `.Params.filters` from news pages
+- Render filter buttons/links: `Alle`, `Schülerinnen und Schüler`, `Eltern`, `KI`, etc.
+- Small accessible JS toggle acceptable if full list visible without JS
+- Keep badges visible on cards + detail pages
+
+### Files to Modify
+
+- `.github/ISSUE_TEMPLATE/news.yml` — schema, privacy text, required filter field, optional details/external link
+- `.github/workflows/news-intake.yml` — validation + approver notification
+- `.github/workflows/news-publish.yml` — approved issue → Markdown PR/publish automation
+- `.github/workflows/sync-squad-labels.yml` or repository labels setup — add `news:*` state labels
+- `content/news/*.md` — align examples with `filters`, `audiences`, `categories`, `external_url`
+- `layouts/news/list.html` — render filter controls + filtered list metadata
+- `layouts/partials/news-card.html` — show filter/category/audience badges consistently
+- `layouts/_default/single.html` — render optional external link safely
+- `static/css/style.css` — filter controls + badge classes
+- `content/mitmachen/_index.md` — explain submit/review/publish process
+- `README.md` — document editorial workflow, labels, rollback, privacy
+
+### Constraints & Risks
+
+- GitHub cannot guarantee email delivery; approvers must enable GitHub notifications
+- Public issues are not private intake; form must warn against personal data
+- Applying `news:approved` must be socially/operationally limited to trusted maintainers
+- Raw issue Markdown must not be rendered blindly; keep Hugo `unsafe = false`, escape front matter, validate URLs
+- Auto-merge depends on repository branch protection + Pages settings
+- Duplicate slugs need deterministic handling (append `-issue-123`)
+- Rollback simple: revert/delete generated Markdown and deploy rebuilds
+
+### Not in MVP
+
+- External email service or newsletter
+- Headless CMS
+- Database-backed workflow
+- Advanced search/filter index
+- Multi-role editorial state machine beyond labels
+
+---
+
+## Implementation: Neuigkeiten Workflow — Issue Form, Python Script, Moderation Gate (2026-06-01)
+
+**Status:** Implemented & Committed  
+**Owner:** Brand (Full-stack Implementer)  
+**Date:** 2026-06-01T12:56:42.320+02:00  
+**Commit:** c271974
+
+### Deliverables
+
+1. **`.github/ISSUE_TEMPLATE/news.yml`** — German privacy-safe Issue Form with:
+   - Privacy warning header (specific PII examples)
+   - Zielgruppe multi-select (Schüler·innen, Lehrkräfte, Eltern)
+   - Category multi-select (KI, Informatik, Datenschutz, Tools, Projektidien, News & Events)
+   - GAK/SEB relevance field
+   - Required no-PII confirmation checkbox
+   - Optional details + external link
+   - Proper field ordering + helper text
+
+2. **`.github/workflows/news-from-issue.yml`** — GitHub Action:
+   - Triggers on `freigegeben` label applied
+   - Minimal permissions: `contents: write`, `pull-requests: write`, `issues: write` (no overprivileging)
+   - Calls Python validation script
+   - Generates PR from issue content
+   - Comments link to issue, assigns approver team
+
+3. **`.github/scripts/news_issue_to_markdown.py`** — Validation + Generation:
+   - Validates required fields (title, abstract, categories)
+   - Checks title ≤80 chars, abstract ≤200 chars
+   - Validates category values (allowlist only)
+   - Scans for basic PII patterns (email, phone)
+   - Confirms no-PII checkbox set
+   - Generates sanitized Hugo Markdown with escaped YAML front matter
+   - Outputs to `content/news/YYYY-MM-DD-slug.md`
+   - Includes source issue reference + `sample: false`
+
+4. **`layouts/news/list.html` + `news-card.html`** — Simple client-side filtering:
+   - Responsive card grid
+   - Optional JavaScript toggle for Zielgruppe + Kategorie filters
+   - Full list visible without JavaScript (progressive enhancement)
+   - Fallback: show all posts
+
+5. **`hugo.toml` + `README.md`** updates:
+   - Document `freigegeben` label requirement
+   - Document issue-to-PR workflow for maintainers
+   - Rollback instructions: delete generated Markdown → push → rebuild
+
+6. **`.squad/` memory updates** (this session):
+   - Agents: Brand, Mikey, Data, Mouth, One-Eyed Willy skill updates
+   - GitHub label setup deferred (manual repository settings step)
+
+### What's NOT Done (deferred to Phase 2)
+
+- CODEOWNERS role enforcement (manual GitHub team setup)
+- Auto-merge gate (relies on branch protection rules)
+- Email notification templates (relies on GitHub native email)
+- Link validation bot (regex patterns for tracking/affiliate domains)
+
+### What Remains in Repository Settings
+
+1. **Create `freigegeben` label** (Labels section):
+   - Name: `freigegeben`
+   - Color: green (convention: approved)
+   - Description: "Approved for PR generation and publication"
+
+2. **Allow GitHub Actions to create branches/PRs**:
+   - Settings → Actions → General → Permissions → Ensure "Allow GitHub Actions to create and approve pull requests" enabled
+
+### Validation & Dry-Run
+
+- ✅ YAML schema validated (Issue Form)
+- ✅ Python script tested (validation logic, sanitization, file generation)
+- ✅ Dry-run Hugo generation: `hugo --minify --baseURL "https://hobru.github.io/seb-gak-ki-und-mehr/"`
+- ✅ Build: 38 pages, zero warnings, 0 errors
+
+### Maintainer Notes
+
+1. When first issue arrives, manually create `freigegeben` label if not present (GitHub error will prompt)
+2. Test workflow: open dummy issue, apply label, verify PR creation
+3. For rollback: delete generated `.md` file, push, automatic rebuild
+4. Monitor: keep GitHub Actions logs for audit trail
+
+---
+
 ## Governance
 
 - All meaningful changes require team consensus
