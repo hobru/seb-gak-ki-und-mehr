@@ -168,3 +168,20 @@
 - `hugo --minify` successful
 
 **Note:** Scribe has recorded this task in the orchestration log and team memory (decisions.md) for asynchronous handoff.
+
+## 2026-06-01T09:38:43Z – Scribe: GitHub Pages Deployment Decision Recorded
+
+**Source:** Scribe session (Inbox merge)  
+**Decision Date:** 2026-06-01T10:42:47.128+02:00  
+**Status:** Implemented + Documented
+
+**Update:** The GitHub Pages deployment configuration has been formally recorded in `.squad/decisions.md`:
+- Repository: `https://github.com/hobru/seb-gak-ki-und-mehr`
+- Site live: `https://hobru.github.io/seb-gak-ki-und-mehr/`
+- Workflow: `.github/workflows/deploy.yml` (peaceiris/actions-hugo v3.0.0 pinned)
+- baseURL: `https://hobru.github.io/seb-gak-ki-und-mehr/`
+- Branch: master (current, no rename needed; workflow triggers both main + master)
+
+**Rationale (per decision doc):** Holger requested GitHub Pages preview before custom-domain work. Existing Hugo + GitHub Actions Pages setup accommodates this without branch changes.
+
+**Team note:** All deployment infrastructure, logo integration, and README documentation are ready for Scribe commit.
