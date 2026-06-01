@@ -26,23 +26,22 @@
   <h3 class="news-card__title">
     <a href="{{ .RelPermalink }}" style="color:inherit;text-decoration:none;">{{ .Title }}</a>
   </h3>
-  {{ with .Params.abstract }}
-  <p class="news-card__abstract">{{ . }}</p>
-  {{ end }}
-  {{ with .Params.audiences }}
-  <div class="news-card__audiences" aria-label="Zielgruppe">
-    <span class="news-card__audiences-label">Zielgruppe:</span>
-    {{ range . }}
-      <span class="news-audience-chip">{{ . }}</span>
-    {{ end }}
-  </div>
-  {{ end }}
-  <div class="news-card__meta">
+  <div class="news-card__meta" aria-label="Metadaten">
     <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02.01.2006" }}</time>
+    {{ with .Params.audiences }}
+      <span aria-hidden="true">&middot;</span>
+      <span class="news-meta-audience">
+        <span class="news-meta-audience__label">Zielgruppe:</span>
+        <span>{{ delimit . ", " }}</span>
+      </span>
+    {{ end }}
     {{ with .Params.valid_until }}
       <span aria-hidden="true">&middot;</span>
       <span>aktuell bis {{ time.Format "02.01.2006" . }}</span>
     {{ end }}
   </div>
+  {{ with .Params.abstract }}
+  <p class="news-card__abstract">{{ . }}</p>
+  {{ end }}
   <a class="news-card__link" href="{{ .RelPermalink }}">Weiterlesen</a>
 </article>

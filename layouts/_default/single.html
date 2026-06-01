@@ -28,17 +28,16 @@
       {{ end }}
     </div>
     <h1 class="post-header__title" id="post-title">{{ .Title }}</h1>
-    <p class="post-header__meta">
+    <p class="post-header__meta" aria-label="Metadaten">
       <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "02.01.2006" }}</time>
-    </p>
-    {{ with .Params.audiences }}
-    <div class="post-header__audiences" aria-label="Zielgruppe">
-      <span class="post-header__audiences-label">Zielgruppe:</span>
-      {{ range . }}
-        <span class="news-audience-chip">{{ . }}</span>
+      {{ with .Params.audiences }}
+        <span aria-hidden="true">&middot;</span>
+        <span class="news-meta-audience news-meta-audience--on-dark">
+          <span class="news-meta-audience__label">Zielgruppe:</span>
+          <span>{{ delimit . ", " }}</span>
+        </span>
       {{ end }}
-    </div>
-    {{ end }}
+    </p>
   </div>
 </section>
 
