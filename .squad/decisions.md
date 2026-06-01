@@ -111,6 +111,26 @@
 | Content editor satisfaction | Weekly feedback | Friction signal |
 | Zero security incidents | Audited by One-Eyed Willy | Baseline compliance |
 
+### Brand: Stadtbibliothek-Hinweis auf Digitales-Seite (2026-06-01)
+
+**Status:** Decided & Implemented  
+**Proposer:** Brand (Full-stack)  
+**Commit:** 33e4821 (Add Speyer library notice to Digitales page)
+
+**Problem:** Holger requested a notice on the "Digitales & Informatik" page before the subject sections, promoting Stadtbibliothek Speyer's free access for pupils to books, magazines, videos/media, and digital learning tools (Sofatutor, Plan6).
+
+**Decision:** The notice is maintained as a structured Front Matter block `library_notice` in `content/informatik/_index.md` and rendered in the Informatik layout immediately after the SEB notice but before subject/resource sections.
+
+**Rationale:** Keeps editorial content maintainable without template changes; preserves SEB framing; reuses the card/banner system consistently across KI/Digitales pages.
+
+**Implementation:**
+- Front matter in `content/informatik/_index.md`: `library_notice` YAML block with Stadtbibliothek details + links
+- Informatik layout renders `library_notice` as a banner component
+- CSS classes align with existing SEB notice styling
+- Links to Stadtbibliothek website and Digitale Angebote
+
+**Verification:** `hugo --minify` ran successfully; notice displays on Digitales page; no accessibility or build issues.
+
 ---
 
 ---
