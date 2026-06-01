@@ -133,6 +133,12 @@
 
 ## Learnings
 
+### 2026-06-01T13:18:01.605+02:00 – News-CTA, Issue-Form-Vereinfachung und SEB-Branding
+
+- Neuigkeiten haben jetzt sichtbare „Neuigkeit vorschlagen“-CTAs auf Start- und Neuigkeiten-Seite; der Link zeigt direkt auf die GitHub Issue Form im Repository `hobru/seb-gak-ki-und-mehr`.
+- Die Issue Form nutzt den GitHub-Issue-Titel als einzige Titelerfassung, macht GAK/SEB-Relevanz optional und entfernt „Gültig/aktuell bis“; das Generierungsskript liest den Titel aus dem Issue und veröffentlicht weiterhin nur über PR-Review.
+- Pattern learned: Bei GitHub Issue Forms keine zweite Pflicht-Titelfrage anlegen; den eingebauten Issue-Titel erklären und die Automatisierung darauf ausrichten.
+
 ### 2026-06-01T12:56:42.320+02:00 – Neuigkeiten per Issue-Form und PR-Gate
 
 - Neuigkeiten-Vorschläge laufen jetzt privacy-sicher über `.github/ISSUE_TEMPLATE/news.yml`: Zielgruppe und Thema/Kategorie sind getrennt, GAK/SEB-Relevanz sowie No-PII-Bestätigung sind Pflicht.

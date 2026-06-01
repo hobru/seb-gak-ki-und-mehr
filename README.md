@@ -1,4 +1,4 @@
-# GAK Digital – Schulelternbeirat des Gymnasiums am Kaiserdom Speyer
+# SEB GAK Digital – Schulelternbeirat des Gymnasiums am Kaiserdom Speyer
 
 Eine Initiative des SEB: Informatik, KI und digitale Bildung für Schülerinnen und Schüler und Eltern.
 
@@ -65,7 +65,7 @@ content/
 Der bevorzugte Redaktionsweg läuft über GitHub Issues und Pull Requests:
 
 1. Über **Issues → New issue → Neuigkeit vorschlagen** wird ein Vorschlag eingereicht.
-2. Die Issue Form fragt Titel, Kurzbeschreibung, optionale Details/externen Link, Zielgruppe, Thema/Kategorie, GAK/SEB-Relevanz und optional „gültig bis“ ab.
+2. Die Issue Form nutzt den GitHub-Issue-Titel als Nachrichtentitel und fragt Kurzbeschreibung, optionale Details/externen Link, Zielgruppe, Thema/Kategorie sowie optional GAK/SEB-Relevanz ab.
 3. Es werden keine personenbezogenen Daten abgefragt. Die Datenschutz-Bestätigung ist Pflicht; Namen, E-Mail-Adressen, Telefonnummern, Adressen, Fotos oder private Angaben gehören nicht in Issues.
 4. Redakteur:innen prüfen Inhalt, Relevanz und externe Links. Wenn der Vorschlag passt, setzen Maintainer das Label `freigegeben`.
 5. Der Workflow `.github/workflows/news-from-issue.yml` validiert das Issue, erzeugt eine bereinigte Hugo-Markdown-Datei und öffnet einen Pull Request.
@@ -86,7 +86,6 @@ audiences: ["Schüler:innen"]         # Schüler:innen, Eltern, Lehrkräfte, SEB
 abstract: "Kurze Zusammenfassung (max. 200 Zeichen)"
 sample: false
 external_link: "https://example.org" # optional
-valid_until: "2026-09-30"            # optional
 ---
 
 Inhalt des Beitrags in Markdown…

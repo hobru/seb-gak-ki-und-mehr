@@ -28,14 +28,12 @@ ALLOWED_CATEGORIES = {
     "Sonstiges",
 }
 FIELD_ALIASES = {
-    "Titel": "title",
     "Kurzbeschreibung": "abstract",
     "Details oder externer Link (optional)": "details",
     "Zielgruppe": "audience",
     "Thema/Kategorie": "category",
     "Kategorie": "category",
     "GAK/SEB-Relevanz": "relevance",
-    "Gültig/aktuell bis (optional)": "valid_until",
     "Datenschutz-Bestätigung": "no_pii",
 }
 NO_RESPONSE = {"", "_No response_", "No response"}
@@ -125,6 +123,12 @@ def split_details_and_link(value: str) -> tuple[str, str]:
     return value, external_link
 
 
+def clean_issue_title(value: str) -> str:
+    title = clean_text(value, 100, "Issue-Titel")
+    title = re.sub(r"^\[Neuigkeit\]\s*:?\s*", "", title, flags=re.I).strip()
+    return clean_text(title, 80, "Issue-Titel")
+
+
 def validate_no_pii(fields: dict[str, str]) -> None:
     confirmation = fields.get("no_pii", "")
     if "[x]" not in confirmation.lower():
@@ -174,7 +178,8 @@ def main() -> int:
         raise NewsError(f"Freigabelabel '{APPROVAL_LABEL}' fehlt.")
 
     fields = parse_issue_form(issue.get("body") or "")
-    required = ["title", "abstract", "audience", "category", "relevance", "no_pii"]
+    fields["title"] = clean_issue_title(issue.get("title") or "")
+    required = ["title", "abstract", "audience", "category", "no_pii"]
     missing = [field for field in required if not fields.get(field) or fields.get(field) in NO_RESPONSE]
     if missing:
         raise NewsError("Pflichtfelder fehlen: " + ", ".join(missing))
@@ -182,14 +187,10 @@ def main() -> int:
     validate_no_pii(fields)
     title = clean_text(fields["title"], 80, "Titel")
     abstract = clean_text(fields["abstract"], 220, "Kurzbeschreibung")
-    relevance = clean_text(fields["relevance"], 600, "GAK/SEB-Relevanz")
+    relevance = clean_text(fields.get("relevance", ""), 600, "GAK/SEB-Relevanz")
     details, external_link = split_details_and_link(fields.get("details", ""))
     audiences = parse_multi(fields["audience"], ALLOWED_AUDIENCES, "Zielgruppe")
     categories = parse_multi(fields["category"], ALLOWED_CATEGORIES, "Thema/Kategorie")
-
-    valid_until = clean_text(fields.get("valid_until", ""), 10, "Gültig/aktuell bis")
-    if valid_until and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", valid_until):
-        raise NewsError("Gültig/aktuell bis muss im Format JJJJ-MM-TT angegeben sein.")
 
     today = dt.datetime.now(dt.timezone.utc).date().isoformat()
     slug = slugify(title)
@@ -209,9 +210,9 @@ def main() -> int:
     ]
     if external_link:
         lines.append(f"external_link: {yaml_string(external_link)}")
-    if valid_until:
-        lines.append(f"valid_until: {yaml_string(valid_until)}")
-    lines.extend(["---", "", markdown_plain(abstract), "", "## Relevanz für GAK/SEB", "", markdown_plain(relevance)])
+    lines.extend(["---", "", markdown_plain(abstract)])
+    if relevance:
+        lines.extend(["", "## Relevanz für GAK/SEB", "", markdown_plain(relevance)])
     if details:
         lines.extend(["", "## Details", "", markdown_plain(details)])
     if external_link:

@@ -19,6 +19,10 @@
     </div>
     {{ end }}
 
+    <div class="news-section__cta">
+      <a class="btn btn--primary" href="https://github.com/hobru/seb-gak-ki-und-mehr/issues/new?template=news.yml" target="_blank" rel="noopener noreferrer">Neuigkeit vorschlagen</a>
+    </div>
+
     {{ $pages := .Pages | default (where site.RegularPages "Section" "news") }}
     {{ if $pages }}
     {{ $audiences := slice }}

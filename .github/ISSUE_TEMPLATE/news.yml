@@ -10,15 +10,7 @@ body:
 
         **Wichtig:** Bitte keine personenbezogenen Daten eintragen – keine Namen, E-Mail-Adressen, Telefonnummern, Adressen, Fotos oder privaten Angaben zu einzelnen Personen.
 
-        Ein Vorschlag wird erst nach redaktioneller Prüfung freigegeben. Die Veröffentlichung erfolgt über einen Pull Request, nicht direkt aus dem Issue.
-  - type: input
-    id: title
-    attributes:
-      label: "Titel"
-      description: "Kurz und verständlich, maximal 80 Zeichen."
-      placeholder: "Beispiel: KI-Begriffe einfach erklärt"
-    validations:
-      required: true
+        Bitte nutze das GitHub-Feld **Add a title** oben für den kurzen Nachrichtentitel. Ein Vorschlag wird erst nach redaktioneller Prüfung freigegeben. Die Veröffentlichung erfolgt über einen Pull Request, nicht direkt aus dem Issue.
   - type: textarea
     id: abstract
     attributes:
@@ -68,16 +60,8 @@ body:
     id: relevance
     attributes:
       label: "GAK/SEB-Relevanz"
-      description: "Warum passt der Vorschlag zum GAK, zum SEB oder zur Schulgemeinschaft? 1–3 Sätze."
+      description: "Optional: Warum passt der Vorschlag zum GAK, zum SEB oder zur Schulgemeinschaft? 1–3 Sätze."
       placeholder: "Beispiel: Das Material unterstützt Eltern und Schüler:innen beim sicheren Umgang mit KI."
-    validations:
-      required: true
-  - type: input
-    id: valid_until
-    attributes:
-      label: "Gültig/aktuell bis (optional)"
-      description: "Optionales Datum im Format JJJJ-MM-TT, z. B. bei Veranstaltungen oder Fristen."
-      placeholder: "2026-09-30"
   - type: checkboxes
     id: no_pii
     attributes:

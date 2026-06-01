@@ -1,5 +1,5 @@
 /* ============================================================
-   GAK Digital – Hauptstylesheet
+   SEB GAK Digital – Hauptstylesheet
    Gymnasium am Kaiserdom Speyer
    ============================================================ */
 
@@ -486,7 +486,13 @@ ul, ol { padding-left: 1.5rem; }
   gap: 0.3em;
 }
 .news-card__link:hover { color: var(--c-primary-dark); text-decoration: underline; }
-.news-section__cta { margin-top: var(--sp-lg); text-align: center; }
+.news-section__cta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--sp-sm);
+  margin-top: var(--sp-lg);
+}
 .news-empty { color: var(--c-text-muted); font-style: italic; }
 .news-filters {
   display: flex;

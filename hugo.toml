@@ -1,7 +1,7 @@
 baseURL = "https://hobru.github.io/seb-gak-ki-und-mehr/"
 languageCode = "de-DE"
 defaultContentLanguage = "de"
-title = "GAK Digital – Schulelternbeirat"
+title = "SEB GAK Digital – Schulelternbeirat"
 
 [params]
   description   = "Eine Initiative des Schulelternbeirats: Informatik, KI und digitale Bildung für Schülerinnen und Schüler und Eltern am Gymnasium am Kaiserdom Speyer."

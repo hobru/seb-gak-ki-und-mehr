@@ -16,12 +16,13 @@ Use GitHub Issues as a lightweight intake queue for non-technical contributors t
 ## How It Works
 
 1. **Issue template** (`.github/ISSUE_TEMPLATE/news.yml`):
-   - Defines required metadata fields: title, summary, target audience, category, relevance, no-PII confirmation.
+   - Uses GitHub's required issue title as the news title to avoid duplicate "title" fields.
+   - Defines required metadata fields: summary, target audience, category, and no-PII confirmation; keep relevance optional unless editorial policy truly needs it.
    - Separates `Zielgruppe` from `Thema/Kategorie` to avoid confusing filter semantics.
    - Includes German examples, visible character limits, and clear warnings against names, emails, phone numbers, addresses, photos, or private data.
 
 2. **GitHub Actions workflow** triggers on a maintainer-only approval label such as `freigegeben`:
-   - Validates template compliance, allowed choices, date format, and required privacy acknowledgement.
+   - Validates template compliance, allowed choices, and required privacy acknowledgement.
    - Checks privacy red flags such as email/phone patterns.
    - Creates `content/news/YYYY-MM-DD-slug.md` with sanitized front matter/content.
    - Opens a pull request instead of publishing directly from the label.
@@ -64,7 +65,7 @@ Use GitHub Issues as a lightweight intake queue for non-technical contributors t
 Use concise German labels and helper text:
 
 ```markdown
-**Titel:** KI-Begriffe einfach erklärt
+**Issue title:** KI-Begriffe einfach erklärt
 **Kurzbeschreibung:** Max. 220 Zeichen.
 **Zielgruppe:** Schüler:innen / Eltern / Lehrkräfte / SEB / Allgemein
 **Thema/Kategorie:** KI / Informatik / Veranstaltung / Wettbewerb / Material / Empfehlung / Hinweis / Sonstiges
