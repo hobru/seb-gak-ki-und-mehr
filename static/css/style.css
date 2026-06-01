@@ -484,6 +484,7 @@ a.badge:hover {
   gap: 0.7rem;
   transition: box-shadow var(--transition), transform var(--transition);
 }
+.news-card[hidden] { display: none !important; }
 .news-card:hover { box-shadow: var(--shadow-hover); transform: translateY(-3px); }
 .news-card__badges { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .news-card__title { font-size: var(--text-lg); font-weight: 700; color: var(--c-text); line-height: 1.3; }
