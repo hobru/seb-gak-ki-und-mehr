@@ -196,15 +196,17 @@ def main() -> int:
     audiences = parse_multi(fields["audience"], ALLOWED_AUDIENCES, "Zielgruppe")
     categories = parse_multi(fields["category"], ALLOWED_CATEGORIES, "Thema/Kategorie")
 
-    today = dt.datetime.now(dt.timezone.utc).date().isoformat()
+    publish_dt = dt.datetime.now(dt.timezone.utc).replace(microsecond=0)
+    publish_timestamp = publish_dt.isoformat().replace("+00:00", "Z")
+    date_prefix = publish_dt.date().isoformat()
     slug = slugify(title)
     issue_number = issue.get("number")
-    file_path = Path("content") / "news" / f"{today}-{slug}.md"
+    file_path = Path("content") / "news" / f"{date_prefix}-{slug}.md"
 
     lines = [
         "---",
         f"title: {yaml_string(title)}",
-        f"date: {today}",
+        f"date: {publish_timestamp}",
         "draft: false",
         f"categories: {yaml_list(categories)}",
         f"audiences: {yaml_list(audiences)}",

@@ -73,13 +73,13 @@ Der bevorzugte Redaktionsweg läuft über GitHub Issues und Pull Requests:
 
 Approver erhalten Benachrichtigungen über GitHub, z. B. durch Repository-Watching, Issue-Zuweisung, Erwähnungen oder CODEOWNERS/Review-Anfragen. Es wird keine externe Mail- oder Tracking-Infrastruktur verwendet.
 
-Fallback für manuelle Beiträge: Erstelle eine neue Datei in `content/news/`:
+Fallback für manuelle Beiträge: Erstelle eine neue Datei in `content/news/`. Verwende für `date` nach Möglichkeit einen ISO-8601-Zeitstempel mit Uhrzeit (UTC, `Z`), damit mehrere Beiträge am selben Tag korrekt sortiert werden:
 
 
 ```markdown
 ---
 title: "Titel des Beitrags"
-date: 2026-06-01
+date: 2026-06-01T16:52:36Z
 draft: false
 categories: ["KI"]                   # KI, Informatik, Veranstaltung, Wettbewerb, Material, Empfehlung, Hinweis, Sonstiges
 audiences: ["Schüler:innen"]         # Schüler:innen, Eltern, Lehrkräfte, SEB, Allgemein
