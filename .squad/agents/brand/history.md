@@ -148,10 +148,11 @@
 ### 2026-06-01T10:42:47.128+02:00 – GitHub-Pages-Projektdeployment vorbereitet
 
 - Repository-Remote `origin` zeigt auf `https://github.com/hobru/seb-gak-ki-und-mehr.git`; aktueller Arbeitszweig bleibt `master`.
-- `hugo.toml` nutzt `https://hobru.github.io/seb-gak-ki-und-mehr/` als `baseURL`; `.github/workflows/deploy.yml` bleibt Actions-Pages-basiert und triggert auf `main` sowie `master`.
+- `hugo.toml` nutzt `https://hobru.github.io/seb-gak-ki-und-mehr/` als `baseURL`; `.github/workflows/deploy.yml` bleibt Actions-Pages-basiert, triggert auf `main` sowie `master`, und nutzt den validierten `peaceiris/actions-hugo`-Commit hinter `v3.0.0`.
 - README dokumentiert Projekt-URL, lokalen Produktions-Build und GitHub-Pages-Source „GitHub Actions“.
 - Logo-Änderung ist Teil des Deploy-Commits: `layouts/index.html`, gelöschtes `static/images/gak-logo.png`, neues `static/images/gak-seb-logo.jpg`, plus Team-Skill `local-brand-assets`.
 - Pattern learned: Bei Hugo-Projektseiten nach dem Build generierte `href`/`src` prüfen; `{{ "/pfad/" | relURL }}` kann trotz Projekt-`baseURL` root-relative Links erzeugen, daher in Templates `{{ "pfad/" | relURL }}` oder Permalinks verwenden.
+- Pattern learned: Bei SHA-gepinnten Actions annotierte Tags erst auf den Commit dereferenzieren und anschließend den ersten Workflowlauf prüfen; ein ungültiger Pin blockiert die Pages-Erstveröffentlichung bereits vor dem Checkout.
 
 ## 2026-06-01T10:29:46Z – SPAWN: Logo Asset Task (Scribe Orchestration)
 

@@ -16,6 +16,7 @@ Holger created the GitHub repository and requested a first GitHub Pages preview 
 
 - `hugo.toml` uses the GitHub Pages project URL as `baseURL`.
 - `.github/workflows/deploy.yml` builds Hugo on pushes to `main` or `master` and deploys using GitHub Actions Pages permissions/artifacts.
+- The Hugo setup action is pinned to the resolved commit behind `peaceiris/actions-hugo` tag `v3.0.0`.
 - `README.md` documents the project URL, local production build command, and the required GitHub Pages source setting.
 
 ## Verification
