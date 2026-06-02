@@ -5,6 +5,67 @@ lead: "Digitale Lernangebote können beim Wiederholen, Verstehen und Ausprobiere
 
 intro: "**Hinweis:** Diese Sammlung ist eine Orientierung des Schulelternbeirats, keine offizielle Empfehlung der Schule. Viele Angebote sind frei und ohne Konto nutzbar; trotzdem gilt: Nutzungsbedingungen und Datenschutz kurz prüfen, keine persönlichen Daten unnötig eingeben und Ergebnisse kritisch einordnen."
 
+security_section:
+  id: "sicherheit-im-netz"
+  icon: "🔐"
+  color: "blue"
+  nav_label: "Sicherheit"
+  title: "Sicherheit im Netz"
+  cards:
+    - title: "Passwörter gut verwalten"
+      desc: "Ein Passwort-Manager hilft, für jeden Dienst ein eigenes starkes Passwort zu nutzen. Beispiele sind Bitwarden, KeePassXC oder 1Password; wichtig sind ein starkes Master-Passwort und bewusste Einrichtung."
+      links:
+        - label: "Bitwarden"
+          url: "https://bitwarden.com/"
+        - label: "KeePassXC"
+          url: "https://keepassxc.org/"
+        - label: "1Password"
+          url: "https://1password.com/"
+    - title: "Zwei-Faktor-Anmeldung nutzen"
+      desc: "MFA ergänzt das Passwort um einen zweiten Nachweis und schützt Konten deutlich besser. Authenticator-Apps sind nur eine Möglichkeit; Backup-Codes sicher aufbewahren."
+      links:
+        - label: "Microsoft Authenticator"
+          url: "https://www.microsoft.com/de-de/security/mobile-authenticator-app"
+        - label: "Google Authenticator"
+          url: "https://support.google.com/accounts/answer/1066447"
+        - label: "Proton Authenticator"
+          url: "https://proton.me/authenticator"
+        - label: "2FAS"
+          url: "https://2fas.com/"
+    - title: "Passkeys kennenlernen"
+      desc: "Passkeys können Logins ohne klassisches Passwort ermöglichen und Phishing erschweren. Sie sind nicht überall verfügbar, lohnen sich aber bei wichtigen Konten als sichere Option."
+      links:
+        - label: "passkeys.dev"
+          url: "https://passkeys.dev/"
+        - label: "Google Passkeys"
+          url: "https://safety.google/authentication/passkey/"
+    - title: "Phishing erkennen"
+      desc: "Bei unerwarteten Nachrichten, Druck, ungewöhnlichen Links oder Anhängen kurz innehalten. Im Zweifel die Adresse selbst eintippen oder über bekannte Wege beim Anbieter nachsehen."
+      links:
+        - label: "BSI: Phishing"
+          url: "https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Cyber-Sicherheitslage/Methoden-der-Cyber-Kriminalitaet/Spam-Phishing-Co/spam-phishing-co_node.html"
+    - title: "Datenlecks prüfen"
+      desc: "Mit Have I Been Pwned lässt sich prüfen, ob eine E-Mail-Adresse in bekannten Datenlecks auftaucht. Wird ein Treffer angezeigt: Passwort ändern und MFA aktivieren."
+      links:
+        - label: "Have I Been Pwned"
+          url: "https://haveibeenpwned.com/"
+    - title: "Geräte aktuell halten"
+      desc: "Updates für Betriebssystem, Browser und Apps schließen Sicherheitslücken. Automatische Updates und ein kurzer regelmäßiger Gerätecheck sind einfache, wirksame Routinen."
+      links:
+        - label: "BSI: Geräte schützen"
+          url: "https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Cyber-Sicherheitsempfehlungen/Basisschutz-fuer-Computer-Smartphone-Tablet/basisschutz-fuer-computer-smartphone-tablet_node.html"
+        - label: "Windows Update"
+          url: "https://support.microsoft.com/de-de/windows/windows-aktualisieren-3c5ae7fc-9fb6-9af1-1984-b5e0412c556a"
+        - label: "Apple Sicherheitsupdates"
+          url: "https://support.apple.com/de-de/100100"
+    - title: "Backups vorbereiten"
+      desc: "Wichtige Dateien sollten wiederherstellbar sein, bevor etwas passiert. Eine Kombination aus automatischer Sicherung und gelegentlichem Wiederherstellungstest ist besonders hilfreich."
+      links:
+        - label: "Microsoft: Sicherheit"
+          url: "https://www.microsoft.com/de-de/security"
+        - label: "Google Sicherheitscheck"
+          url: "https://myaccount.google.com/security-checkup"
+
 library_notice:
   icon: "🏛️"
   title: "Hinweis: Lernzugänge über die Stadtbibliothek Speyer"

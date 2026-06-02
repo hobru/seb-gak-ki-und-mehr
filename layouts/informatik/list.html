@@ -14,6 +14,9 @@
 {{ with .Params.tool_sections }}
 <nav class="ki-subnav" aria-label="Abschnitte dieser Seite">
   <ul class="ki-subnav__list">
+    {{ with $.Params.security_section }}
+    <li><a href="#{{ .id | default "sicherheit-im-netz" }}">{{ .icon | default "🔐" }} {{ .nav_label | default .title }}</a></li>
+    {{ end }}
     {{ range . }}
     <li><a href="#{{ .id }}">{{ .icon }} {{ .nav_label | default .title }}</a></li>
     {{ end }}
@@ -32,6 +35,33 @@
       <span class="ki-intro-box__emoji" aria-hidden="true">💡</span>
       <p>{{ . | markdownify }}</p>
     </div>
+    {{ end }}
+
+    {{- /* Cross-cutting security section */}}
+    {{ with .Params.security_section }}
+    <section id="{{ .id | default "sicherheit-im-netz" }}" class="ki-section" aria-labelledby="digital-h-{{ .id | default "sicherheit-im-netz" }}">
+      <div class="ki-section__heading">
+        <div class="ki-section__icon ki-section__icon--{{ .color | default "blue" }}" aria-hidden="true">{{ .icon | default "🔐" }}</div>
+        <h2 class="ki-section__title" id="digital-h-{{ .id | default "sicherheit-im-netz" }}">{{ .title }}</h2>
+      </div>
+      {{ with .cards }}
+      <div class="ki-tool-grid">
+        {{ range . }}
+        <article class="ki-tool-card">
+          <h3 class="ki-tool-card__title">{{ .title }}</h3>
+          <p class="ki-tool-card__desc">{{ .desc | markdownify }}</p>
+          {{ with .links }}
+          <div class="ki-tool-card__links">
+            {{ range . }}
+            <a class="ki-tool-link" href="{{ .url }}" target="_blank" rel="noopener noreferrer">{{ .label }} ↗</a>
+            {{ end }}
+          </div>
+          {{ end }}
+        </article>
+        {{ end }}
+      </div>
+      {{ end }}
+    </section>
     {{ end }}
 
     {{- /* Stadtbibliothek Speyer notice */}}
