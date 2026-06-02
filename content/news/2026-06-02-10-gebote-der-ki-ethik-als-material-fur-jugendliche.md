@@ -12,10 +12,6 @@ external_link: "https://hdms.bsz-bw.de/frontdoor/deliver/index/docId/7259/file/1
 
 Die „10 Gebote der KI\-Ethik“ fassen zentrale Fragen zum verantwortungsvollen Umgang mit KI für Jugendliche kompakt zusammen\.
 
-## Relevanz für GAK/SEB
-
-Das Material passt zu KI\-Bildung und Medienkompetenz für die Schulgemeinschaft\.
-
 ## Details
 
 PDF: 

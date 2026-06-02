@@ -191,7 +191,7 @@ def main() -> int:
     validate_no_pii(fields)
     title = clean_text(fields["title"], 80, "Titel")
     abstract = clean_text(fields["abstract"], 220, "Kurzbeschreibung")
-    relevance = clean_text(fields.get("relevance", ""), 600, "GAK/SEB-Relevanz")
+    clean_text(fields.get("relevance", ""), 600, "GAK/SEB-Relevanz")
     details, external_link = split_details_and_link(fields.get("details", ""))
     audiences = parse_multi(fields["audience"], ALLOWED_AUDIENCES, "Zielgruppe")
     categories = parse_multi(fields["category"], ALLOWED_CATEGORIES, "Thema/Kategorie")
@@ -217,8 +217,6 @@ def main() -> int:
     if external_link:
         lines.append(f"external_link: {yaml_string(external_link)}")
     lines.extend(["---", "", markdown_plain(abstract)])
-    if relevance:
-        lines.extend(["", "## Relevanz für GAK/SEB", "", markdown_plain(relevance)])
     if details:
         lines.extend(["", "## Details", "", markdown_plain(details)])
     if external_link:

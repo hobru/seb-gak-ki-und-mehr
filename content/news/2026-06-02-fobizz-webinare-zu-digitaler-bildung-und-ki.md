@@ -12,10 +12,6 @@ external_link: "https://app.fobizz.com/fortbildungen?search%5Bquery%5D=&search%5
 
 Fobizz bündelt deutschsprachige Online\-Fortbildungen und Webinare für Lehrkräfte, unter anderem zu digitaler Bildung, Unterrichtsmaterialien und KI\-Werkzeugen\.
 
-## Relevanz für GAK/SEB
-
-Kann Lehrkräfte bei der Einordnung und Nutzung digitaler Werkzeuge im Schulkontext unterstützen\.
-
 ## Details
 
 Der Link führt auf die gefilterte Webinar\-Übersicht\. Dort gibt es regelmäßig Angebote zu digitaler Bildung und KI im Unterricht\.

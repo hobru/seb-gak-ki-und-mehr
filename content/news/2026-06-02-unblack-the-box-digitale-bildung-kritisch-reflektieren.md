@@ -12,10 +12,6 @@ external_link: "https://unblackthebox.org"
 
 UNBLACK THE BOX stellt Materialien bereit, mit denen Schulen digitale Tools, Datenflüsse und pädagogische Wirkungen bewusster reflektieren können\.
 
-## Relevanz für GAK/SEB
-
-Die Materialien unterstützen reflektierte Entscheidungen zu digitalen Bildungsmedien in Schule, SEB und Familie\.
-
 ## Details
 
 Initiative: 

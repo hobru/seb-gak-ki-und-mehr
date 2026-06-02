@@ -65,7 +65,7 @@ content/
 Der bevorzugte Redaktionsweg läuft über GitHub Issues und Pull Requests:
 
 1. Über **Issues → New issue → Neuigkeit vorschlagen** wird ein Vorschlag eingereicht.
-2. Die Issue Form nutzt den GitHub-Issue-Titel als Nachrichtentitel und fragt Kurzbeschreibung, optionale Details/externen Link, Zielgruppe, Thema/Kategorie sowie optional GAK/SEB-Relevanz ab.
+2. Die Issue Form nutzt den GitHub-Issue-Titel als Nachrichtentitel und fragt Kurzbeschreibung, optionale Details/externen Link, Zielgruppe, Thema/Kategorie sowie optionale redaktionelle GAK/SEB-Relevanz ab. Die Relevanz dient nur der Prüfung und wird nicht veröffentlicht.
 3. Es werden keine personenbezogenen Daten abgefragt. Die Datenschutz-Bestätigung ist Pflicht; Namen, E-Mail-Adressen, Telefonnummern, Adressen, Fotos oder private Angaben gehören nicht in Issues.
 4. Redakteur:innen prüfen Inhalt, Relevanz und externe Links. Wenn der Vorschlag passt, setzen Maintainer das Label `freigegeben`.
 5. Der Workflow `.github/workflows/news-from-issue.yml` validiert das Issue, erzeugt eine bereinigte Hugo-Markdown-Datei und öffnet einen Pull Request, der das Issue beim Merge schließt.

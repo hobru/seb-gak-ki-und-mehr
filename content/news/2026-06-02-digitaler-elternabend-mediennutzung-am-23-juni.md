@@ -12,10 +12,6 @@ external_link: "https://termin-online-buchen-03.de/app/book"
 
 Der digitale Elternabend behandelt den Alltag mit digitalen Medien und die Frage, wann Medienkonsum bei Jugendlichen problematisch werden kann\.
 
-## Relevanz für GAK/SEB
-
-Der Hinweis unterstützt Eltern beim sicheren und reflektierten Umgang mit Mediennutzung in der Familie\.
-
 ## Details
 
 Buchungsseite: 
