@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="{{ block "description" . }}{{ with .Description }}{{ . }}{{ else }}{{ site.Params.description }}{{ end }}{{ end }}">
   <title>{{ block "title" . }}{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} – {{ site.Params.shortName }}{{ end }}{{ end }}</title>
+  <link rel="icon" href="{{ "favicon.ico" | relURL }}" sizes="any">
+  <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
   <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
   {{ block "head_extra" . }}{{ end }}
 </head>

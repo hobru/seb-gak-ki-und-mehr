@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="SEB GAK Digital">
+  <rect width="64" height="64" rx="14" fill="#12233f"/>
+  <path d="M14 44V20h5v10l9-10h7L24 32l12 12h-7L19 34v10h-5z" fill="#f8fafc"/>
+  <path d="M41 20h6v24h-6z" fill="#f8fafc"/>
+  <circle cx="47" cy="13" r="4" fill="#f2b705"/>
+  <circle cx="53" cy="51" r="4" fill="#2ec4b6"/>
+  <path d="M47 17v7M47 44v7M51 49l-4-5" stroke="#f8fafc" stroke-width="2" stroke-linecap="round" opacity=".85"/>
+</svg>
