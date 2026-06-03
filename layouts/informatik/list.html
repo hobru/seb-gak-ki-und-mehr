@@ -88,17 +88,15 @@
     </article>
     {{ end }}
 
-    {{- /* Resource intro */}}
-    {{ with .Params.resources_intro }}
-    <div class="ki-intro-box" role="note">
-      <span class="ki-intro-box__emoji" aria-hidden="true">🧭</span>
-      <p>{{ . | markdownify }}</p>
-    </div>
-    {{ end }}
-
     {{- /* Resource sections */}}
     {{ with .Params.tool_sections }}
     <div class="ki-sections">
+      {{ with $.Params.resources_intro }}
+      <div class="ki-intro-box" role="note" style="margin-top:var(--sp-lg);">
+        <span class="ki-intro-box__emoji" aria-hidden="true">🧭</span>
+        <p>{{ . | markdownify }}</p>
+      </div>
+      {{ end }}
       {{ range . }}
       <section id="{{ .id }}" class="ki-section" aria-labelledby="digital-h-{{ .id }}">
         <div class="ki-section__heading">
