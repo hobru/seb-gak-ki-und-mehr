@@ -53,19 +53,10 @@ security_section:
     - title: "Geräte aktuell halten"
       desc: "Updates für Betriebssystem, Browser und Apps schließen Sicherheitslücken. Automatische Updates und ein kurzer regelmäßiger Gerätecheck sind einfache, wirksame Routinen."
       links:
-        - label: "BSI: Geräte schützen"
-          url: "https://www.bsi.bund.de/DE/Themen/Verbraucherinnen-und-Verbraucher/Informationen-und-Empfehlungen/Cyber-Sicherheitsempfehlungen/Basisschutz-fuer-Computer-Smartphone-Tablet/basisschutz-fuer-computer-smartphone-tablet_node.html"
         - label: "Windows Update"
           url: "https://support.microsoft.com/de-de/windows/windows-aktualisieren-3c5ae7fc-9fb6-9af1-1984-b5e0412c556a"
         - label: "Apple Sicherheitsupdates"
           url: "https://support.apple.com/de-de/100100"
-    - title: "Backups vorbereiten"
-      desc: "Wichtige Dateien sollten wiederherstellbar sein, bevor etwas passiert. Eine Kombination aus automatischer Sicherung und gelegentlichem Wiederherstellungstest ist besonders hilfreich."
-      links:
-        - label: "Microsoft: Sicherheit"
-          url: "https://www.microsoft.com/de-de/security"
-        - label: "Google Sicherheitscheck"
-          url: "https://myaccount.google.com/security-checkup"
 
 library_notice:
   icon: "🏛️"
