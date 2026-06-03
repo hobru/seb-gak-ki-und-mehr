@@ -44,6 +44,12 @@
         <div class="ki-section__icon ki-section__icon--{{ .color | default "blue" }}" aria-hidden="true">{{ .icon | default "🔐" }}</div>
         <h2 class="ki-section__title" id="digital-h-{{ .id | default "sicherheit-im-netz" }}">{{ .title }}</h2>
       </div>
+      {{ with .note }}
+      <div class="ki-intro-box" role="note">
+        <span class="ki-intro-box__emoji" aria-hidden="true">ℹ️</span>
+        <p>{{ . | markdownify }}</p>
+      </div>
+      {{ end }}
       {{ with .cards }}
       <div class="ki-tool-grid">
         {{ range . }}

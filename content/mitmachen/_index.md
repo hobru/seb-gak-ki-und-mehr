@@ -8,6 +8,8 @@ layout: "list"
 
 SEB GAK Digital lebt von guten Ideen: kurze Tool-Tipps, Projektvorschläge, Lernimpulse oder Hinweise auf hilfreiche Materialien. Damit Beiträge verständlich und sicher veröffentlicht werden können, werden Vorschläge vorab redaktionell geprüft.
 
+Ideen und Anregungen können weiterhin sehr gerne per E-Mail an [seb@gak-speyer.de](mailto:seb@gak-speyer.de) geschickt werden.
+
 ### Was passt hierher?
 
 - Ideen zu Digitales, Informatik, Medienkompetenz oder KI

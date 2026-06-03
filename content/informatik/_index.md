@@ -11,6 +11,7 @@ security_section:
   color: "blue"
   nav_label: "Sicherheit"
   title: "Sicherheit im Netz"
+  note: "Der Cyberangriff auf Schulen in Speyer hat erneut gezeigt, wie wichtig ein bewusster Umgang mit Passwörtern und Online-Diensten ist. Die folgenden Hinweise fassen zentrale Empfehlungen zusammen: Passwort-Manager nutzen, einfache Passwörter vermeiden und – wo möglich – Zwei-Faktor-Anmeldung aktivieren."
   cards:
     - title: "Passwörter gut verwalten"
       desc: "Ein Passwort-Manager hilft, für jeden Dienst ein eigenes starkes Passwort zu nutzen. Beispiele sind Bitwarden, KeePassXC oder 1Password; wichtig sind ein starkes Master-Passwort und bewusste Einrichtung."
