@@ -68,6 +68,8 @@ library_notice:
     - label: "Digitale Angebote"
       url: "https://www.speyer.de/de/bildung/stadtbibliothek/digitale-angebote/"
 
+resources_intro: "Die folgenden Hinweise und Links ergänzen den Unterricht digital: Sie unterstützen beim Üben, Wiederholen und Vertiefen, helfen bei der Nacharbeit zu Hause und geben Anregungen für eigenständiges Weiterlernen."
+
 tool_sections:
   - id: "deutsch"
     icon: "📚"

@@ -88,6 +88,14 @@
     </article>
     {{ end }}
 
+    {{- /* Resource intro */}}
+    {{ with .Params.resources_intro }}
+    <div class="ki-intro-box" role="note">
+      <span class="ki-intro-box__emoji" aria-hidden="true">🧭</span>
+      <p>{{ . | markdownify }}</p>
+    </div>
+    {{ end }}
+
     {{- /* Resource sections */}}
     {{ with .Params.tool_sections }}
     <div class="ki-sections">
